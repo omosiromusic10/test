@@ -1,0 +1,33 @@
+create文　作る！
+
+create table テーブル名(　　　　　
+カラム名　データ型,
+
+カラム名　データ型
+);
+
+例題
+
+create table addresslist(
+
+user_id int(11),
+
+name varchar(255),
+
+mail varchar(255),
+
+tell varchar(255),
+
+prefecture varchar(255)
+
+);
+
+insert文　　　　　　　　　　　入れる
+
+insert into テーブル名(カラム名,カラム名,カラム名)
+values("挿入データ","挿入データ","挿入データ");
+
+or
+
+insert into テーブル名
+values("挿入データ","挿入データ","挿入データ");

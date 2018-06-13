@@ -1,0 +1,24 @@
+select 文　テーブルに入っているデータを抽出する！
+
+select XXXX(カラム名) from テーブル名;
+
+例：select *(allの意味) from addresslist;
+これでアドレスリストの情報がでる
+
+例：select name from addresslist;
+アドレスリストの名前のみの情報が出る
+
+例：select mail from addreslist where profecuture ="千葉"
+アドレスリスト内の千葉県の中のメールアドレスのみの情報を出す。
+
+例：select name from addresslist where user_id =3;
+アドレスリスト内の３番のユーザの名前を出す。
+
+update 文　テーブルに入っているデータを上書きして更新する為にしようする。
+
+update テーブル名 set カラム名 = "ＸＸＸ"
+
+delete　分　テーブルに入っているデータを削除する！
+
+delete from　テーブル名　
+※　データ指定の際は　where カラム名 =ＸＸＸ;　と記入する！

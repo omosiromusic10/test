@@ -1,0 +1,12 @@
+﻿body{
+	font-family:"ＭＳ Ｐゴシック";
+	color:red;
+	font-size:50px;
+}
+.abc{
+	text-align:center;
+	line-height:2;
+}
+ul{
+	list-style-type:none;
+}

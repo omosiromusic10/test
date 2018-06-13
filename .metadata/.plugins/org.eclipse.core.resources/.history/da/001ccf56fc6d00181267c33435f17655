@@ -1,0 +1,16 @@
+
+public class Robot {
+	public static void main(String[] args){
+		Person aibo = new Person();
+		aibo.Robotname="アイボ";
+
+		Person asimo = new Person();
+		asimo.Robotname ="アシモ";
+
+		Person pepper =new Person();
+		pepper.Robotname ="ペッパー";
+
+		Person doracumon =new Person();
+		doracumon.Robotname ="ドラクモン";
+	}
+}
