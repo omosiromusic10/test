@@ -11,7 +11,7 @@ import Com.internousdev.webproj4.dto.HelloStrutsDTO;
 public class HelloStrutsAction extends ActionSupport{
 	private List<HelloStrutsDTO> HelloStrutsDTOList = new ArrayList<HelloStrutsDTO>();
 
-	public String ececute(){
+	public String execute(){
 		String ret =ERROR;
 		HelloStrutsDAO dao = new HelloStrutsDAO();
 

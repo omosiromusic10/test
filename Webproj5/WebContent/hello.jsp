@@ -6,40 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
-<title>HelloStruts2!</title>
+<title>HelloStruts</title>
 </head>
 <body>
 <h1>HelloStruts2!</h1>
-
 <br>
-
 <table>
-  <tbody>
-  <tr>
-     <th>USERID</th>
-     <th>USERNAME</th>
-     <th>PASSWORD</th>
-     <th>RESULT</th>
-  </tr>
-
-  <s:iterator value="helloStrutsDTOList">
-  <tr>
-    <td><s:property value="userId"/></td>
-    <td><s:property value="userName"/></td>
-    <td><s:property value="password"/></td>
-<td><s:property value="result"/></td>
+<tbody>
+<tr>
+  <th>USERID</th>
+  <th>USERNAME</th>
+  <th>PASSWORD</th>
+  <th>RESULT</th>
+</tr>
+<s:iterator value="#session.helloStrutsDTOList">
+<tr>
+  <td><s:property value="userId"/></td>
+  <td><s:property value="userName"/></td>
+  <td><s:property value="password"/></td>
+  <td><s:property value="result"/></td>
 </tr>
 </s:iterator>
-
-  </tbody>
-
-
-
-
-  </table>
-
-
-
+</tbody>
+</table>
 
 </body>
 </html>
