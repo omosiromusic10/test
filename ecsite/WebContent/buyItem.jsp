@@ -10,6 +10,7 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content=""/>
 <meta name="keywords" content="" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <title>BuyItem画面</title>
 
 <style type="text/css">
@@ -39,10 +40,80 @@ table{
   height: 80px;
   background-color: black;
 }
+.logo{
+  float:left;
+  width:200px;
+  padding-left:10px;
+  color:white;
+  font-size:25px;
+  line-height:80px;
+}
+
+#header ul{
+  float:right;
+  line-height:50px;
+}
+#header ul li{
+  float:left;
+  list-style:none;
+  padding-right:40px;
+  color:white;
+  font-size:18px;
+}
+.home a {
+  text-decoration:none;
+  color:white;
+}
 #main{
   width: 100%;
   height: 500px;
   text-align: center;
+}
+
+.left1{
+  float:left;
+  width:20%;
+  background-color: skyblue;
+  height:350px;
+}
+.left2{
+  float:left;
+  width:20%;
+  height:350px;
+}
+.left2 img{
+  clear:float;
+  width:200px;
+}
+.left3{
+  float:left;
+  width:20%;
+  background-color:lightblue;
+  height:350px;
+}
+.left3 img{
+  clear:float;
+  width:200px;
+}
+.left4{
+  float:left;
+  width:20%;
+  height:350px;
+
+}
+.left4 img{
+  clear:float;
+  width:200px;
+}
+.left5{
+  float:left;
+  width:20%;
+  height:350px;
+  background-color:red;
+}
+.left5 img{
+  clear:float;
+  width:200px;
 }
 #footer{
   width: 100%;
@@ -50,20 +121,82 @@ table{
   background-color: black;
   clear: both;
 }
+
 </style>
+
 </head>
 <body>
     <div id="header">
         <div id="pr">
+	 <div class="logo">ECサイトロゴ！</div>
+	 <ul class="home">
+	     <li><a href="home.jsp">ホーム</a></li><!--  ただhomeページに戻すだけ-->
+	     <li><a href='<s:url action="MyPageAction"  />'>購入履歴</a></li>   <!-- これはMyPageActionを経由させつつ移動させなくてはいけない。 -->
+	     <li><a href='<s:url action="InquiryAction" />'>お問い合わせ</a></li>  <!-- inquiryActioに連結させてそこからお問い合わせを出来るようにする -->
+	     <li><a href='<s:url action="LogoutAction"  />'>ログアウト</a></li> <!-- これはlogoutActionを経由してつなげなくてはいけない。 -->
+	 </ul>
+	 </div>
         </div>
-    </div>
     <div id="main">
         <div id="top">
-           <p>Buyitem</p>
+           <p>BuyItem</p>
         </div>
-        <div>
-            <s:form action="BuyitemAction">
+        <div class="left1">
+            <s:form action="BuyItemAction">
+            <input type="image" src="./img/images.jpg"  width="200px">
+
             <table>
+                <tr>
+                    <td>
+                        <span>商品名</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_name"/><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>値段</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_price" /><span>円</span><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>商品個数</span>
+                    </td>
+                    <td>
+                        <select name="count">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>支払い方法</span>
+                    </td>
+                    <td>
+                        <input type="radio" name="pay" value="1" checked="checked">現金払い
+                         <input type="radio" name="pay" value="2">クレジットカード
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <s:submit value="購入"/>
+                    </td>
+                </tr>
+                </table>
+                </s:form>
+         </div>
+         <div class="left2">
+              <s:form action="BuyItemAction">
+              <input type="image" src="./img/image2.jpg"  width="200px">
+              <table>
                 <tr>
                     <td>
                         <span>商品名</span>
@@ -109,13 +242,32 @@ table{
                     </td>
                 </tr>
                 </table>
-                </s:form>
+              </s:form>
+         </div>
+         <div class="left3">
+              <s:form action="BuyItemAction">
+              <img src="./img/image3.jpg">
+              <h2>開発ちう！</h2>
+              </s:form>
+         </div>
+         <div class="left4">
+              <s:form action="BuyItemAction">
+              <img src="./img/image4.jpg">
+              <h2>開発ちう！</h2>
+              </s:form>
+         </div>
+         <div class="left5">
+              <s:form action="BuyItemAction">
+              <img src="./img/image5.jpg">
+              <h2>開発ちう！</h2>
+              </s:form>
+         </div>
                 <div>
 
             <p>前画面に戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
             <p>マイページは<a href='<s:url action="MyPageAction"  />'>こちら</a></p>
                 </div>
-        </div>
+
 </div>
 <div id="footer">
     <div id="pr">

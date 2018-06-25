@@ -13,7 +13,9 @@ public class BuyItemDAO {
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 
 	public BuyItemDTO getBuyItemInfo(){
-		String sql="SELECT id, item_name,item_price FROM item_info_transaction";
+		//ここにwhile文を入れればその物だけを抽出出来る可能性？
+
+		String sql="select * from item_info_transaction where id=1";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();

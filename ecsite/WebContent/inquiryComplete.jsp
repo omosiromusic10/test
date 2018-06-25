@@ -5,20 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Style" content="text/css"/>
-<meta http-equiv="Content-Script" content="text/javascript"/>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
 <meta http-equiv="imagetoolbar" content="no"/>
 <meta name="description" content=""/>
 <meta name="keywords" content="" />
-<title>UserCreate画面</title>
+<title>お問い合わせ 受付完了</title>
 <style type="text/css">
-/* ========TAG LAYOUT======== */
 body{
   margin: 0;
   padding: 0;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family:Verdana, Helvetica,sans-serif;
+  font-family: Verdana, Helvetica, sans-serif;
   font-size: 12px;
   color: #333;
   background: #fff;
@@ -27,7 +26,7 @@ table{
   text-align: center;
   margin: 0 auto;
 }
-/* ========ID LAYOUT======== */
+
 #top{
   width: 780px;
   margin: 30px auto;
@@ -61,7 +60,7 @@ table{
 .home a {
   text-decoration:none;
   color:white;
-  }
+}
 #main{
   width: 100%;
   height: 500px;
@@ -69,9 +68,8 @@ table{
 }
 #footer{
   width: 100%;
-  height:80px;
+  height: 80px;
   background-color: black;
-  clear: both;
 }
 </style>
 </head>
@@ -88,52 +86,48 @@ table{
 	 </div>
         </div>
     <div id="main">
-        <div id="top">
-            <p>UserCreate</p>
-        </div>
-        <div>
-            <s:if test="errorMessage !=''">
-                <s:property value="errorMessage" escape ="false"/>
-            </s:if>
-            <table>
-            <s:form action="UserCreateConfirmAction">
-                <tr>
-                    <td>
-                        <label>ログインID:</label>
-                    </td>
-                    <td>
-                        <input type="text" name="loginUserId" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>ログインPASS:</label>
-                    </td>
-                    <td>
-                        <input type="text" name="loginPassword" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>ユーザー名:</label>
-                    </td>
-                    <td>
-                        <input type="text" name="userName" value=""/>
-                    </td>
-                </tr>
-                <s:submit value="登録" />
-            </s:form>
-            </table>
-            <div>
-                <span>前画面に戻る場合は</span>
-                <a href='<s:url action="HomeAction" />'>こちら</a>
-            </div>
-        </div>
+    <div id="top">
+        <p>InquiryComplete</p>
+    </div>
+<table>
+<tbody>
+
+ <tr>
+   <th>お名前:</th>
+   <th>お問い合わせの種類</th>
+ </tr>
+     <tr>
+       <td><s:property value="name" /></td>
+       <s:if test='qtype=="company"'>
+         <td>会社について</td>
+       </s:if>
+       <s:if test='qtype=="product"'>
+         <td>商品について</td>
+       </s:if>
+       <s:if test='qtype=="return"'>
+         <td>返品について</td>
+       </s:if>
+       <s:if test='qtype=="etc"'>
+         <td>その他</td>
+       </s:if>
+       </tr>
+</tbody>
+</table>
+<table>
+    <tr>
+    <th>お問い合わせ内容</th>
+    </tr>
+    <tr>
+    <td><s:property value="body"/></td>
+    </tr>
+</table>
+    <div>
+     <p>Homeへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
+    </div>
     </div>
     <div id="footer">
-        <div id="pr">
-        </div>
+      <div id="pr">
+      </div>
     </div>
-
 </body>
 </html>

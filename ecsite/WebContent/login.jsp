@@ -39,6 +39,30 @@ table{
   height: 80px;
   background-color: black;
 }
+.logo{
+  float:left;
+  width:200px;
+  padding-left:10px;
+  color:white;
+  font-size:25px;
+  line-height:80px;
+}
+
+#header ul{
+  float:right;
+  line-height:50px;
+}
+#header ul li{
+  float:left;
+  list-style:none;
+  padding-right:40px;
+  color:white;
+  font-size:18px;
+}
+.home a {
+  text-decoration:none;
+  color:white;
+}
 #main{
   width: 100%;
   height: 500px;
@@ -60,14 +84,21 @@ table{
 
     <div id="header">
         <div id="pr">
+	 <div class="logo">ECサイトロゴ！</div>
+	 <ul class="home">
+	     <li><a href="home.jsp">ホーム</a></li><!--  ただhomeページに戻すだけ-->
+	     <li><a href='<s:url action="HomeAction"  />'>購入履歴</a></li>
+	     <li><a href='<s:url action="InquiryAction" />'>お問い合わせ</a></li>
+	     <li><a href='<s:url action="HomeAction"  />'>ログアウト</a></li>
+	 </ul>
+	 </div>
         </div>
-    </div>
     <div id="main">
         <div id="top">
             <p>Login</p>
         </div>
         <div>
-            <h3>商品を購入する際にはログインをお願いします。</h3>
+            <h3>商品を購入、及び購入履歴を閲覧する際にはログインをお願いします。</h3>
             <s:form action="LoginAction">
                <s:textfield name="loginUserId"/>
                <s:password name="loginPassword" />

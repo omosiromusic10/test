@@ -38,6 +38,30 @@ table{
   height: 80px;
   background-color: black;
 }
+.logo{
+  float:left;
+  width:200px;
+  padding-left:10px;
+  color:white;
+  font-size:25px;
+  line-height:80px;
+}
+
+#header ul{
+  float:right;
+  line-height:50px;
+}
+#header ul li{
+  float:left;
+  list-style:none;
+  padding-right:40px;
+  color:white;
+  font-size:18px;
+}
+.home a {
+  text-decoration:none;
+  color:white;
+}
 #main{
   width: 100%;
   height: 500px;
@@ -54,8 +78,15 @@ table{
 <body>
     <div id="header">
         <div id="pr">
+	 <div class="logo">ECサイトロゴ！</div>
+	 <ul class="home">
+	     <li><a href="home.jsp">ホーム</a></li><!--  ただhomeページに戻すだけ-->
+	     <li><a href='<s:url action="MyPageAction"  />'>購入履歴</a></li>   <!-- これはMyPageActionを経由させつつ移動させなくてはいけない。 -->
+	     <li><a href='<s:url action="InquiryAction" />'>お問い合わせ</a></li>  <!-- inquiryActioに連結させてそこからお問い合わせを出来るようにする -->
+	     <li><a href='<s:url action="LogoutAction"  />'>ログアウト</a></li> <!-- これはlogoutActionを経由してつなげなくてはいけない。 -->
+	 </ul>
+	 </div>
         </div>
-    </div>
     <div id="main">
        <div id="top">
            <p>UserCreateConfirm</p>
