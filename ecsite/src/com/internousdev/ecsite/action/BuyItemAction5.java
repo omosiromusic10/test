@@ -6,12 +6,11 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BuyItemAction extends ActionSupport implements SessionAware {
-	public int No = 1;
+public class BuyItemAction5 extends ActionSupport implements SessionAware{
+	public int No = 5;
 	public Map<String,Object>session;
 	private int count;
 	private String pay;
-
 
 	public String execute(){
 		String result = SUCCESS;

@@ -11,6 +11,7 @@
 <meta name="description" content=""/>
 <meta name="keywords" content="" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>BuyItem画面</title>
 
 <style type="text/css">
@@ -24,6 +25,7 @@ body{
   font-size: 12px;
   color: #333;
   background: #fff;
+  background-image:url("./img/image6.jpg");
 }
 table{
   text-align: center;
@@ -33,12 +35,24 @@ table{
 #top{
   width: 780px;
   margin: 30px auto;
-  border: 1px solid #333;
+  padding: 0.5em;
+  color: #010101;
+  font-size:20px;
+  background: #eaf3ff;
+  border-bottom: solid 3px #516ab6;
+  height: 60px;
 }
 #header{
   width: 100%;
   height: 80px;
-  background-color: black;
+  osition: relative;
+  padding: 0.2em 0.5em;
+  background: -moz-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  background: -webkit-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  background: linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  color: white;
+  font-weight: lighter;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.56);
 }
 .logo{
   float:left;
@@ -66,7 +80,7 @@ table{
 }
 #main{
   width: 100%;
-  height: 500px;
+  height: 600px;
   text-align: center;
 }
 
@@ -123,7 +137,19 @@ table{
 }
 
 </style>
-
+<script type="text/javascript">
+    jQuery(function(){
+    $(function(){
+    $(".home a").hover(
+    function(){
+    	$(this).css("color","gray");
+    },
+    function(){
+    	$(this).css("color","white");
+    });
+    });
+    });
+  </script>
 </head>
 <body>
     <div id="header">
@@ -139,7 +165,7 @@ table{
         </div>
     <div id="main">
         <div id="top">
-           <p>BuyItem</p>
+           <p>サイト購入画面</p>
         </div>
         <div class="left1">
             <s:form action="BuyItemAction">
@@ -194,7 +220,7 @@ table{
                 </s:form>
          </div>
          <div class="left2">
-              <s:form action="BuyItemAction">
+              <s:form action="BuyItemAction2">
               <input type="image" src="./img/image2.jpg"  width="200px">
               <table>
                 <tr>
@@ -244,22 +270,161 @@ table{
                 </table>
               </s:form>
          </div>
+
+
          <div class="left3">
-              <s:form action="BuyItemAction">
-              <img src="./img/image3.jpg">
-              <h2>開発ちう！</h2>
+              <s:form action="BuyItemAction3">
+              <input type="image" src="./img/image3.jpg"  width="200px">
+              <table>
+                <tr>
+                    <td>
+                        <span>商品名</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_name" /><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>値段</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_price" /><span>円</span><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>商品個数</span>
+                    </td>
+                    <td>
+                        <select name="count">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>支払い方法</span>
+                    </td>
+                    <td>
+                        <input type="radio" name="pay" value="1" checked="checked">現金払い
+                         <input type="radio" name="pay" value="2">クレジットカード
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <s:submit value="購入"/>
+                    </td>
+                </tr>
+                </table>
+
               </s:form>
          </div>
          <div class="left4">
-              <s:form action="BuyItemAction">
-              <img src="./img/image4.jpg">
-              <h2>開発ちう！</h2>
+              <s:form action="BuyItemAction4">
+              <input type="image" src="./img/image4.jpg"  width="200px">
+              <table>
+                <tr>
+                    <td>
+                        <span>商品名</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_name" /><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>値段</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_price" /><span>円</span><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>商品個数</span>
+                    </td>
+                    <td>
+                        <select name="count">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>支払い方法</span>
+                    </td>
+                    <td>
+                        <input type="radio" name="pay" value="1" checked="checked">現金払い
+                         <input type="radio" name="pay" value="2">クレジットカード
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <s:submit value="購入"/>
+                    </td>
+                </tr>
+                </table>
               </s:form>
          </div>
+
          <div class="left5">
-              <s:form action="BuyItemAction">
-              <img src="./img/image5.jpg">
-              <h2>開発ちう！</h2>
+              <s:form action="BuyItemAction5">
+              <input type="image" src="./img/image5.jpg"  width="200px">
+              <table>
+                <tr>
+                    <td>
+                        <span>商品名</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_name" /><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>値段</span>
+                    </td>
+                    <td>
+                        <s:property value="session.buyItem_price" /><span>円</span><br>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <span>商品個数</span>
+                    </td>
+                    <td>
+                        <select name="count">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>支払い方法</span>
+                    </td>
+                    <td>
+                        <input type="radio" name="pay" value="1" checked="checked">現金払い
+                         <input type="radio" name="pay" value="2">クレジットカード
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <s:submit value="購入"/>
+                    </td>
+                </tr>
+                </table>
               </s:form>
          </div>
                 <div>

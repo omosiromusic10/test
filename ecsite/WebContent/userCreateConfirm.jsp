@@ -10,6 +10,7 @@
 <meta http-equiv="imagetoolbar" content="no"/>
 <meta name="description" content=""/>
 <meta name="keywords" content="" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>UserCreateConfirm画面</title>
 <style type="text/css">
 /* ========TAG LAYOUT======== */
@@ -22,6 +23,7 @@ body{
   font-size: 12px;
   color: #333;
   background: #fff;
+  background-image:url("./img/image6.jpg");
 }
 table{
   text-align: center;
@@ -29,14 +31,26 @@ table{
 }
 /* ========ID LAYOUT======== */
 #top{
- width: 780px;
- margin: 30px auto;
- border: 1px solid #333;
+  width: 780px;
+  margin: 30px auto;
+  padding: 0.5em;
+  color: #010101;
+  font-size:20px;
+  background: #eaf3ff;
+  border-bottom: solid 3px #516ab6;
+  height: 60px;
 }
 #header{
   width: 100%;
   height: 80px;
-  background-color: black;
+  osition: relative;
+  padding: 0.2em 0.5em;
+  background: -moz-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  background: -webkit-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  background: linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  color: white;
+  font-weight: lighter;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.56);
 }
 .logo{
   float:left;
@@ -64,8 +78,9 @@ table{
 }
 #main{
   width: 100%;
-  height: 500px;
+  height: 600px;
   text-align: center;
+
 }
 #footer{
   width: 100%;
@@ -74,6 +89,19 @@ table{
   clear: both;
 }
 </style>
+<script type="text/javascript">
+    jQuery(function(){
+    $(function(){
+    $(".home a").hover(
+    function(){
+    	$(this).css("color","gray");
+    },
+    function(){
+    	$(this).css("color","white");
+    });
+    });
+    });
+  </script>
 </head>
 <body>
     <div id="header">

@@ -4,18 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.internousdev.ecsite.action.BuyItemAction;
 import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.internousdev.ecsite.util.DBConnector;
 
 public class BuyItemDAO {
+	BuyItemAction number = new BuyItemAction();
 	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
 	private BuyItemDTO buyItemDTO = new BuyItemDTO();
 
 	public BuyItemDTO getBuyItemInfo(){
-		//ここにwhile文を入れればその物だけを抽出出来る可能性？
-
-		String sql="select * from item_info_transaction where id=1";
+			String sql= "select * from item_info_transaction where id=1";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -27,6 +27,7 @@ public class BuyItemDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 			}
+
 		return buyItemDTO;
 		}
 		public BuyItemDTO getBuyItemDTO() {
