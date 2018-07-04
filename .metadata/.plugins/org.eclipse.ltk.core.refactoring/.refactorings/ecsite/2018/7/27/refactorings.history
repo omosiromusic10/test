@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="&apos;com.internousdev.ecsite.dao.BuyItemDAO.getBuyItemInfo(...)&apos; のローカル変数の名前を &apos;buyItemDTO&apos; から &apos;buyItemDTOList&apos; に変更します&#x0D;&#x0A;- 元のプロジェクト: &apos;ecsite&apos;&#x0D;&#x0A;- オリジナル要素: &apos;com.internousdev.ecsite.dao.BuyItemDAO.getBuyItemInfo(String).buyItemDTO&apos;&#x0D;&#x0A;- 名前変更済み要素: &apos;buyItemDTO&apos;&#x0D;&#x0A;- リファクタリングされた要素の参照を更新" description="ローカル変数名 &apos;buyItemDTO&apos; の変更" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.internousdev.ecsite.dao{BuyItemDAO.java[BuyItemDAO~getBuyItemInfo~QString;@buyItemDTO!575!636!597!606!QArrayList\&lt;QBuyItemDTO;&gt;;!0!false" name="buyItemDTOList" references="true" stamp="1530682434716" version="1.0"/>
+</session>

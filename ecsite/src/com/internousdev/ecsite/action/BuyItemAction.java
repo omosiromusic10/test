@@ -1,23 +1,53 @@
 package com.internousdev.ecsite.action;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ecsite.dao.BuyItemDAO;
+import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
+
 public class BuyItemAction extends ActionSupport implements SessionAware {
-	public int No = 1;
-	public Map<String,Object>session;
-	private int count;
+	public Map<String,Object> session;
+	private BuyItemDAO buyItemDAO = new BuyItemDAO();
+	private ArrayList<BuyItemDTO> buyItemList = new ArrayList<BuyItemDTO>();
+	private String itemName;
+	private String itemPrice;
+	private String count;
 	private String pay;
 
 
-	public String execute(){
+	public String execute()throws SQLException {
 		String result = SUCCESS;
-		session.put("count", count);
+
+
+		System.out.println("itemName : "+  itemName);
+		System.out.println("itemPrice : " + itemPrice);
+		System.out.println("count : " + count);
+
+		String[] itemNameList = itemName.split(" , ",0);
+		String[] itemPriceList = itemPrice.split(" , ",0);
+		String[] countList = count.split(" , ",0);
+
+		for(int i=0; i<itemNameList.length; i++){
+			BuyItemDTO dto = new BuyItemDTO();
+			dto.setItemName(String.valueOf(itemNameList[i]));
+			dto.setItemPrice(String.valueOf(itemPriceList[i]));
+			dto.setCount(String.valueOf(countList[i]));
+			buyItemList.add(dto);
+		}
+
+
+
+//		session.put("count", count);
 		int intCount = Integer.parseInt(session.get("count").toString());
 		int intPrice = Integer.parseInt(session.get("buyItem_price").toString());
+		String id = session.get("id").toString();
+//		buyItemList = buyItemDAO.getBuyItemInfo();
 		session.put("total_price",intCount * intPrice);
 		String payment;
 		if(pay.equals("1")){
@@ -30,14 +60,54 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 		}
 		return result;
 	}
-	public void setCount(int count){
+
+	public ArrayList<BuyItemDTO> getBuyItemList() {
+		return buyItemList;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getItemPrice() {
+		return itemPrice;
+	}
+
+	public void setItemPrice(String itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
 		this.count = count;
 	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public String getPay() {
+		return pay;
+	}
+
 	public void setPay(String pay){
 		this.pay = pay;
 	}
 	@Override
 	public void setSession(Map<String,Object>session){
 		this.session = session;
+	}
+	public ArrayList<BuyItemDTO> getBuyItemLIst(){
+		return this.buyItemList;
+	}
+	public void setBuyItemList(ArrayList<BuyItemDTO> buyItemList){
+		this.buyItemList= buyItemList;
 	}
 }

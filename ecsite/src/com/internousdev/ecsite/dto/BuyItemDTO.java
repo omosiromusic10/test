@@ -4,6 +4,7 @@ public class BuyItemDTO {
 	private int id;
 	private String itemName;
 	private String itemPrice;
+	private String count;
 
 	public String getItemName(){
 		return itemName;
@@ -23,4 +24,12 @@ public class BuyItemDTO {
 	public void setId(int id){
 		this.id = id;
 	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+
 }

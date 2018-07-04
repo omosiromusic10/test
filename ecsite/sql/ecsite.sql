@@ -27,16 +27,6 @@ create table item_info_transaction(
   update_date datetime
   );
 
-drop table if exists user_buy_item_transaction(
-  id int not null primary key auto_increment,
-  item_transaction_id int,
-  total_price int,
-  total_count int,
-  user_master_id varchar(16),
-  pay varchar(30),
-  insert_date datetime,
-  delete_date datetime
-  );
 
   INSERT INTO item_info_transaction(item_name , item_price , item_stock)VALUES ("ノートBook",100,50);
 
