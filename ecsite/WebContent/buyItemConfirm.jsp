@@ -124,21 +124,27 @@ table{
        </div>
        <div>
            <s:form>
+           <s:iterator value="buyItemList">
                <tr>
                    <td>商品名</td>
-                   <td><s:property value="session.buyItem_name" /></td>
+                   <td><s:property value="itemName" /></td>
                </tr>
                <tr>
-                   <td>値段</td>
-                   <td><s:property value="session.total_price" /><span>円</span></td>
+                   <td>単体値段</td>
+                   <td><s:property value="itemPrice" /><span>円</span></td>
                </tr>
                <tr>
                    <td>購入個数</td>
-                   <td><s:property value="session.count" /><span>個</span></td>
+                   <td><s:property value="count" /><span>個</span></td>
                </tr>
+               </s:iterator>
                <tr>
                    <td>支払い方法</td>
                    <td><s:property value="session.pay" /></td>
+               </tr>
+               <tr>
+                   <td>合計金額</td>
+                   <td><s:property value="session.total_price"/><span>円</span></td>
                </tr>
                <tr>
                    <td><br></td>

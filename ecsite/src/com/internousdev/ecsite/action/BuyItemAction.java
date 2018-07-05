@@ -6,14 +6,12 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.ecsite.dao.BuyItemDAO;
 import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
 public class BuyItemAction extends ActionSupport implements SessionAware {
 	public Map<String,Object> session;
-	private BuyItemDAO buyItemDAO = new BuyItemDAO();
 	private ArrayList<BuyItemDTO> buyItemList = new ArrayList<BuyItemDTO>();
 	private String itemName;
 	private String itemPrice;
@@ -29,26 +27,38 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 		System.out.println("itemPrice : " + itemPrice);
 		System.out.println("count : " + count);
 
-		String[] itemNameList = itemName.split(" , ",0);
-		String[] itemPriceList = itemPrice.split(" , ",0);
-		String[] countList = count.split(" , ",0);
+		String[] itemNameList = itemName.split(", " ,0);
+		String[] itemPriceList = itemPrice.split(", " ,0);
+		String[] countList = count.split(", " ,0);
+		//ここで区分けとしては",スペース"でやらなくてはいけない。
+		//ここで変数をコンマ(,)で分割するようにしている。配列をしている。
+		int intCount = 0;
+		int intPrice = 0;
+		int total_price = 0;
+		int total_count = 0;
+//		buyItemList = buyItemDAO.getBuyItemInfo();
 
 		for(int i=0; i<itemNameList.length; i++){
 			BuyItemDTO dto = new BuyItemDTO();
 			dto.setItemName(String.valueOf(itemNameList[i]));
 			dto.setItemPrice(String.valueOf(itemPriceList[i]));
 			dto.setCount(String.valueOf(countList[i]));
+			//ここではdtoにListの情報を入れている。
 			buyItemList.add(dto);
+
+			intCount = Integer.parseInt(dto.getCount());
+			intPrice = Integer.parseInt(dto.getItemPrice());
+			total_price += intCount * intPrice;
+			total_count += intCount ;
+			//そしてここで其々のdtoに入れていた情報を演算子して貰う。
+			//これによりtotal_priceが出る。
 		}
 
-
-
-//		session.put("count", count);
-		int intCount = Integer.parseInt(session.get("count").toString());
-		int intPrice = Integer.parseInt(session.get("buyItem_price").toString());
-		String id = session.get("id").toString();
-//		buyItemList = buyItemDAO.getBuyItemInfo();
-		session.put("total_price",intCount * intPrice);
+		session.put( "total_price" , total_price );
+		session.put( "total_count" , total_count);
+		//ここでtotal_priceなるものをsession内に入れているが..
+		//どうやらcountにコンマがついているようでうまくいかない。
+		//何故コンマがつくのか不明である。セレクトでもコンマがつくのか...？
 		String payment;
 		if(pay.equals("1")){
 			payment = "現金払い";

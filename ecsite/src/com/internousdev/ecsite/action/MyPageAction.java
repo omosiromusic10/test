@@ -16,8 +16,12 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	private ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 	private String deleteFlg;
 	private String message;
+	private String itemName;
+	private String itemPrice;
+	private String count;
 
 	public String execute() throws SQLException{
+
 		if(!session.containsKey("id")){
 				return ERROR ;
 	}
@@ -59,5 +63,28 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	}
 	public void setMessage(String message){
 		this.message = message;
+	}
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getItemPrice() {
+		return itemPrice;
+	}
+
+	public void setItemPrice(String itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
 	}
 }

@@ -161,6 +161,7 @@ table{
                     </td>
                     <td>
                         <s:property value="itemName" /><br>
+                        <s:hidden name="itemName" value="%{itemName}"/>
                     </td>
                 </tr>
                  <tr>
@@ -169,6 +170,7 @@ table{
                     </td>
                     <td>
                         <s:property value="itemPrice" /><span>円</span><br>
+                        <s:hidden name="itemPrice" value="%{itemPrice}"/>
                     </td>
                 </tr>
                  <tr>
@@ -184,6 +186,8 @@ table{
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+
+<!--              これを入れないとcountとして機能しない -->
                     </td>
                 </tr>
                 </table>

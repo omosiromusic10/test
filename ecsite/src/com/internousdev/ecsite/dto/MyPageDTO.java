@@ -8,6 +8,8 @@ public class MyPageDTO {
 	private String userName;
 	private String id;
 	private String insert_date;
+	private String count;
+	private String itemPrice;
 
 	public String getItemName(){
 		return itemName;
@@ -51,5 +53,18 @@ public class MyPageDTO {
 	public void setInsert_date(String insert_date){
 		this.insert_date = insert_date;
 	}
+	public String getItemPrice(){
+		return itemPrice;
+	}
+	public void setItemPrice(String itemPrice) {
+		this.itemPrice = itemPrice;
+	}
 
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
 }

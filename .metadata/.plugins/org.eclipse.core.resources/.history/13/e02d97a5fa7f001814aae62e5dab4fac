@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!--  Strutsの詳細設定 -->
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <package name="com.internousdev.ecsite.action" extends="struts-default">
+        <!-- GoHomeAction -->
+        <action name="GoHomeAction" class="com.internousdev.ecsite.action.GoHomeAction" method="execute">
+        <result name="success">home.jsp</result>
+        </action>
+<!-- HomeAction -->
+<action name="HomeAction" class="com.internousdev.ecsite.action.HomeAction" method="execute">
+<result name="login">login.jsp</result>
+<result name="success">buyItem.jsp</result>
+</action>
+<!-- LoginAction -->
+<action name="LoginAction" class="com.internousdev.ecsite.action.LoginAction" method="execute">
+<result name="success">buyItem.jsp</result>
+<result name="error">home.jsp</result>
+</action>
+<!-- LogoutAction -->
+<action name="LogoutAction" class="com.internousdev.ecsite.action.LogoutAction" method="execute">
+<result name="success">home.jsp</result>
+</action>
+<!-- UserCreateAction -->
+<action name="UserCreateAction" class="com.internousdev.ecsite.action.UserCreateAction" method="execute">
+<result name="success">userCreate.jsp</result>
+</action>
+<!-- UserCreateConfirmAction -->
+<action name="UserCreateConfirmAction" class="com.internousdev.ecsite.action.UserCreateConfirmAction" method="execute">
+<result name="success">userCreateConfirm.jsp</result>
+<result name="error">userCreate.jsp</result>
+</action>
+<!-- UserCreateCompleteAction -->
+<action name="UserCreateCompleteAction" class="com.internousdev.ecsite.action.UserCreateCompleteAction" method="execute">
+<result name="success">userCreateComplete.jsp</result>
+</action>
+<!-- BuyItemAction1 -->
+<action name="BuyItemAction" class="com.internousdev.ecsite.action.BuyItemAction" method="execute">
+<result name="success">buyItemConfirm.jsp</result>
+<result name="error">buyItem.jsp</result>
+</action>
+
+<!-- BuyItemAction2 -->
+<action name="BuyItemAction2" class="com.internousdev.ecsite.action.BuyItemAction2" method="execute">
+<result name="success">buyItemConfirm.jsp</result>
+<result name="error">buyItem.jsp</result>
+</action>
+
+<!-- BuyItemAction3 -->
+<action name="BuyItemAction3" class="com.internousdev.ecsite.action.BuyItemAction3" method="execute">
+<result name="success">buyItemConfirm.jsp</result>
+<result name="error">buyItem.jsp</result>
+</action>
+
+<!-- BuyItemAction4 -->
+<action name="BuyItemAction4" class="com.internousdev.ecsite.action.BuyItemAction4" method="execute">
+<result name="success">buyItemConfirm.jsp</result>
+<result name="error">buyItem.jsp</result>
+</action>
+
+<!-- BuyItemAction5 -->
+<action name="BuyItemAction5" class="com.internousdev.ecsite.action.BuyItemAction5" method="execute">
+<result name="success">buyItemConfirm.jsp</result>
+<result name="error">buyItem.jsp</result>
+</action>
+
+<!-- BuyItemConfirmAction  -->
+<action name="BuyItemConfirmAction" class="com.internousdev.ecsite.action.BuyItemConfirmAction" method="execute">
+<result name="success">buyItemComplete.jsp</result>
+<result name="back">buyItem.jsp</result>
+</action>
+<!-- MyPageAction -->
+<action name="MyPageAction" class="com.internousdev.ecsite.action.MyPageAction" method="execute">
+<result name="success">myPage.jsp</result>
+<result name="error">error.jsp</result>
+</action>
+<!-- InquiryAction -->
+<action name="InquiryAction" class="com.internousdev.ecsite.action.InquiryAction" method="execute">
+<result name="success">inquiry.jsp</result>
+</action>
+<!--  InquiryCompleteAction -->
+<action name="InquiryCompleteAction" class="com.internousdev.ecsite.action.InquiryCompleteAction" method="execute">
+<result name="success">inquiryComplete.jsp</result>
+</action>
+
+<!-- ReviewAction -->
+<action name="ReviewAction" class="com.internousdev.ecsite.action.ReviewAction" method="execute">
+<result name="success">review.jsp</result>
+</action>
+<!-- ReviewCompleteAction -->
+<action name="ReviewCompleteAction" class="com.internousdev.ecsite.action.ReviewCompleteAction" method="execute">
+<result name="success">review.jsp</result>
+</action>
+
+    </package>
+</struts>

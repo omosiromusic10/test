@@ -127,6 +127,7 @@ table{
         <tr>
             <th>商品名</th>
             <th>値段</th>
+            <th>合計値段</th>
             <th>購入個数</th>
             <th>支払い方法</th>
             <th>購入日</th>
@@ -134,6 +135,7 @@ table{
         <s:iterator value="myPageList">
             <tr>
                 <td><s:property value="itemName"/></td>
+                <td><s:property value="itemPrice"/><span>円</span></td>
                 <td><s:property value="totalPrice"/><span>円</span></td>
                 <td><s:property value="totalCount"/><span>個</span></td>
                 <td><s:property value="payment"/></td>
