@@ -1,0 +1,17 @@
+package com.internousdev.sampleweb2.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.sampleweb.dao.MCategoryDAO;
+import com.internousdev.sampleweb.dto.MCategoryDTO;
+import com.internousdev.sampleweb.util.CommonUtility;
+import com.opensymphony.xwork2.ActionSupport;.
+
+
+public class HomeAction {
+
+}

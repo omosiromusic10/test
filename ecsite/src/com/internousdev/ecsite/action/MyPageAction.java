@@ -26,8 +26,10 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 				return ERROR ;
 	}
 		if(deleteFlg == null){
+
 			String item_transaction_id = session.get("id").toString();
 			String user_master_id = session.get("login_user_id").toString();
+
 			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
 		}
 		else if(deleteFlg.equals("1")){
@@ -48,6 +50,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 			setMessage("商品情報の削除に失敗しました。");
 		}
 	}
+
 	public void setDeleteFlg(String deleteFlg){
 		this.deleteFlg = deleteFlg;
 	}
