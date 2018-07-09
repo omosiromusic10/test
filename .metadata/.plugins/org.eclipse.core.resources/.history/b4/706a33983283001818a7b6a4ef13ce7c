@@ -1,0 +1,67 @@
+package com.internousdev.sampleweb2.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
+public class InputChecker {
+
+	public List<String>doCheck(String propertyName,String value,int minLength ,int maxLength ,boolean availableAlphabeticCharacters ,boolean availableKanji ,boolean availableHiragana ,boolean availableHalfWidthDigit ,boolean availableHalfWidthSymbols ,boolean availableKatakana ,boolean availableFullWidthSymbols){
+
+		List<String> stringList = new ArrayList<String>();
+		List<String> characterTypeList = new ArrayList<String>();
+
+		if(StringUtils.isEmpty(value)){
+			stringList.add(propertyName + "を入力してください。");
+		}
+
+		if(value.length() < minLength || value.length() > maxLength){
+			stringList.add(propertyName + "は" + minLength + "文字以上" + maxLength + "文字以下で入力してください。");
+		}
+
+		String regularExpression = "";
+		String errorExpression = "";
+
+		if(availableAlphabeticCharacters || availableKanji || availableHiragana || availableHalfWidthDigit || availableHalfWidthSymbols || availableKatakana || availableFullWidthSymbols){
+			regularExpression = "[^";
+		}
+
+		if(availableHalfWidthDigit){
+			regularExpression +="0-9";
+			characterTypeList.add("半角数字");
+		}else{
+			errorExpression+="0-9";
+		}
+
+		if(availableHalfWidthSymbols){
+			regularExpression +="@.,;:!#$%&'+-/=?^_`{|}~";
+			characterTypeList.add("半角記号");
+		}else{
+			errorExpression +="@.,;:!#$%&'*+-/=?^_`{|}~";
+		}
+
+		if(availableKatakana){
+			regularExpression +="ァ-ヺ";
+		}else{
+			errorExpression +="ァ-ヺ";
+		}
+
+		if(availableFullWidthSymbols){
+			regularExpression +="＠．，；：！＃＄％＆’＊＋―／＝？＾＿｀｛｜｝～";
+			characterTypeList.add("全角記号");
+		}else{
+			errorExpression += "＠．，；：！＃＄％＆’＊＋―／＝？＾＿｀｛｜｝～";
+		}
+
+		if(!StringUtils.isEmpty(regularExpression)){
+			regularExpression +="]+";
+		}
+		if(!StringUtils.isEmpty(errorExpression)){
+			errorExpression +="]+";
+		}
+
+
+
+	}
+}

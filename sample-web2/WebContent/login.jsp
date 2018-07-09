@@ -53,6 +53,10 @@ function goResetPasswordAction(){
             </s:else>
         </tr>
         <tr>
+             <th scope="row"><s:label value="パスワード:"/></th>
+             <td><s:password name="password" class="txt" placeholder="パスワード" autocomplete="off"/></td>
+        </tr>
+        <tr>
     </table>
     <div class="box">
         <s:if test="#session.savedLoginId==true">

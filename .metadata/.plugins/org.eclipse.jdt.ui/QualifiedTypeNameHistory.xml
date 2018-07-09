@@ -3,5 +3,8 @@
 <fullyQualifiedTypeName name="Smartphone"/>
 <fullyQualifiedTypeName name="com.internousdev.ecsite.dao.BuyItemDAO"/>
 <fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.Action"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
 </qualifiedTypeNameHistroy>

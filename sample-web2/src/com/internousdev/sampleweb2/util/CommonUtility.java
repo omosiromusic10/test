@@ -15,7 +15,7 @@ public class CommonUtility {
 	}
 
 	public String[] parseArrayList(String s){
-		return s.split(", ",0);
+		return s.split(", ",0); //分割しようとしている　配列で
 	}
 
 	public <E> List<List<E>> devideList(List<E> list, int size){
