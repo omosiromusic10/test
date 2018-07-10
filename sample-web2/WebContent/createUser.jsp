@@ -29,17 +29,17 @@
     </div>
     </div>
 </s:if>
-<s:if test="!#session.firstNameKanaErrorMessageList.isEmpty()">
-    <div class="error">
-    <div class="error-message">
-    <s:iterator value="#session.firstNameKanaErrorMessageList"><s:property /><br> </s:iterator>
-    </div>
-    </div>
-</s:if>
 <s:if test="!#session.familyNameKanaErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
     <s:iterator value="#session.familyNameKanaErrorMessageList"><s:property /><br> </s:iterator>
+    </div>
+    </div>
+</s:if>
+<s:if test="!#session.firstNameKanaErrorMessageList.isEmpty()">
+    <div class="error">
+    <div class="error-message">
+    <s:iterator value="#session.firstNameKanaErrorMessageList"><s:property /><br> </s:iterator>
     </div>
     </div>
 </s:if>
@@ -50,7 +50,7 @@
     </div>
     </div>
 </s:if>
-<s:if test="!#session.loginIDErrorMessageList.isEmpty()">
+<s:if test="!session.loginIdErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
     <s:iterator value="#session.loginIdErrorMessageList"><s:property /><br> </s:iterator>
@@ -69,7 +69,7 @@
 
 <table class="vertical-list-table">
 <tr>
-    <th scope="row">性</th>
+    <th scope="row">姓</th>
     <td><s:textfield name="familyName" value="%{#session.familyName}" label="姓" placeholder="姓" class="txt" /></td>
 </tr>
 <tr>
@@ -77,12 +77,12 @@
     <td><s:textfield name="firstName" value="%{#session.firstName}" label="名" placeholder="名" class="txt" /></td>
 </tr>
 <tr>
-    <th scope="row">性ふりがな</th>
+    <th scope="row">姓ふりがな</th>
     <td><s:textfield name="familyNameKana" value="%{#session.familyNameKana}" label="姓ふりがな" placeholder="姓ふりがな" class="txt" /></td>
 </tr>
 <tr>
     <th scope="row">名ふりがな</th>
-    <td><s:textfield name="firtsNameKana" value="%{#session.fistNameKana}" label="名ふりがな" placeholder="名ふりがな" class="txt" /></td>
+    <td><s:textfield name="firstNameKana" value="%{#session.firstNameKana}" label="名ふりがな" placeholder="名ふりがな" class="txt" /></td>
 </tr>
 <tr>
     <th scope="row">性別</th>
@@ -93,8 +93,12 @@
     <td><s:textfield name="email" value="%{#session.email}" label="メールアドレス" placeholder="メールアドレス" class="txt" /></td>
 </tr>
 <tr>
+	<th scope="row">ログインID</th>
+	<td><s:textfield name="loginId" value="%{#session.loginId}" label="ログインID" placeholder="ログインID" class="txt" /></td>
+</tr>
+<tr>
     <th scope="row">パスワード</th>
-    <td><s:textfield name="password" value="%{#session.password}" label="パスワード" placeholder="パスワード" class="txt" /></td>
+    <td><s:password name="password" value="" label="パスワード" placeholder="パスワード" class="txt" /></td>
 </tr>
 </table>
 <div class="submit_btn_box">

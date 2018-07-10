@@ -31,6 +31,8 @@ public class CreateUserAction extends ActionSupport implements SessionAware{
 		session.remove("firstNameErrorMessageList");
 		session.remove("familyNameKanaErrorMessageList");
 		session.remove("firstNameKanaErrorMessageList");
+		session.remove("emailErrorMessageList");
+		session.remove("userIdErrorMessageList");
 		session.remove("passwordErrorMessageList");
 
 		session.put("familyName", familyName);

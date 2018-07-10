@@ -68,8 +68,6 @@
 	</s:if>
 
 
-
-
 <s:form action="ResetPasswordConfirmAction">
 	<table class="vertical-list-table">
 		<tr>
@@ -85,8 +83,8 @@
 			<th scope="row"><s:label value="新しいパスワード"/></th>
 			<td><s:password name="newPassword" placeholder="新しいパスワード" class="txt" /></td>
 		<tr>
-			<th scope="row"><s:label value="（再確認用）"/></th>
-			<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード（再確認用）" class="txt" /></td>
+			<th scope="row"><s:label value="(再確認用)"/></th>
+			<td><s:password name="reConfirmationPassword" placeholder="新しいパスワード(再確認用)" class="txt" /></td>
 		</tr>
 		</table>
 <s:submit value="パスワード再設定" class="submit_btn" />

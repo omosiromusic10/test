@@ -29,6 +29,41 @@
         <result name="success">createUserConfirm.jsp</result>
         <result name="error">createUser.jsp</result>
    </action>
+   <action name="CreateUserCompleteAction" class="com.internousdev.sampleweb2.action.CreateUserCompleteAction" method="execute">
+        <result name="success">createUserComplete.jsp</result>
+		<result name="error">createUser.jsp</result>
+   </action>
+   <action name="LogoutAction" class="com.internousdev.sampleweb2.action.LogoutAction" method="execute">
+        <result name="success">index.jsp</result>
+        <result name="error">index.jsp</result>
+   </action>
+   <action name="ResetPasswordAction" class="com.internousdev.sampleweb2.action.ResetPasswordAction" method="execute">
+        <result name="success">resetPassword.jsp</result>
+        <result name="error">login.jsp</result>
+   </action>
+   <action name="ResetPasswordConfirmAction" class="com.internousdev.sampleweb2.action.ResetPasswordConfirmAction" method="execute">
+       <result name="success">resetPasswordConfirm.jsp</result>
+       <result name="error">resetPassword.jsp</result>
+   </action>
+      <action name="ResetPasswordCompleteAction" class="com.internousdev.sampleweb2.action.ResetPasswordCompleteAction" method="execute">
+       <result name="success">resetPasswordComplete.jsp</result>
+       <result name="error">resetPassword.jsp</result>
+   </action>
+
+   <action name="CartAction" class="com.internousdev.sampleweb2.action.CartAction" method="execute">
+		<result name="success">cart.jsp</result>
+		<result name="error">home.jsp</result>
+	</action>
+	<action name="ProductListAction" class="com.internousdev.sampleweb2.action.ProductListAction" method="execute">
+		<result name="success">productList.jsp</result>
+		<result name="error">home.jsp</result>
+	</action>
+
+	<action name="SearchItemAction" class="com.internousdev.sampleweb2.action.SearchItemAction" method="execute">
+		<result name="success">productList.jsp</result>
+		<result name="error">productList.jsp</result>
+	</action>
+
 
 
 </package>

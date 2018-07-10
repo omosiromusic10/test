@@ -42,12 +42,11 @@ public class UserInfoDAO {
 		//★ここはDestinationDAOでも使われていた。どういう事だろうか
 	}
 
-	public boolean isExistUserInfo(String loginId, String password){
+	public boolean isExistsUserInfo(String loginId, String password){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		boolean result = false;
 		String sql = "select count(*) as count from user_info where user_id=? and password=?";
-		//ユーザーIDとパスワードをｾﾚｸﾄをして何をしているのか。
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,loginId);
@@ -67,7 +66,7 @@ public class UserInfoDAO {
 			e.printStackTrace();
 		}
 		return result;
-	}
+	}//ユーザーIDとパスワードをｾﾚｸﾄをして何をしているのか。
 
 	public UserInfoDTO getUserInfo(String loginId, String password){
 		DBConnector dbConnector = new DBConnector();

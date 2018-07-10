@@ -28,8 +28,8 @@
 	<td><s:property value="familyNameKana"/></td>
 </tr>
 <tr>
-<th scope="row"><s:label value="名ふりがな"/></th>
-<td><s:property value="firstNameKana"/></td>
+    <th scope="row"><s:label value="名ふりがな"/></th>
+    <td><s:property value="firstNameKana"/></td>
 </tr>
 <tr>
 	<th scope="row"><s:label value="性別"/></th>

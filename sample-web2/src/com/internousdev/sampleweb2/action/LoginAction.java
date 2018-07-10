@@ -61,7 +61,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		// ★つまりどういう事なのか。 そもそもMCategoryとは何に使うのか。
 
 		UserInfoDAO userInfoDao = new UserInfoDAO();
-		if(userInfoDao.isExistUserInfo(loginId, password)){
+		if(userInfoDao.isExistsUserInfo(loginId, password)){
 			if(userInfoDao.login(loginId, password) > 0){
 			UserInfoDTO userInfoDTO = userInfoDao.getUserInfo(loginId, password);
 			session.put("loginId", userInfoDTO.getUserId());

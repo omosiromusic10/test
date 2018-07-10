@@ -2,9 +2,16 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="Smartphone"/>
 <fullyQualifiedTypeName name="com.internousdev.ecsite.dao.BuyItemDAO"/>
-<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.Action"/>
+<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
+<fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.UserInfoDAO"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.DBConnector"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.ProductInfoDAO"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dto.PaginationDTO"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dto.ProductInfoDTO"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.Pagination"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
 </qualifiedTypeNameHistroy>
