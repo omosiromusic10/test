@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonUtility {
-	public String getRamdomValue(){ //★ランダム要素を使って何かしているが不明である。
+	public String getRamdomValue(){
+		//ランダムでユーザーにＩＤを割り振っている。
+		//ログイン前のユーザーが(仮ユーザーとして設定して買い物が出来る)
 		String value="";
 		double d;
 		for(int i=1; i<=16; i++){
@@ -15,9 +17,9 @@ public class CommonUtility {
 	}
 
 	public String[] parseArrayList(String s){
-		return s.split(", ",0); //分割しようとしている　配列で
+		return s.split(", ",0);
 	}
-
+	//分割しようとしている。配列で
 	public <E> List<List<E>> devideList(List<E> list, int size){
 		if(list == null || list.isEmpty() || size <= 0 ){
 			return null;

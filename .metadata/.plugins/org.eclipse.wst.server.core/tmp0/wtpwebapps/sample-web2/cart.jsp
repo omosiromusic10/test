@@ -13,7 +13,6 @@
     function goDeleteCartAction(){
     	document.getElementById("form").action='DeleteCartAction';
     }
-
 </script>
 </head>
 <body>
@@ -42,12 +41,13 @@
 <th><s:label value="商品画像" /></th>
 <th><s:label value="値段" /></th>
 <th><s:label value="発売会社名" /></th>
+<th><s:label value="発売年月日"/></th>
 <th><s:label value="購入個数" /></th>
 <th><s:label value="合計金額" /></th>
 </tr>
 </thead>
 <tbody>
-<s:iterator value="#session.cartInfoDtoLIst">
+<s:iterator value="#session.cartInfoDtoList">
 <tr>
     <td><s:checkbox name="checkList" value="checked" fieldValue="%{id}"/></td>
     <s:hidden name="productId" value="%{productId}"/>
@@ -67,12 +67,17 @@
     <s:hidden name="price" value="%{price}"/>
     <s:hidden name="releaseCompany" value="%{releaseCompany}"/>
     <s:hidden name="releaseDate" value="%{releaseDate}"/>
-    <s:hidden name="prodcutCount" value="%{productCount}"/>
+    <s:hidden name="productCount" value="%{productCount}"/>
     <s:hidden name="subtotal" value="%{subtotal}"/>
     </s:iterator>
 </tbody>
 </table>
-<h2><s:label value="カート合計金額:"/>>s:property value="#session.totalPrice"/>円</h2><br>
+<h2><s:label value="カート合計金額 :"/><s:property value="#session.totalPrice"/>円</h2><br>
+<div class="submit_btn_box">
+	<div id=".contents-btn-set">
+<s:submit value="決済" class="submit_btn"/>
+</div>
+</div>
 <div class="submit_btn_box">
     <div id=".contents-btn-set">
 <s:submit value="削除" class="submit_btn" onclick="this.form.action='DeleteCartAction';"/>

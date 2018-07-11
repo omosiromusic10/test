@@ -1,0 +1,5 @@
+package com.internousdev.sampleweb2.action;
+
+public class SettlementConfirmAction {
+
+}

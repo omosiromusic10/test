@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="Smartphone"/>
 <fullyQualifiedTypeName name="com.internousdev.ecsite.dao.BuyItemDAO"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.Action"/>
-<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.UserInfoDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.DBConnector"/>
@@ -14,4 +13,8 @@
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.Pagination"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
+<fullyQualifiedTypeName name="javax.websocket.Session"/>
+<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 </qualifiedTypeNameHistroy>

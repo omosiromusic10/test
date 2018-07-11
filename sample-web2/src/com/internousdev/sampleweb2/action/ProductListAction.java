@@ -36,7 +36,7 @@ public class ProductListAction extends ActionSupport implements SessionAware{
 		PaginationDTO paginationDTO = pagination.initialize(productInfoDtoList, 9);
 		session.put("totalPageSize", paginationDTO.getTotalPageSize());
 		session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
-		session.put("totalRecordSize", paginationDTO.getTotalPageSize());
+		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
 		session.put("startRecordNo", paginationDTO.getStartRecordNo());
 		session.put("endRecordNo", paginationDTO.getEndRecordNo());
 		session.put("pageNumberList", paginationDTO.getPageNumberList());

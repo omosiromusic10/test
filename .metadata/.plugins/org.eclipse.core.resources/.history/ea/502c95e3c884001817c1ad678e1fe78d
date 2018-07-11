@@ -1,0 +1,16 @@
+package com.internousdev.sampleweb2.action;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.sampleweb2.dao.MCategoryDAO;
+import com.internousdev.sampleweb2.dao.PurchaseHistoryInfoDAO;
+import com.internousdev.sampleweb2.dto.MCategoryDTO;
+import com.internousdev.sampleweb2.dto.PurchaseHistoryInfoDTO;
+public class PurchaseHistoryaAction {
+
+}

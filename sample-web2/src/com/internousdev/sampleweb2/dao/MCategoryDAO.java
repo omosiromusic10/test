@@ -12,6 +12,8 @@ import com.internousdev.sampleweb2.dto.MCategoryDTO;
 import com.internousdev.sampleweb2.util.DBConnector;
 
 public class MCategoryDAO {
+	//MCategoryは商品ごとの種類を示す情報内である。
+	//例　本、おもちゃ、家電等
 	public List<MCategoryDTO> getMCategoryList(){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -36,7 +38,7 @@ public class MCategoryDAO {
 			}
 			Iterator<MCategoryDTO> iterator = mCategoryDtoList.iterator();
 			if(!(iterator.hasNext())){
-				mCategoryDtoList = null; //★ここでnullにしているが意味が不明である。
+				mCategoryDtoList = null; //念の為に入れている用の文
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

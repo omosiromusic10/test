@@ -25,17 +25,18 @@ public class HomeAction extends ActionSupport implements SessionAware{
 		}
 		if(!session.containsKey("logined")){
 			session.put("logined", 0);
-		//★ここではlogined？が存在しなければ起きる。でもloginedはいつ使われたのだろう？。
+			//ログイン前であれば、loginedを0にする？
 			//そしてsessionにloginedした物をputしている。
 		}
 
 		if(!session.containsKey("mCategoryList")){
+			//ここではsessionの mCategoryListが存在しない場合？に起きる。
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			//ここで恐らく、mCategoryDAO内にあるMCategoryListを「DtoList」として代入している
 			session.put("mCategoryDtoList", mCategoryDtoList);
-			//ここではsessionの mCategoryListが存在しない場合？に起きる(そんな事があるのか)
-			//★何故mCategoryDtoListとDaoを連結させているのか？
-			//そして最後にsessionにmCategoryDtoListを記述させている。
+			//そして最後にsessionにmCategoryDtoListを記述させている。 ただ、何故DtoListとしてしたのか。　そのままmCategoryListじゃだめなのか。
+			//これはヘッダー部分で検索機能として置いているのでエラーを出さないようにする為の処置
 		}
 		return SUCCESS;
 	}

@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="BuyItemDTO" key="selection"/>
+		<item value="prodcutCount" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="prodcutCount"/>
+			<item value="totalprice"/>
 			<item value="buyItemDTO"/>
 		</list>
 		<list key="replacehistory">

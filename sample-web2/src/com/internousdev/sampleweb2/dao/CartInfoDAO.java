@@ -50,7 +50,7 @@ public class CartInfoDAO {
 				CartInfoDTO cartInfoDTO = new CartInfoDTO();
 				cartInfoDTO.setId(resultSet.getInt("id"));
 				cartInfoDTO.setUserId(resultSet.getString("user_id"));
-				cartInfoDTO.setTempUserId(resultSet.getString("tempuser_id"));
+				cartInfoDTO.setTempUserId(resultSet.getString("temp_user_id"));
 				cartInfoDTO.setProductId(resultSet.getInt("product_id"));
 				cartInfoDTO.setProductCount(resultSet.getInt("product_count"));
 				cartInfoDTO.setPrice(resultSet.getInt("price"));
@@ -58,10 +58,11 @@ public class CartInfoDAO {
 				cartInfoDTO.setUpdateDate(resultSet.getDate("update_date"));
 				cartInfoDTO.setProductName(resultSet.getString("product_name"));
 				cartInfoDTO.setProductNameKana(resultSet.getString("product_name_kana"));
+				cartInfoDTO.setProductDescription(resultSet.getString("product_description"));
 				cartInfoDTO.setCategoryId(resultSet.getInt("category_id"));
 				cartInfoDTO.setImageFilePath(resultSet.getString("image_file_path"));
 				cartInfoDTO.setImageFileName(resultSet.getString("image_file_name"));
-				cartInfoDTO.setReleaseDate(resultSet.getDate("relase_date"));
+				cartInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
 				cartInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				cartInfoDTO.setStatus(resultSet.getString("status"));
 				cartInfoDTO.setSubtotal(resultSet.getInt("subtotal"));
@@ -83,8 +84,8 @@ public class CartInfoDAO {
 		int totalPrice = 0;
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
-		String sql = "select sum(product_count * price) as total_price from cart_info where user_id=? group by user_id=?";
-		//★ここでは何をしているのだろう
+		String sql = "select sum(product_count * price) as total_price from cart_info where user_id=? group by user_id";
+		//トータルプレイスの計算だ！
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,  userId);
@@ -187,7 +188,7 @@ public class CartInfoDAO {
 		Connection connection = dbConnector.getConnection();
 		int count = 0 ;
 		String sql = "update cart_info set user_id=?, temp_user_id = null where temp_user_id=?";
-		//★ここらへんになるともうわからない。
+		//★ユーザーＩＤとゲストＩＤをアップデートしている？
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
