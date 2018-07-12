@@ -61,7 +61,7 @@
 
      <div class="submit_btn_box">
 <div id=".contents-btn-set">
-    <s:submit value="決済" class="subtmi_btn"/>
+    <s:submit value="決済" class="submit_btn"/>
 </div>
      </div>
 </s:form>

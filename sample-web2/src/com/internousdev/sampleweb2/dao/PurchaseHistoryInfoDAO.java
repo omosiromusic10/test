@@ -52,7 +52,7 @@ public class PurchaseHistoryInfoDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginId);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()){
+			while (resultSet.next()){
 				PurchaseHistoryInfoDTO purchaseHistoryInfoDto = new PurchaseHistoryInfoDTO();
 				purchaseHistoryInfoDto.setId(resultSet.getInt("id"));
 				purchaseHistoryInfoDto.setUserId(resultSet.getString("user_id"));
@@ -92,7 +92,7 @@ public class PurchaseHistoryInfoDAO {
 	public int regist(String loginId, int productId, int productCount, int destinationId, int price) {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
-		String sql = "insert into purchase_history_info(user_id, product_id, product_count, price, destination_id, regist_date, update_date) values(?, ?, ?, ?, ?, now(), '0000-01-01')";
+		String sql = "insert into purchase_history_info(user_id, product_id, product_count, price, destination_id, regist_date, update_date) values (?, ?, ?, ?, ?, now(), '0000-01-01')";
 		int count = 0;
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

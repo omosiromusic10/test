@@ -32,12 +32,12 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 		if(keywords==null){
 			keywords="";
 		}
-		keywordsErrorMessageList = inputChecker.doCheck("検索ワード", keywords, 0, 16, true, true, true, true, false, true, true);
+		keywordsErrorMessageList = inputChecker.doCheck("検索ワード", keywords, 0, 16, true, true, true, true, false,true,true);
 
 		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
-		switch ( categoryId){
+		switch (categoryId){
 		case "1":
-			productInfoDtoList = productInfoDAO.getProductInfoListAll(keywords.replaceAll("　"," ").split(" "));
+			productInfoDtoList = productInfoDAO.getProductInfoListAll(keywords.replaceAll("　", " ").split(" "));
 			result = SUCCESS;
 			break;
 
@@ -77,15 +77,14 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 		session.put("nextPage", paginationDTO.hasNextPage());
 		session.put("nextPageNo", paginationDTO.getNextPageNo());
-	}else{
-		session.put("productInfoDtoList", null);
-	}
-	return result;
+	    }else{
+		    session.put("productInfoDtoList", null);
+	    }
+	    return result;
 	}
 	public String getPageNo() {
 		return pageNo;
 	}
-
 
 	public void setPageNo(String pageNo) {
 		this.pageNo = pageNo;

@@ -94,7 +94,7 @@ public class ProductInfoDAO {
 		String sql = "select * from product_info where category_id=? and product_id not in(?) order by rand() limit ?,?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1,categoryId);
+			preparedStatement.setInt(1, categoryId);
 			preparedStatement.setInt(2, productId);
 			preparedStatement.setInt(3, limitOffset);
 			preparedStatement.setInt(4, limitRowCount);
@@ -136,10 +136,10 @@ public class ProductInfoDAO {
 		boolean initializeFlag = true;
 		for(String keyword : keywordsList) {
 			if (initializeFlag){
-				sql +=" (product_name line '%" + keyword + "%' or product_name_kana like '%" + keyword + "%'";
+				sql +=" (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
 				initializeFlag = false;
 			}else{
-				sql +=" and (product_name line '%" + keyword + "%' or product_name_kana like '%" + keyword + "%'";
+				sql +=" and (product_name like '%" + keyword + "%' or product_name_kana like '%" + keyword + "%')";
 			}
 		}
 		try{
@@ -205,7 +205,7 @@ public class ProductInfoDAO {
 				productInfoDTO.setReleaseDate(resultSet.getDate("release_date"));
 				productInfoDTO.setReleaseCompany(resultSet.getString("release_company"));
 				productInfoDTO.setStatus(resultSet.getInt("status"));
-				productInfoDTO.setUpdateDate(resultSet.getDate("regist_date"));
+				productInfoDTO.setRegistDate(resultSet.getDate("regist_date"));
 				productInfoDTO.setUpdateDate(resultSet.getDate("update_date"));
 				productInfoDtoList.add(productInfoDTO);
 			}
