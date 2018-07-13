@@ -34,6 +34,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String result = ERROR;
 
+		if(loginId.equals("admin") && password.equals("admin")){
+			return  "admin";
+	}
+
+
+
 		if(savedLoginId==true){
 			session.put("savedLoginId",true);
 			session.put("loginId", loginId);
@@ -45,14 +51,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		InputChecker inputChecker = new InputChecker(); //★これに関してはInputCheckerを参照する。
 		loginIdErrorMessageList = inputChecker.doCheck("ログインID", loginId, 1, 8, true, false, false, true, false, false, false);
 		passwordErrorMessageList = inputChecker.doCheck("パスワード", password, 1, 16, true, false, false, true, false, false, false);
-
-
-
-		//アドミン用テスト
-		if(loginId == "admin" && password =="admin"){
-			result = "admin";
-		}
-
 
 
 		if(loginIdErrorMessageList.size()!=0
@@ -67,7 +65,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		    mCategoryDtoList = mCategoryDao.getMCategoryList();
 		    session.put("mCategoryDtoList", mCategoryDtoList);
 	    } //ここではmCategoryListが存在しなければ Listをsessionに残すようにしている
-		// ★つまりどういう事なのか。 そもそもMCategoryとは何に使うのか。
+		// MCategoryはカテゴリの種類を指している。
 
 		UserInfoDAO userInfoDao = new UserInfoDAO();
 		if(userInfoDao.isExistsUserInfo(loginId, password)){
@@ -93,9 +91,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 					e.printStackTrace();
 				}
 				result = "settlement";
-			}else {
-				result = SUCCESS;
-			}
+			}else
+			    result = SUCCESS;
 		}
 			session.put("logined", 1);
 	}

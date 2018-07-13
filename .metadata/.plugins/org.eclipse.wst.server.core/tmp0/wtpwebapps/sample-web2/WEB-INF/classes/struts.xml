@@ -15,6 +15,20 @@
 		<result name="input">cart.jsp</result>
 	</action>
 
+
+
+	<action name="AdminRegistAction" class="com.internousdev.sampleweb2.action.AdminRegistAction" method="execute">
+	    <result name="success">adminRegist.jsp</result>
+	    <result name="error">admin.jsp</result>
+    </action>
+    <action name="AdminRegistConfirmAction" class="com.internousdev.sampleweb2.action.AdminRegistConfirmAction" method="execute">
+        <result name="success">adminRegistConfirm.jsp</result>
+        <result name="error">adminRegist.jsp</result>
+    </action>
+
+
+
+
     <action name="DeleteCartAction" class="com.internousdev.sampleweb2.action.DeleteCartAction" method="execute">
         <result name="success">cart.jsp</result>
         <result name="error">cart.jsp</result>
@@ -116,6 +130,7 @@
 	    <result name="success">createDestinationComplete.jsp</result>
 	    <result name="error">createDestination.jsp</result>
 	</action>
+
 
 
 

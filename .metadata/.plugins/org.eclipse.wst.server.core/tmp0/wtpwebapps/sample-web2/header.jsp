@@ -28,10 +28,12 @@ function goLogoutAction(){
 function goSearchItemAction(){
 	document.getElementById("form").action="SearchItemAction";
 }
+function goHomeAction(){
+	document.getElementById("form").action="HomeAction";
+}
 </script>
 </head>
 <body>
-<header>
 <div id="header">
 <div id="header-title">
 Sample Web2
@@ -43,6 +45,7 @@ Sample Web2
     <li><s:select name="categoryId" list="#session.mCategoryDtoList" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId" /></li>
     </s:if>
     <li><s:textfield name="keywords" class="txt-keywords" placeholder="検索ワード" /></li>
+    <li><s:submit value="ホーム" class="submit_btn" onclick="goHomeAction();"/></li>
     <li><s:submit value="商品検索" class="submit_btn" onclick="goSearchItemAction();"/><li>
     <s:if test="#session.logined==1">
     <li><s:submit value="ログアウト" class="submit_btn" onclick="goLogoutAction();"/></li>
@@ -59,6 +62,5 @@ Sample Web2
 </ul>
 </div>
 </div>
-</header>
 </body>
 </html>

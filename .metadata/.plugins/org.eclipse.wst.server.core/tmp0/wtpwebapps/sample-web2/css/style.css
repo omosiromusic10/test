@@ -12,7 +12,13 @@ body, html {
 	width : 100%;
 	height: 60px;
 	padding : 10px;
-	background-color : #005392;
+/*	background-color : #005392; */
+	 osition: relative;
+  background: -moz-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  background: -webkit-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  background: linear-gradient(to right, rgb(111, 124, 255), #ffc994);
+  font-weight: lighter;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.56);
 }
 
 #header-menu {
@@ -90,6 +96,51 @@ body, html {
 	background: #4477a1;
 }
 
+.submit_btn_box2{
+	width : 45%;
+	display : block; /*何じゃろこれ */
+	margin-top : 5px;
+	margin-bottom : 5px;
+	margin-left : 5px;
+	padding-left : 30%;
+	float : left;
+}
+
+.submit_btn2{
+	padding : 0.5em 1em;
+	text-decoration: none;
+	border-ragius: 100px;
+	width: 700px;
+	height : 100px;
+	margin-top : -5px;
+	margin-left : 6px;
+	font-size : 50px;
+	text-align : center;
+	color : #fff;
+	box-shadow : 2px 2px #1a6ea0;
+	background: #4b7ea1;
+	background: -webkit_gradient(linear, left top, left bottom, from(#81a8cb), to(#4477a1) );
+	background: -moz-linear-gradient(-90deg, #81a8cb, #4477a1);
+	filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
+}
+
+.submit_btn2:hover{
+	color:#fff;
+	background-color:#49a9d4;
+	box-shadow:2px 2px #1a6ea0;
+	cursor: pointer;
+	opacity: 0.5;
+	background: #81a8cb;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4477a1), to(#81a8cb) );
+    background: -moz-linear-gradient(-90deg, #4477a1, #81a8cb);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4477a1', endColorstr='#81a8cb');
+}
+.submit_btn2:active{
+	background: #4477a1;
+}
+
+
+
 .txt-keywords {
 	width : 95%;
 	height : 20px;
@@ -114,6 +165,7 @@ body, html {
 	padding-bottom : 10px;
 	margin-bottom : 100px;
 	overflow : auto; /* コンテンツの表示を自動に設定（スクロール）*/
+
 }
 
 .contents-btn-set {
@@ -345,11 +397,21 @@ table.vertical-list-table-mini td {
 	border: 0.5px solid #999;
 	font-size : 24px;
 }
-
 .txt:focus {
 	border: 1px solid #ff9900;
 	outline: 0;
 }
+.area{
+	width : 99%;
+	height: 200px;
+	border: 0.5px solid #999;
+	font-size : 24px;
+}
+.area:focus {
+	border: 1px solid #ff9900;
+	outline: 0;
+}
+
 
 .check{
 	display: none;
@@ -491,4 +553,11 @@ table.vertical-list-table-mini td {
 
 .error-message {
 	color : red;
+}
+
+.input-file .preview {
+  background-image: url(/hoge.jpg);
+}
+.input-file input[type="file"] {
+  opacity: 0;
 }

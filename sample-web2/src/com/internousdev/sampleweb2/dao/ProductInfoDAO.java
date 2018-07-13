@@ -50,6 +50,38 @@ public class ProductInfoDAO {
 		return productInfoDtoList;
 	}
 
+		public int createProduct(String productName, String productNameKana, String productDescription,
+				String price, String imageFileName, String imageFilePath ,String releaseCompany ,String releaseDate){
+			DBConnector dbConnector = new DBConnector();
+			Connection connection = dbConnector.getConnection();
+			int count = 0;
+			String sql = "insert into user_info(productName, productNameKana, productDescription,"
+					+ "price, imageFileName, imageFilePath, releaseCompany, releaseDate, status, regist_date, update_date)"
+					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?,  now(), 0)";
+			try{
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setString(1, productName);
+				preparedStatement.setString(2, productNameKana);
+				preparedStatement.setString(3, productDescription);
+				preparedStatement.setString(4, price);
+				preparedStatement.setString(5, imageFileName);
+				preparedStatement.setString(6, imageFilePath);
+				preparedStatement.setString(7, releaseCompany);
+				preparedStatement.setString(8, releaseDate);
+				preparedStatement.setInt(9, 0);
+				count = preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return count;
+			//★ここはDestinationDAOでも使われていた。どういう事だろうか
+		}
+
 	public ProductInfoDTO getProductInfo(int productId){
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();

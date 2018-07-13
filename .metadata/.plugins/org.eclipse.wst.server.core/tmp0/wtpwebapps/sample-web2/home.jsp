@@ -6,27 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
 <link rel="stylesheet" href="./css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(function() {
-  $("#e_btn").click(function() {
-    $("#e_effect").toggle("explode", {pieces:16}, 1000);
-  });
-});
-</script>
-
 <title>ホーム</title>
 </head>
 <body>
 <jsp:include page="header.jsp" />
+
 <div id="contents">
 <h1>ホーム画面</h1>
 
-<div style="background-color:#CCC; padding:30px;">
-  <input type="button" id="e_btn" value="explode">
-  <div id="e_effect" style="width:200px; height:200px; background:palegreen;"></div>
-</div>
 
 </div>
 <s:include value="footer.jsp"/>

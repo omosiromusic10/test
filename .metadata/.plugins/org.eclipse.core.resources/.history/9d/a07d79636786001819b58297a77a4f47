@@ -1,0 +1,38 @@
+package com.internousdev.sampleweb2.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.sampleweb2.util.InputChecker;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class AdminRegistConfirmAction extends ActionSupport implements SessionAware{
+
+	private String productName;
+	private String productNameKana;
+	private String productDescription;
+	private String price;
+	private String imageFileName;
+	private String imageFilePath;
+
+	private List<String>productNameErrormessageList = new ArrayList<String>();
+	private List<String>productNameKanaErrorMessageList = new ArrayList<String>();
+	private List<String>productDescriptionErrorMessageList  = new ArrayList<String>();
+	private List<String>priceErrorMessageList = new ArrayList<String>();
+	private List<String>imageFileNameMessageList = new ArrayList<String>();
+	private List<String>imageFilePathMessageList = new ArrayList<String>();
+
+	private String categoryId;
+	private Map<String, Object> session;
+
+	public String execute(){
+		String result = ERROR;
+		InputChecker inputChecker = new InputChecker();
+
+		session.put("productName", productName);
+	}
+
+}
