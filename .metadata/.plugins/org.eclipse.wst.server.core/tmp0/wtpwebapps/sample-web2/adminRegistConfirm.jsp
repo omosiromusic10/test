@@ -29,7 +29,7 @@
 </tr>
 <tr>
     <th scope="row"><s:label value="価格"/></th>
-    <td><s:property value="price"/></td>
+    <td><s:property value="price"/><span>円</span></td>
 </tr>
 <tr>
     <th scope="row"><s:label value="発売会社名"/></th>
@@ -45,8 +45,9 @@
 </tr>
 <tr>
     <th scope="row"><s:label value="画像ファイル"/></th>
-    <td><s:property value="imageFilePath"/></td>
+    <td><img src="userimages/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
 </tr>
+
 
 
 </table>

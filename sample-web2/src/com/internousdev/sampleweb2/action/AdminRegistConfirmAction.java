@@ -1,9 +1,13 @@
 package com.internousdev.sampleweb2.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sampleweb2.util.InputChecker;
@@ -19,6 +23,13 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String imageFilePath;
 	private String releaseCompany;
 	private String releaseDate;
+
+	private File userImage;
+	private String userImagePathContentType;
+	private String userImageFileName;
+
+
+
 
 	private List<String>productNameErrorMessageList = new ArrayList<String>();
 	private List<String>productNameKanaErrorMessageList = new ArrayList<String>();
@@ -45,11 +56,15 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		session.put("releaseCompany", releaseCompany);
 		session.put("releaseDate", releaseDate);
 
-		productNameErrorMessageList = inputChecker.doCheck("商品名", productName, 1, 32, true, true, true, false, false, false, false);
+		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
+		  System.out.println("Image Location:"+filePath);
+		  File fileToCreate = new File(filePath,userImageFileName);
+
+		productNameErrorMessageList = inputChecker.doCheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
 		productNameKanaErrorMessageList = inputChecker.doCheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
 		productDescriptionErrorMessageList = inputChecker.doCheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);
 		priceErrorMessageList  = inputChecker.doCheck("価格", price, 1, 8, false, false, false, true, false, false, false);
-		imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
+		//imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
 		imageFileNameErrorMessageList = inputChecker.doCheck("画像ファイル名", imageFileName, 1, 16, true, true, true, true, true, true, true);
 		releaseCompanyErrorMessageList  = inputChecker.doCheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 		releaseDateErrorMessageList  = inputChecker.doCheck("発売年月", releaseDate, 1, 16, false, true, false, true, true, false, false);
@@ -58,7 +73,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		&& productNameKanaErrorMessageList.size()==0
 		&& productDescriptionErrorMessageList.size()==0
 		&& priceErrorMessageList.size()==0
-		&& imageFilePathErrorMessageList.size()==0
+		//&& imageFilePathErrorMessageList.size()==0
 		&& imageFileNameErrorMessageList.size()==0
 		&& releaseCompanyErrorMessageList.size()==0
 		&& releaseDateErrorMessageList.size()==0 ){
@@ -69,11 +84,19 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 			session.put("productDescriptionErrorMessageList", productDescriptionErrorMessageList);
 			session.put("priceErrorMessageList", priceErrorMessageList);
 			session.put("imageFileNameErrorMessageList", imageFileNameErrorMessageList);
-			session.put("imageFilePathErrorMessageList", imageFilePathErrorMessageList);
+		//	session.put("imageFilePathErrorMessageList", imageFilePathErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
 			session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
 			result = ERROR;
 		}
+		try{
+			  FileUtils.copyFile(userImage , fileToCreate);
+				session.put("image_file_name", userImageFileName);
+				session.put("imagefilePath", "images/"+userImageFileName);
+				session.put("image_flg" , userImageFileName);
+		  }catch(IOException e){
+			  e.printStackTrace();
+		  }
 		return result;
 	}
 	public String getCategoryId(){
@@ -187,6 +210,25 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public File getUserImage(){
+		return userImage;
+	}
+	public void setUserImage(File userImage){
+		this.userImage = userImage;
+	}
+	public String getUserImagePathContentType(){
+		return userImagePathContentType;
+	}
+	public void setUserImagePathContentType(String userImagePathContentType){
+		this.userImagePathContentType = userImagePathContentType;
+	}
+	public String getUserImageFileName(){
+		return userImageFileName;
+	}
+	public void setUserImageFileName(String userImageFileName){
+		this.userImageFileName = userImageFileName;
 	}
 
 }

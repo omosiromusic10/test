@@ -25,6 +25,10 @@
         <result name="success">adminRegistConfirm.jsp</result>
         <result name="error">adminRegist.jsp</result>
     </action>
+    <action name="AdminRegistCompleteAction" class="com.internousdev.sampleweb2.action.AdminRegistCompleteAction" method="execute">
+        <result name="success">adminRegistComplete.jsp</result>
+        <result name="error">adminRegist.jsp</result>
+    </action>
 
 
 

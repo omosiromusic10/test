@@ -50,25 +50,29 @@ public class ProductInfoDAO {
 		return productInfoDtoList;
 	}
 
-		public int createProduct(String productName, String productNameKana, String productDescription,
-				String price, String imageFileName, String imageFilePath ,String releaseCompany ,String releaseDate){
+		public int createProduct( int productid  , String productName, String productNameKana, String productDescription,
+				int categoryId, int price, String releaseCompany ,String releaseDate , String imageFileName, String imageFilePath ,int Status){
 			DBConnector dbConnector = new DBConnector();
 			Connection connection = dbConnector.getConnection();
 			int count = 0;
-			String sql = "insert into user_info(productName, productNameKana, productDescription,"
-					+ "price, imageFileName, imageFilePath, releaseCompany, releaseDate, status, regist_date, update_date)"
-					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?,  now(), 0)";
+			String sql = "insert into product_info(product_id,product_name, product_name_kana, product_description,"
+					+ "category_id ,price ,release_company, release_date, image_file_name, image_file_path, status, regist_date, update_date)"
+					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			try{
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
-				preparedStatement.setString(1, productName);
-				preparedStatement.setString(2, productNameKana);
-				preparedStatement.setString(3, productDescription);
-				preparedStatement.setString(4, price);
-				preparedStatement.setString(5, imageFileName);
-				preparedStatement.setString(6, imageFilePath);
+				preparedStatement.setInt(1, productid);
+				preparedStatement.setString(2, productName);
+				preparedStatement.setString(3, productNameKana);
+				preparedStatement.setString(4, productDescription);
+				preparedStatement.setInt(5, categoryId);
+				preparedStatement.setInt(6, price);
 				preparedStatement.setString(7, releaseCompany);
 				preparedStatement.setString(8, releaseDate);
-				preparedStatement.setInt(9, 0);
+				preparedStatement.setString(9, imageFileName);	//	纏めて9,10項目をuserImageで良いのか
+				preparedStatement.setString(10, imageFilePath); //纏めても問題はない。
+				preparedStatement.setInt(11, Status);	// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+				preparedStatement.setString(12, "2017/07/17 00:00:00"); // TODO
+				preparedStatement.setString(13, "2017/07/17 00:00:00");
 				count = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();

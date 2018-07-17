@@ -6,8 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript" >
 <link rel="stylesheet" href="./css/style.css">
 <title>商品登録・追加</title>
+
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -17,49 +19,53 @@
 <s:if test="!#session.productNameErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.productNameErrorMEssageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.productNameErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
 <s:if test="!#session.productNameKanaErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.productNameKanaErrorMEssageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.productNameKanaErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
 <s:if test="!#session.productDescriptionErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.productDescriptionErrorMEssageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.productDescriptionErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
 <s:if test="!#session.priceErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.priceErrorMEssageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.priceErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
 <s:if test="!#session.imageFileNameErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.imageNamePathErrorMEssageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.imageFileNameErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
 <s:if test="!#session.imageFilePathErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-        <s:iterator value="#session.imageFilePathErrorMEssageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.imageFilePathErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
 
-<s:form action="AdminRegistConfirmAction">
+<s:form action="AdminRegistConfirmAction" method="post" enctype="multipart/form-data">
 
 <table class="vertical-list-table">
+<tr>
+    <th scope="row">商品カテゴリ</th>
+    <td>既存のカテゴリーから選択 <s:check name="productId" value="%{session.productId}" label="商品カテゴリ" placeholder="商品カテゴリ" class="check"/>
+    <td>新規のカテゴリーを作成   <s:textfield name="productId" value="%{session.productId}" label="商品カテゴリ" placeholeder="商品カテゴリ" class="txt"/></td>
 <tr>
     <th scope="row">商品名</th>
     <td><s:textfield name="productName" value="%{#session.productName}" label="商品名" placeholder="商品名" class="txt"/></td>
@@ -90,13 +96,16 @@
 </tr>
 <tr>
     <th scope="row">画像ファイル</th>
-    <td><s:file name="imageFilePath" value="%{#session.imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/>工事中！</td>
+    <td><s:file name="userImage" value="%{#session.imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
 </tr> <!-- 　ここで画像を選択出来る奴にしておく。 -->
+
 </table>
+
+
 
 <div class="submit_btn_box">
 <div id=".contents-btn-set">
-<s:submit value="登録" class="submit_btn" />
+<s:submit value="登録確認画面へ" class="submit_btn" />
 </div>
 </div>
 </s:form>
