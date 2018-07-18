@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dto.ProductInfoDTO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.Pagination"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
-<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
 <fullyQualifiedTypeName name="javax.websocket.Session"/>
 <fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
@@ -22,4 +21,5 @@
 <fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
 <fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
 <fullyQualifiedTypeName name="freemarker.template.utility.DateUtil"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
 </qualifiedTypeNameHistroy>

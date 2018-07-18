@@ -10,8 +10,11 @@ import java.util.List;
 
 import com.internousdev.sampleweb2.dto.MCategoryDTO;
 import com.internousdev.sampleweb2.util.DBConnector;
+import com.internousdev.sampleweb2.util.DateUtil;
 
 public class MCategoryDAO {
+
+	private DateUtil dateUtil = new DateUtil();
 	//MCategoryは商品ごとの種類を示す情報内である。
 	//例　本、おもちゃ、家電等
 	public List<MCategoryDTO> getMCategoryList(){
@@ -51,5 +54,52 @@ public class MCategoryDAO {
 		}
 		return mCategoryDtoList;
 	}
+	public int getMaxCategoryId(){
+		int maxCategoryId = -1;
 
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql ="SELECT MAX(category_id) AS id FROM m_category";
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()){
+				maxCategoryId = rs.getInt("id");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			if(con !=null){
+				try{
+					con.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		return maxCategoryId;
+	}
+	public int createCategory(int categoryId ,String categoryName, String categoryDescription)throws SQLException {
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		int count = 0;
+		String sql ="insert into m_category(category_id,category_name,category_description,"
+				+ "insert_date,update_date)";
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, categoryId);
+			ps.setString(2, categoryName);
+			ps.setString(3, categoryDescription);
+			ps.setString(4, dateUtil.getDate());
+			ps.setString(5, dateUtil.getDate());
+			count = ps.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			con.close();
+		}
+		return count;
+}
 }

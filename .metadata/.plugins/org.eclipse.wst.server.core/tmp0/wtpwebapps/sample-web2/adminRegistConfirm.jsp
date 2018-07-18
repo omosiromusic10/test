@@ -16,6 +16,10 @@
 <s:form action="AdminRegistCompleteAction">
 <table class="vertical-list-table">
 <tr>
+    <th scope="row"><s:label value="商品カテゴリ"/></th>
+    <td><s:property value="categoryId"/></td>
+</tr>
+<tr>
     <th scope="row"><s:label value="商品名"/></th>
     <td><s:property value="productName"/></td>
 </tr>

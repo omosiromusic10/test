@@ -64,8 +64,8 @@
 <table class="vertical-list-table">
 <tr>
     <th scope="row">商品カテゴリ</th>
-    <td>既存のカテゴリーから選択 <s:check name="productId" value="%{session.productId}" label="商品カテゴリ" placeholder="商品カテゴリ" class="check"/>
-    <td>新規のカテゴリーを作成   <s:textfield name="productId" value="%{session.productId}" label="商品カテゴリ" placeholeder="商品カテゴリ" class="txt"/></td>
+    <td>○既存のカテゴリーから選択 <s:select name="categoryId" list="%{mCategoryList}" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId" /><br>
+
 <tr>
     <th scope="row">商品名</th>
     <td><s:textfield name="productName" value="%{#session.productName}" label="商品名" placeholder="商品名" class="txt"/></td>
@@ -97,7 +97,7 @@
 <tr>
     <th scope="row">画像ファイル</th>
     <td><s:file name="userImage" value="%{#session.imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
-</tr> <!-- 　ここで画像を選択出来る奴にしておく。 -->
+</tr> <!-- 画像は選べるようになったが、　この情報をどう送るのかが不明である。 -->
 
 </table>
 
@@ -109,6 +109,18 @@
 </div>
 </div>
 </s:form>
+<br>
+<h2>○新規のカテゴリーを作成の場合は</h2>
+<s:form action="CreateCategoryAction">
+<div class="submit_btn_box">
+<div id=".contents-btn-set">
+<s:submit value="カテゴリ作成画面へ" class="submit_btn" />
+</div>
+</div>
+
+</s:form>
+
+
 </div>
 
 <div id="footer">

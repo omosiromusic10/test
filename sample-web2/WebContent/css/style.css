@@ -55,7 +55,7 @@ body, html {
 }
 
 .submit_btn_box{
-	width : 45%;
+	width : 50%;
 	display : block; /*何じゃろこれ */
 	margin-top : 5px;
 	margin-bottom : 5px;
@@ -68,11 +68,11 @@ body, html {
 	padding : 0.5em 1em;
 	text-decoration: none;
 	border-ragius: 100px;
-	width: 100px;
+	width: 120px;
 	height : 35px;
 	margin-top : -5px;
 	margin-left : 6px;
-	font-size : 10px;
+	font-size : 11px;
 	text-align : center;
 	color : #fff;
 	box-shadow : 2px 2px #1a6ea0;
@@ -192,6 +192,7 @@ h2 {
 	margin-left : 3%;
 	margin-right : 3%;
 	padding: 0.5em 0;/*上下の余白*/
+	text-align:center;
 }
 
 .pager{

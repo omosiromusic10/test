@@ -9,8 +9,11 @@ import java.util.List;
 
 import com.internousdev.sampleweb2.dto.ProductInfoDTO;
 import com.internousdev.sampleweb2.util.DBConnector;
+import com.internousdev.sampleweb2.util.DateUtil;
 
 public class ProductInfoDAO {
+
+	private DateUtil dateUtil = new DateUtil();
 
 	public List<ProductInfoDTO> getProductInfoList(){
 		DBConnector dbConnector = new DBConnector();
@@ -50,8 +53,37 @@ public class ProductInfoDAO {
 		return productInfoDtoList;
 	}
 
+
+	public int getMaxProductId(){
+
+		int maxProductId = -1;
+
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql = "SELECT MAX(product_id) AS id FROM product_info";
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()){
+				maxProductId = rs.getInt("id");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			if(con !=null){
+				try{
+					con.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		return maxProductId;
+	}
 		public int createProduct( int productid  , String productName, String productNameKana, String productDescription,
-				int categoryId, int price, String releaseCompany ,String releaseDate , String imageFileName, String imageFilePath ,int Status){
+				int categoryId, int price, String releaseCompany ,String releaseDate ,String imageFileName , String userImageFileName ,int Status)throws SQLException{
 			DBConnector dbConnector = new DBConnector();
 			Connection connection = dbConnector.getConnection();
 			int count = 0;
@@ -68,22 +100,19 @@ public class ProductInfoDAO {
 				preparedStatement.setInt(6, price);
 				preparedStatement.setString(7, releaseCompany);
 				preparedStatement.setString(8, releaseDate);
-				preparedStatement.setString(9, imageFileName);	//	纏めて9,10項目をuserImageで良いのか
-				preparedStatement.setString(10, imageFilePath); //纏めても問題はない。
-				preparedStatement.setInt(11, Status);	// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
-				preparedStatement.setString(12, "2017/07/17 00:00:00"); // TODO
-				preparedStatement.setString(13, "2017/07/17 00:00:00");
+				preparedStatement.setString(9, imageFileName);
+				preparedStatement.setString(10, userImageFileName);	//	纏めて9,10項目をuserImageで良いのか
+				preparedStatement.setString(11, userImageFileName); //纏めても問題はない。
+				preparedStatement.setInt(12, Status);	// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+				preparedStatement.setString(13, dateUtil.getDate());
+				preparedStatement.setString(14, dateUtil.getDate());
 				count = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-			try {
+			}finally{
 				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
 			return count;
-			//★ここはDestinationDAOでも使われていた。どういう事だろうか
 		}
 
 	public ProductInfoDTO getProductInfo(int productId){
