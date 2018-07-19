@@ -64,7 +64,7 @@
 <table class="vertical-list-table">
 <tr>
     <th scope="row">商品カテゴリ</th>
-    <td>○既存のカテゴリーから選択 <s:select name="categoryId" list="%{mCategoryList}" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId" /><br>
+    <td>○既存のカテゴリーから選択 <s:select name="categoryId" list="%{#session.mCategoryDtoList}" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId" /><br>
 
 <tr>
     <th scope="row">商品名</th>

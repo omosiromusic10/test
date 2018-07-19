@@ -7,19 +7,17 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sampleweb2.dao.MCategoryDAO;
 import com.internousdev.sampleweb2.dto.MCategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateCategoryAction extends ActionSupport implements SessionAware {
-	private int id;
 	private int categoryId;
 	private String categoryName;
 	private String categoryDescription;
 	private Date insertDate;
 	private Date updateDate;
 
-	private List<MCategoryDTO> mCategoryList = new ArrayList<MCategoryDTO>();
+	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 
 	private Map<String, Object> session;
 
@@ -29,27 +27,15 @@ public class CreateCategoryAction extends ActionSupport implements SessionAware 
 		session.remove("categoryNameErrorMessageList");
 		session.remove("categoryDescriptionErrorMessageList");
 
-		session.put("id",id);
 		session.put("categoryId", categoryId);
 		session.put("categoryName", categoryName);
 		session.put("categoryDescription", categoryDescription);
 		session.put("insertDate", insertDate);
 		session.put("updateDate", updateDate);
 
-		MCategoryDAO mCategoryDao = new MCategoryDAO();
-
-		setmCategoryList(mCategoryDao.getMCategoryList());
-
-		session.put("mCategoryList", mCategoryList);
 
 		result = SUCCESS;
 		return result;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public int getCategoryId() {
 		return categoryId;
@@ -81,11 +67,11 @@ public class CreateCategoryAction extends ActionSupport implements SessionAware 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	public List<MCategoryDTO> getmCategoryList() {
-		return mCategoryList;
+	public List<MCategoryDTO> getmCategoryDtoList() {
+		return mCategoryDtoList;
 	}
-	public void setmCategoryList(List<MCategoryDTO> mCategoryList) {
-		this.mCategoryList = mCategoryList;
+	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList) {
+		this.mCategoryDtoList = mCategoryDtoList;
 	}
 	public Map<String, Object> getSession(){
 		return session;

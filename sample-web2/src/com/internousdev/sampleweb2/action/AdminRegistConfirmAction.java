@@ -61,6 +61,8 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		  System.out.println("Image Location:"+filePath);
 		  File fileToCreate = new File(filePath,userImageFileName);
 
+
+
 		productNameErrorMessageList = inputChecker.doCheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
 		productNameKanaErrorMessageList = inputChecker.doCheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
 		productDescriptionErrorMessageList = inputChecker.doCheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);

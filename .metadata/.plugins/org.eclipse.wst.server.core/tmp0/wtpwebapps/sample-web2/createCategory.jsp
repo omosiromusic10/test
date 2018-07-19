@@ -23,7 +23,7 @@
 </tr>
 </thead>
 <tbody>
-<s:iterator value="#session.mCategoryList">
+<s:iterator value="#session.mCategoryDtoList">
 <tr>
 <td><s:property value="categoryName"/></td>
 <td><s:property value="categoryDescription"/></td>
@@ -69,7 +69,6 @@
 <s:submit value="カテゴリ確認画面へ" class="submit_btn" />
 </div>
 </div>
-
 </s:form>
 </div>
 <div id="footer">

@@ -43,6 +43,7 @@ public class MCategoryDAO {
 			if(!(iterator.hasNext())){
 				mCategoryDtoList = null; //念の為に入れている用の文
 			}
+
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -85,8 +86,9 @@ public class MCategoryDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		int count = 0;
-		String sql ="insert into m_category(category_id,category_name,category_description,"
-				+ "insert_date,update_date)";
+		String sql ="insert into m_category(category_id, category_name, category_description,"
+				+ "insert_date, update_date)"
+				+ "values(?, ?, ?, ?, ?)";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, categoryId);

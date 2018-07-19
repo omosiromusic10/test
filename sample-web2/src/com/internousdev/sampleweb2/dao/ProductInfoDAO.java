@@ -102,10 +102,9 @@ public class ProductInfoDAO {
 				preparedStatement.setString(8, releaseDate);
 				preparedStatement.setString(9, imageFileName);
 				preparedStatement.setString(10, userImageFileName);	//	纏めて9,10項目をuserImageで良いのか
-				preparedStatement.setString(11, userImageFileName); //纏めても問題はない。
-				preparedStatement.setInt(12, Status);	// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+				preparedStatement.setInt(11, Status);	// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+				preparedStatement.setString(12, dateUtil.getDate());
 				preparedStatement.setString(13, dateUtil.getDate());
-				preparedStatement.setString(14, dateUtil.getDate());
 				count = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();

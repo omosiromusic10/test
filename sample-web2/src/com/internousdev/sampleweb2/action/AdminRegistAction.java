@@ -23,15 +23,12 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 	private File userImage;
 	private String userImageContentType;
 	private String userImageFileName;
-	private List<MCategoryDTO> mCategoryList = new ArrayList<MCategoryDTO>();
-	private List<String> categoryIdList = new ArrayList<String>();
-	private static final String BOOK = "本";
-	private static final String DENKI ="家電・PC";
-	private static final String GAME = "おもちゃ・ゲーム";
-	private static final String SONOTA = "その他";
+	//private List<MCategoryDTO> mCategoryList = new ArrayList<MCategoryDTO>();
+	//private List<String> categoryIdList = new ArrayList<String>();
+	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>(); //ここでDAOに入れていた奴を使う用にコマンド
 	//これの指定方法は　それぞれ種類を選択させてあげている状態なので実際にcategoryIdを挿入出来ているのかは不明である。
 	//正直あっているかわからない。　性別を元にして作成している。
-	private String defaultCategoryIdValue = BOOK;
+	//private String defaultCategoryIdValue = BOOK;
 	private Map<String, Object> session;
 	private String categoryId;
 
@@ -55,23 +52,19 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 		session.put("imageFileName", imageFileName);
 		session.put("releaseCompany", releaseCompany);
 		session.put("relaseDate", releaseDate);
-		session.put("categoryId", categoryId);
-		if(categoryId==null){
-			session.put("categoryId", SONOTA);
-		}else{
-			session.put("categoryId", String.valueOf(session.get("categoryId")));
+
+
+		if(!session.containsKey("mCategoryList")){
+			//ここではsessionの mCategoryListが存在しない場合？に起きる。
+			MCategoryDAO mCategoryDao = new MCategoryDAO();
+			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			//ここで恐らく、mCategoryDAO内にあるMCategoryListを「DtoList」として代入している
+			session.put("mCategoryDtoList", mCategoryDtoList);
+			//そして最後にsessionにmCategoryDtoListを記述させている。 ただ、何故DtoListとしてしたのか。　そのままmCategoryListじゃだめなのか。
+			//これはヘッダー部分で検索機能として置いているのでエラーを出さないようにする為の処置
 		}
-		categoryIdList.add(BOOK);
-		categoryIdList.add(DENKI);
-		categoryIdList.add(GAME);
-		categoryIdList.add(SONOTA);
-		session.put("categoryIdList", categoryIdList);
+
 		System.out.println(session.get("mCategoryDtoList").toString());
-
-
-		MCategoryDAO mCategoryDao = new MCategoryDAO();
-
-		setmCategoryList(mCategoryDao.getMCategoryList());
 
 
 
@@ -138,7 +131,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 	public void setCategoryId(String categoryId){
 		this.categoryId = categoryId;
 	}
-	public List<String> getCategoryIdList() {
+	/*public List<String> getCategoryIdList() {
 		return categoryIdList;
 	}
 	public void setCategoryIdList(List<String> categoryIdList) {
@@ -149,7 +142,7 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 	}
 	public void setDefaultCategoryIdValue(String defaultCategoryIdValue) {
 		this.defaultCategoryIdValue = defaultCategoryIdValue;
-	}
+	}*/
 	public File getUserImage() {
 		return userImage;
 	}
@@ -168,11 +161,17 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 	public void setUserImageFileName(String userImageFileName) {
 		this.userImageFileName = userImageFileName;
 	}
-	public List<MCategoryDTO> getmCategoryList() {
+    /*public List<MCategoryDTO> getmCategoryList() {
 		return mCategoryList;
 	}
 	public void setmCategoryList(List<MCategoryDTO> mCategoryList) {
 		this.mCategoryList = mCategoryList;
+	}*/
+	public List<MCategoryDTO> getmCategoryDtoList(){
+		return mCategoryDtoList;
+	}
+	public void setmCategoryDtoList(List<MCategoryDTO> mCategoryDtoList){
+		this.mCategoryDtoList = mCategoryDtoList;
 	}
 
 }
