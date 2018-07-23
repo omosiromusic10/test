@@ -7,19 +7,20 @@
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.UserInfoDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.DBConnector"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.ProductInfoDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dto.PaginationDTO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dto.ProductInfoDTO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.Pagination"/>
-<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
 <fullyQualifiedTypeName name="javax.websocket.Session"/>
-<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.DestinationInfoDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.PurchaseHistoryInfoDAO"/>
+<fullyQualifiedTypeName name="freemarker.template.utility.DateUtil"/>
+<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.ProductInfoDAO"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
+<fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.MCategoryDAO"/>
 <fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
 <fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
-<fullyQualifiedTypeName name="freemarker.template.utility.DateUtil"/>
-<fullyQualifiedTypeName name="com.internousdev.sampleweb2.util.InputChecker"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>

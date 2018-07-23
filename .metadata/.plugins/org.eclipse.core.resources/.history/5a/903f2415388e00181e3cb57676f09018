@@ -1,0 +1,28 @@
+package com.internousdev.sampleweb2.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.sampleweb2.dao.ProductInfoDAO;
+import com.internousdev.sampleweb2.dto.MCategoryDTO;
+import com.internousdev.sampleweb2.dto.ProductInfoDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class AdminEditDetailsAction extends ActionSupport implements SessionAware {
+	private int productId;
+	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
+	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
+	private String categoryId;
+	private Map<String,Object> session;
+
+	public String execute(){
+		String result = ERROR;
+		ProductInfoDAO productInfoDAO = new ProductInfoDAO();
+		ProductInfoDTO productInfoDTO = new ProductInfoDTO();
+
+	}
+
+}

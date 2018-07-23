@@ -29,6 +29,14 @@
         <result name="success">adminRegistComplete.jsp</result>
         <result name="error">adminRegist.jsp</result>
     </action>
+    <action name="AdminEditAction" class="com.internousdev.sampleweb2.action.AdminEditAction" method="execute">
+        <result name="success">adminEdit.jsp</result>
+        <result name="error">admin.jsp</result>
+    </action>
+    <action name="AdminEditDetailsAction" class="com.internousdev.sampleweb2.action.AdminEditDetailsAction" method="execute">
+        <result name="success">adminEditDetails.jsp</result>
+        <result name="error">admin.jsp</result>
+    </action>
 
 
 
@@ -121,6 +129,10 @@
 	<action name="SearchItemAction" class="com.internousdev.sampleweb2.action.SearchItemAction" method="execute">
 		<result name="success">productList.jsp</result>
 		<result name="error">productList.jsp</result>
+	</action>
+	<action name="SearchEditAction" class="com.internousdev.sampleweb2.action.SearchEditAction" method="execute">
+	    <result name="success">adminEdit.jsp</result>
+	    <result name="error">adminEdit.jsp</result>
 	</action>
 
 	<action name="SettlementConfirmAction" class="com.internousdev.sampleweb2.action.SettlementConfirmAction" method="execute">

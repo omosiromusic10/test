@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="userImage" key="selection"/>
+		<item value="s:hidden" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="userImage"/>
-			<item value="userImageContentType"/>
-			<item value="m_categ"/>
-			<item value="submit"/>
-			<item value="h2"/>
-			<item value="f2"/>
-			<item value="goProductListAction"/>
+			<item value="s:hidden"/>
 			<item value="categoryId"/>
+			<item value="status"/>
+			<item value="Status"/>
+			<item value="id"/>
+			<item value="id]"/>
+			<item value="id7"/>
+			<item value="userImage"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -24,7 +24,7 @@
 		<item value="377" key="DIALOG_WIDTH"/>
 		<item value="1|メイリオ|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|メイリオ" key="DIALOG_FONT_NAME"/>
 		<item value="400" key="DIALOG_HEIGHT"/>
-		<item value="8" key="DIALOG_X_ORIGIN"/>
-		<item value="253" key="DIALOG_Y_ORIGIN"/>
+		<item value="760" key="DIALOG_X_ORIGIN"/>
+		<item value="337" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

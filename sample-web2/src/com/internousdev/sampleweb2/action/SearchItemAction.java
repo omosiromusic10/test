@@ -40,7 +40,6 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 			productInfoDtoList = productInfoDAO.getProductInfoListAll(keywords.replaceAll("　", " ").split(" "));
 			result = SUCCESS;
 			break;
-
 		default:
 			productInfoDtoList = productInfoDAO.getProductInfoListByKeywords(keywords.replaceAll("　"," ").split(" "), categoryId);
 			result = SUCCESS;
