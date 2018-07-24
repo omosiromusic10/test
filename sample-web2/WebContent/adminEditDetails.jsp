@@ -57,7 +57,7 @@
     </div>
 </s:if>
 
-<s:form action="AdminEditDetailsCompleteAction" method="post" enctype="multipart/form-data">
+<s:form action="AdminEditDetailsConfirmAction" method="post" enctype="multipart/form-data">
 
 <table class="vertical-list-table">
 <tr>
@@ -94,7 +94,7 @@
 </tr>
 <tr>
     <th scope="row">画像ファイル</th>
-    <td><s:file name="imageFilePath" value="image_file_path" label="画像ファイル" class="file"/></td>
+   <td><s:file name="userImage" value="%{#session.imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
 </tr>
 
 
@@ -102,7 +102,7 @@
 <img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/>
 <tr>
     <th scope="row"><s:label value="画像ファイル"/></th>
-    <td><img src="userimages/<s:property value="userImageFileName"/>" width="500" height="300" class="item-image-box-200"/></td>
+    </td>
 </tr>
 -->
 

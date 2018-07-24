@@ -52,8 +52,6 @@
     <td><img src="userimages/<s:property value="userImageFileName"/>" width="500" height="300" /></td>
 </tr>
 
-
-
 </table>
 <div class="submit_btn_box">
 <div id="./contents-btn-set">

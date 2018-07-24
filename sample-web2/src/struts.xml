@@ -14,6 +14,14 @@
 		<result name="error">home.jsp</result>
 		<result name="input">cart.jsp</result>
 	</action>
+	<action name="AdminDeleteAction" class="com.internousdev.sampleweb2.action.AdminDeleteAction" method="execute">
+	    <result name="success">adminDelete.jsp</result>
+	    <result name="error">admin.jsp</result>
+    </action>
+    <action name="AdminDeleteCompleteAction" class="com.internousdev.sampleweb2.action.AdminDeleteCompleteAction" method="execute">
+        <result name="success">adminDeleteComplete.jsp</result>
+        <result name="error">adminDelete.jsp</result>
+    </action>
 
 
 
@@ -37,6 +45,14 @@
         <result name="success">adminEditDetails.jsp</result>
         <result name="error">admin.jsp</result>
     </action>
+    <action name="AdminEditDetailsConfirmAction" class="com.internousdev.sampleweb2.action.AdminEditDetailsConfirmAction" method="execute">
+        <result name="success">adminEditDetailsConfirm.jsp</result>
+        <result name="error">adminEditDetails.jsp</result>
+    </action>
+    <action name="AdminEditDetailsCompleteAction" class="com.internousdev.sampleweb2.action.AdminEditDetailsCompleteAction" method="execute">
+        <result name="success">adminEditdetailsComplete.jsp</result>
+        <result name="error">adminEditDetailsConfirm.jsp</result>
+    </action>
 
 
 
@@ -56,6 +72,10 @@
    <action name="GoLoginAction" class="com.internousdev.sampleweb2.action.GoLoginAction" method="execute">
        <result name="success">login.jsp</result>
 	   <result name="error">home.jsp</result>
+   </action>
+   <action name="GoAdminAction" class="com.internousdev.sampleweb2.action.GoAdminAction" method="execute">
+       <result name="success">admin.jsp</result>
+       <result name="error">home.jsp</result>
    </action>
    <action name="LoginAction" class="com.internousdev.sampleweb2.action.LoginAction" method="execute" >
        <result name="success">home.jsp</result>
@@ -133,6 +153,10 @@
 	<action name="SearchEditAction" class="com.internousdev.sampleweb2.action.SearchEditAction" method="execute">
 	    <result name="success">adminEdit.jsp</result>
 	    <result name="error">adminEdit.jsp</result>
+	</action>
+ 	<action name="SearchDeleteAction" class="com.internousdev.sampleweb2.action.SearchDeleteAction" method="execute">
+	    <result name="success">adminDelete.jsp</result>
+	    <result name="error">adminDelete.jsp</result>
 	</action>
 
 	<action name="SettlementConfirmAction" class="com.internousdev.sampleweb2.action.SettlementConfirmAction" method="execute">

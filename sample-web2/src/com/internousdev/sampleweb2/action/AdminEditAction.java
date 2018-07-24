@@ -129,4 +129,12 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
+	public List<ProductInfoDTO> getProductInfoDtoList() {
+		return productInfoDtoList;
+	}
+
+	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
+		this.productInfoDtoList = productInfoDtoList;
+	}
+
 }

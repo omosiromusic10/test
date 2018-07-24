@@ -22,6 +22,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	private String categoryId;
 	private String loginId;
 	private String password;
+	private String admin;
 	private boolean savedLoginId;
 
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
@@ -35,7 +36,9 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		String result = ERROR;
 
 		if(loginId.equals("admin") && password.equals("admin")){
+			session.put("admin", 1);
 			return  "admin";
+
 	}
 
 
@@ -99,6 +102,13 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	return result;
     }
 
+
+public String getAdmin(){
+	return admin;
+}
+public void setAdmin(String admin){
+	this.admin = admin;
+}
 public String getCategoryId() {
 	return categoryId;
 }

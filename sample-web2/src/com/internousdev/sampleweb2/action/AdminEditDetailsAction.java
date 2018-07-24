@@ -37,7 +37,6 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 
 	//情報を受け取る為の変数定義(画像情報)
 	private File userImage;
-	private String userImageContentType;
 	private String userImageFileName;
 
 	public String execute()throws SQLException{
@@ -64,6 +63,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 		session.put("imageFileName", productInfoDTO.getImageFileName());
 		session.put("releaseCompany", productInfoDTO.getReleaseCompany());
 		session.put("releaseDate", productInfoDTO.getReleaseDate());
+		session.put("productId", productInfoDTO.getProductId());
 
 	    if(!session.containsKey("ProductInfoDtoList")){
 	    	ProductInfoDAO productInfoDao = new ProductInfoDAO();
@@ -81,8 +81,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 
 		//デフォルト画像から挿入コピーまで
 		if(!(session.containsKey("imaeg_flg"))){
-			session.put("image_file_name", "画像を選択してください");
-			session.put("image_file_path", "./images/sample.jpg");
+			session.put("imageFilePath", "./images/sample.jpg");
 		}
 
 		//ファイルアップロードの処理
@@ -94,8 +93,8 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 
 		try{
 			FileUtils.copyFile(userImage, fileToCreate);
-			session.put("image_file_name", userImageFileName);
-			session.put("image_file_path", "images/"+userImageFileName);
+			session.put("imageFileName", userImageFileName); //こっちも変えている。
+			session.put("imageFilePath", "images/"+ userImageFileName);
 			session.put("image_flg", userImageFileName);
 	}catch(IOException e){
 			e.printStackTrace();
@@ -185,15 +184,6 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
 	}
-
-	public String getUserImageContentType() {
-		return userImageContentType;
-	}
-
-	public void setUserImageContentType(String userImageContentType) {
-		this.userImageContentType = userImageContentType;
-	}
-
 	public String getUserImageFileName() {
 		return userImageFileName;
 	}

@@ -31,6 +31,9 @@ function goSearchItemAction(){
 function goHomeAction(){
 	document.getElementById("form").action="HomeAction";
 }
+function goAdminAction(){
+	document.getElementById("form").action="GoAdminAction";
+}
 </script>
 </head>
 <body>
@@ -57,6 +60,9 @@ Sample Web2
     <li><s:submit value="商品一覧" class="submit_btn" onclick="goProductListAction();"/></li>
     <s:if test="#session.logined==1">
         <li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li>
+    </s:if>
+    <s:if test="#session.admin==1">
+        <li><s:submit value="管理ホーム" class="submit_btn" onclick="goAdminAction();"/></li>
     </s:if>
 </s:form>
 </ul>
