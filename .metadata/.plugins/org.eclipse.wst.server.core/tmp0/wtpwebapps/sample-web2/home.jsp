@@ -36,6 +36,16 @@
 <div id="contents">
 <h1>ホーム画面</h1>
 
+<!-- ここで何かさびしいのでアニメーションを作りたい。
+と言っても結局jQueryをやろうとしても反応しない。
+この上のscriptはecsiteのプロジェクトから持ってきた物で
+ecsiteでは通常通りsliderで出来ていた。　何故こちらで出来ないのだろうか。 -->
+
+<!--  CSS...CSSでやってみよう
+　アニメーションさえも作れない。-->
+
+
+
 <div class="slider">
 	<div><img src="./images/images.jpg"></div>
 	<div><img src="./images/image2.jpg"></div>

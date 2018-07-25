@@ -1,12 +1,10 @@
 package com.internousdev.sampleweb2.action;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -25,13 +23,6 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 	private String releaseDate;
 	private int productId;
 
-	public int getProductId() {
-		return productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
 	private File userImage;
 	private String userImagePathContentType;
 	private String userImageFileName;
@@ -53,20 +44,28 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		String result = ERROR;
 		InputChecker inputChecker = new InputChecker();
 
+		System.out.println(userImage.getAbsolutePath());
+		System.out.println(userImage.getName());
+		System.out.println(userImage.getPath());
+		
+		
+
 		session.put("productName", productName);
 		session.put("productNameKana", productNameKana);
 		session.put("productDescription", productDescription);
 		session.put("price", price);
 		session.put("imageFileName",imageFileName);
-		session.put("imageFilePath", imageFilePath);
+		session.put("imageFilePath", "./images/");
 		session.put("releaseCompany", releaseCompany);
 		session.put("releaseDate", releaseDate);
 		session.put("categoryId", categoryId);
 		session.put("Status", 0);
+		session.put("productId", productId);
+		session.put("userImage", userImage);
 
 		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
 		System.out.println("Image Location:"+filePath);
-		File fileToCreate = new File(filePath,userImageFileName);
+//		File fileToCreate = new File(filePath,userImageFileName);
 
 	productNameErrorMessageList = inputChecker.doCheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
 	productNameKanaErrorMessageList = inputChecker.doCheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
@@ -94,16 +93,24 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
 		result = ERROR;
 	}
-	try{
+/*	try{
 		FileUtils.copyFile(userImage , fileToCreate);
 		session.put("image_file_name", userImageFileName);
 		session.put("imageFilePath", "images/"+userImageFileName);
 		session.put("image_flg",  userImageFileName);
 	}catch(IOException e){
 		e.printStackTrace();
-	}
+	}*/
 	return result;
 
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
 	public String getProductName() {

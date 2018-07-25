@@ -94,9 +94,9 @@
 </tr>
 <tr>
     <th scope="row">画像ファイル</th>
-   <td><s:file name="userImage" value="%{#session.imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
+   <td><s:file name="userImage" value="%{imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
 </tr>
-
+<s:hidden name="productId" value="%{productId}"/>
 
 <!--
 <img src='<s:property value="imageFilePath"/>/<s:property value="imageFileName"/>' class="item-image-box-200"/>

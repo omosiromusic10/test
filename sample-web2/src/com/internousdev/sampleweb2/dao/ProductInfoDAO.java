@@ -286,21 +286,21 @@ public class ProductInfoDAO {
 	}
 
 	    public int updateProductInfo( int productid  , String productName, String productNameKana, String productDescription,
-			int categoryId, int price, String releaseCompany ,String releaseDate ,String imageFileName , String userImageFileName )throws SQLException{
+			int categoryId, int price, String releaseCompany ,String releaseDate ,String imageFileName , String imageFilePath )throws SQLException{
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
 		String sql = "update product_info set "
-				+ "product_name= ?, "
-				+ "product_name_kana = ?, "
-				+ "product_description= ?,"
+				+ "product_name= ? , "
+				+ "product_name_kana = ? ,"
+				+ "product_description= ? ,"
 				+ "category_id = ? ,"
-				+ "price = ?,"
-				+ "release_company = ?, "
-				+ "release_date = ?, "
-				+ "image_file_name = ?, "
-				+ "image_file_path = ?, "
-				+ "regist_date = ?, "
+				+ "price = ? ,"
+				+ "release_company = ? , "
+				+ "release_date = ? ,"
+				+ "image_file_name = ? ,"
+				+ "image_file_path = ? ,"
+				+ "regist_date = ? ,"
 				+ "update_date = ?"
 				+ "where product_id = ?";
 		try{
@@ -314,7 +314,7 @@ public class ProductInfoDAO {
 			preparedStatement.setString(7, releaseCompany);
 			preparedStatement.setString(8, releaseDate);
 			preparedStatement.setString(9, imageFileName);
-			preparedStatement.setString(10, userImageFileName);	//	纏めて9,10項目をuserImageで良いのか
+			preparedStatement.setString(10, imageFilePath);	//	纏めて9,10項目をuserImageで良いのか
 			preparedStatement.setString(11, dateUtil.getDate());
 			preparedStatement.setString(12, dateUtil.getDate());
 			count = preparedStatement.executeUpdate();

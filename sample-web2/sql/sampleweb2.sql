@@ -29,8 +29,8 @@ insert into user_info values
 
 create table product_info(
 id int primary key not null auto_increment comment "ID",
-product_id int unique not null comment "商品ID",
-product_name varchar(100) unique not null comment "商品名",
+product_id int not null comment "商品ID",
+product_name varchar(100) not null comment "商品名",
 product_name_kana varchar(100) not null comment "商品名かな",
 product_description varchar(255) not null comment "商品詳細",
 category_id int not null not null comment "カテゴリID",
@@ -162,6 +162,7 @@ default charset=utf8
 comment="カート情報テーブル"
 ;
 
+
 create table purchase_history_info(
 id int primary key not null auto_increment comment "ID",
 user_id varchar(16) not null comment "ユーザーID",
@@ -177,7 +178,6 @@ foreign key(product_id) references product_info(product_id)
 default charset=utf8
 comment="購入履歴情報テーブル"
 ;
-
 create table destination_info(
 id int primary key not null auto_increment comment "ID",
 user_id varchar(16) not null comment "ユーザーID",
@@ -191,8 +191,10 @@ user_address varchar(50) not null comment "住所",
 regist_date datetime not null comment "登録日",
 update_date datetime not null comment "更新日"
 )
+
 default charset=utf8
 comment="宛先情報テーブル"
 ;
 insert into destination_info values
 (1,"guest","インターノウス","テストユーざー","いんたーのうす","てすとゆーざー","guest@internous.co.jp","080-1234-5678","東京都千代田区三番町１ー１　ＫＹ三番町ビル１Ｆ",now(),"0000-00-00 00:00:00");
+

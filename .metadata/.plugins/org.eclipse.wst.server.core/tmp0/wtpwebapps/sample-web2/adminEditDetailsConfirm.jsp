@@ -63,6 +63,7 @@
 <s:hidden name="productDescription" value="%{productDescription}"/>
 <s:hidden name="price" value="%{price}"/>
 <s:hidden name="imageFileName" value="%{imageFileName}"/>
+<s:hidden name="userImageFileName" value="%{userImageFileName}"/>
 <s:hidden name="imageFilePath" value="%{imageFilePath}"/>
 <s:hidden name="releaseCompany" value="%{releaseCompany}"/>
 <s:hidden name="releaseDate" value="%{releaseDate}"/>
