@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="3;URL='AdminRegistAction'"/>
 <link rel="stylesheet" href="./css/style.css">
 <title>カテゴリー登録完了</title>
 </head>
@@ -15,6 +16,7 @@
 <h1>カテゴリ登録完了画面</h1>
 <div class="success">
 カテゴリ情報の登録が完了しました。
+3秒後に商品登録画面に戻ります。
 </div>
 </div>
 <s:include value="footer.jsp"/>

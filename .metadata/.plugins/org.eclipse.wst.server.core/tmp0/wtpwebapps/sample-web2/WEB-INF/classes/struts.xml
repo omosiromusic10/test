@@ -50,7 +50,7 @@
         <result name="error">adminEditDetails.jsp</result>
     </action>
     <action name="AdminEditDetailsCompleteAction" class="com.internousdev.sampleweb2.action.AdminEditDetailsCompleteAction" method="execute">
-        <result name="success">adminEditdetailsComplete.jsp</result>
+        <result name="success">adminEditDetailsComplete.jsp</result>
         <result name="error">adminEditDetailsConfirm.jsp</result>
     </action>
 

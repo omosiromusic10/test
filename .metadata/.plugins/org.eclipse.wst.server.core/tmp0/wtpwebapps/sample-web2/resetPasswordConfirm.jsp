@@ -16,6 +16,7 @@
 <s:form action="ResetPasswordCompleteAction">
 	<s:property value="#session.loginId"/><br>
 	<s:property value="#session.concealedPassword"/><br>
+	お間違い無ければ再設定ボタンを押してください。
 	<s:submit value="再設定" class="submit_btn" />
 </s:form>
 	</div>

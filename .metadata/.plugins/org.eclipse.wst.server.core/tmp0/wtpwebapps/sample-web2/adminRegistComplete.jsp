@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<meta http-equiv="refresh" content="3;URL='GoAdminAction'"/>
 <title>商品登録完了</title>
 </head>
 <body>
@@ -15,6 +16,7 @@
 <h1>商品登録完了画面</h1>
 <div class="success">
 商品情報の登録が完了しました。
+3秒後に管理ホームに戻ります。
 </div>
 </div>
 <s:include value="footer.jsp"/>

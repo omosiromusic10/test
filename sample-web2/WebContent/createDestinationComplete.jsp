@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="3;URL='SettlementConfirmAction'"/>
 <link rel="stylesheet" href="./css/style.css">
 <title>宛先情報完了</title>
 </head>
@@ -15,6 +16,7 @@
 <h1>宛先情報完了画面</h1>
 <div class="success">
 宛先情報の登録が完了しました。
+3秒後に決済確認画面に戻ります。
 </div>
 </div>
 <s:include value="footer.jsp"/>

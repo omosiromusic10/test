@@ -16,6 +16,7 @@
 <h1>決済完了画面</h1>
 <div class="success">
 決済が完了しました。
+3秒後にホーム画面に戻ります。
 </div>
 </div>
     <s:include value="footer.jsp"/>

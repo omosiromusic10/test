@@ -305,18 +305,18 @@ public class ProductInfoDAO {
 				+ "where product_id = ?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, productid);
-			preparedStatement.setString(2, productName);
-			preparedStatement.setString(3, productNameKana);
-			preparedStatement.setString(4, productDescription);
-			preparedStatement.setInt(5, categoryId);
-			preparedStatement.setInt(6, price);
-			preparedStatement.setString(7, releaseCompany);
-			preparedStatement.setString(8, releaseDate);
-			preparedStatement.setString(9, imageFileName);
-			preparedStatement.setString(10, imageFilePath);	//	纏めて9,10項目をuserImageで良いのか
+			preparedStatement.setString(1, productName);
+			preparedStatement.setString(2, productNameKana);
+			preparedStatement.setString(3, productDescription);
+			preparedStatement.setInt(4, categoryId);
+			preparedStatement.setInt(5, price);
+			preparedStatement.setString(6, releaseCompany);
+			preparedStatement.setString(7, releaseDate);
+			preparedStatement.setString(8, imageFileName);
+			preparedStatement.setString(9, imageFilePath);	//	纏めて9,10項目をuserImageで良いのか
+			preparedStatement.setString(10, dateUtil.getDate());
 			preparedStatement.setString(11, dateUtil.getDate());
-			preparedStatement.setString(12, dateUtil.getDate());
+			preparedStatement.setInt(12, productid);
 			count = preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

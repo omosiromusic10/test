@@ -27,7 +27,7 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 		String result = ERROR;
 		ProductInfoDAO ProductInfoDao = new ProductInfoDAO();
 
-		String imageFilePath = "./images/";
+		String imageFilePath = "./images";
 
 
 		int count = ProductInfoDao.updateProductInfo(Integer.parseInt(session.get("productId").toString()),

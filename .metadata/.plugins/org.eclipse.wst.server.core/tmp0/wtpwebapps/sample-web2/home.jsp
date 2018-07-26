@@ -12,21 +12,32 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="stylesheet" href="./css/style.css">
-<title>ホーム</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript">
-    jQuery(function(){
-    $(document).ready(function(){
-      $('.slider').bxSlider({
-		 auto:true,
-		  mode:'horizontal',
-		  speed:2000,
-		  slideWidth:300
-    });
-	});
-    });
+<title>サンプルウェブホーム！</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+  <script type="text/javascript">
+  var img = ["./images/images.jpg","./images/image2.jpg","./images/image3.jpg","./images/image4.jpg","./images/image5.jpg"];
+
+  var timer;
+  var count = -1;
+
+  function timerStart() {
+      //画像インデックス
+      count++;
+      //画像数確認
+      if (count == img.length) count = 0;
+      //画像出力
+      document.getElementById("dat").src = img[count];
+      //タイマーを設定
+      timer = setTimeout("timerStart()",2000);
+  }
+
+  function timerStop() {
+      //タイマーをクリア
+      clearInterval(timer);
+  };
 
   </script>
 </head>
@@ -34,25 +45,77 @@
 <jsp:include page="header.jsp" />
 
 <div id="contents">
+<!-- メインビジュアル -->
+<div id ="MainArea">
 <h1>ホーム画面</h1>
+
+<div style="background-color : #CCC;">
+   <div style="display:inline-flex;">
+        <input type="button" value="START" onClick="timerStart()">
+        <input type="button" value="STOP" onClick="timerStop()">
+    </div>
+    <img src="./images/images.jpg" id="dat" width="300" height="300">
+</div>
+
+
+
+</div>
+
+<!-- メインナビ -->
+<div id="MainNaviArea">
+<div class="4Wrap-clearfix">
+
+<div class="colAinCol4" style="width: 224px; margin-right: 28px;">
+<p><a href=""><img class="over" src=""></a></p>
+</div>
+
+
+
+</div>
+</div>
+
+<!-- メインコインテンツ -->
+<div id="MainContents">
+    <div class="col2Wrap-clearfix">
+    <div class="colAinCol2">
+    <h2>LEFT</h2>
+
+
+
+    </div>
+    <div class="colBinCol2">
+    <h2>商品関連</h2>
+    <ul>
+        <li>本日のお勧め！</li>
+        <li>定番商品</li>
+        <li>ランキング</li>
+        <li></li>
+        <li></li>
+   </ul>
+        ------------------------------------------------------------------
+   <h2>お問合せ</h2>
+   <ul>
+       <li>商品についてのお問合せ</li>
+       <li>弊社についてのお問合せ</li>
+       <li>その他についてのお問合せ</li>
+   </ul>
+
+
+
+
+
+
+
+    </div>
+    </div>
+
+</div>
 
 <!-- ここで何かさびしいのでアニメーションを作りたい。
 と言っても結局jQueryをやろうとしても反応しない。
 この上のscriptはecsiteのプロジェクトから持ってきた物で
 ecsiteでは通常通りsliderで出来ていた。　何故こちらで出来ないのだろうか。 -->
 
-<!--  CSS...CSSでやってみよう
-　アニメーションさえも作れない。-->
-
-
-
-<div class="slider">
-	<div><img src="./images/images.jpg"></div>
-	<div><img src="./images/image2.jpg"></div>
-	<div><img src="./images/image3.jpg"></div>
-	<div><img src="./images/image4.jpg"></div>
-	<div><img src="./images/image5.jpg"></div>
-</div>
 
 
 

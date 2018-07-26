@@ -47,15 +47,15 @@ public class AdminEditDetailsConfirmAction extends ActionSupport implements Sess
 		System.out.println(userImage.getAbsolutePath());
 		System.out.println(userImage.getName());
 		System.out.println(userImage.getPath());
-		
-		
+
+
 
 		session.put("productName", productName);
 		session.put("productNameKana", productNameKana);
 		session.put("productDescription", productDescription);
 		session.put("price", price);
 		session.put("imageFileName",imageFileName);
-		session.put("imageFilePath", "./images/");
+		session.put("imageFilePath", "./images");
 		session.put("releaseCompany", releaseCompany);
 		session.put("releaseDate", releaseDate);
 		session.put("categoryId", categoryId);

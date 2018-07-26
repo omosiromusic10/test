@@ -39,7 +39,7 @@ function goAdminAction(){
 <body>
 <div id="header">
 <div id="header-title">
-Sample Web2
+<a href="HomeAction"><img src="./images/logo.png" ></a>
 </div>
 <div id="header-menu">
 <ul>
