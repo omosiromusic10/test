@@ -9,8 +9,10 @@ import java.util.List;
 
 import com.internousdev.sampleweb2.dto.CartInfoDTO;
 import com.internousdev.sampleweb2.util.DBConnector;
+import com.internousdev.sampleweb2.util.DateUtil;
 
 public class CartInfoDAO {
+	private DateUtil dateUtil = new DateUtil();
 
 	public List<CartInfoDTO> getCartInfoDtoList(String loginId) {
 		DBConnector dbConnector = new DBConnector();
@@ -110,7 +112,7 @@ public class CartInfoDAO {
 		//★ここでもInsertでＩＤやらお金を入れているが、何をしているのだろう。
 		int count = 0;
 		String sql = "insert into cart_info(user_id, temp_user_id, product_id, product_count, price, regist_date)"
-				+ "values (?, ?, ?, ?, ?, now())";
+				+ "values(?, ?, ?, ?, ?, ?)";
 
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -119,7 +121,7 @@ public class CartInfoDAO {
 			preparedStatement.setInt(3, productId);
 			preparedStatement.setString(4, productCount);
 			preparedStatement.setInt(5, price);
-
+			preparedStatement.setString(6, dateUtil.getDate());
 			count = preparedStatement.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();

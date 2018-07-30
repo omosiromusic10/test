@@ -150,7 +150,7 @@ insert into product_info values
 
 create table cart_info(
 id int primary key not null auto_increment comment "ID",
-user_id varchar(16) not null unique comment "ユーザーID",
+user_id varchar(16) not null comment "ユーザーID",
 temp_user_id varchar(16) comment "仮ユーザーID",
 product_id int not null comment "商品ID",
 product_count int not null comment "個数",
@@ -197,4 +197,10 @@ comment="購入履歴情報テーブル"
 ;
 insert into destination_info values
 (1,"guest","インターノウス","テストユーざー","いんたーのうす","てすとゆーざー","guest@internous.co.jp","080-1234-5678","東京都千代田区三番町１ー１　ＫＹ三番町ビル１Ｆ",now(),"0000-00-00 00:00:00");
+
+create table inquiry(
+userId varchar(255),
+qtype varchar(255),
+body varchar(255)
+);
 

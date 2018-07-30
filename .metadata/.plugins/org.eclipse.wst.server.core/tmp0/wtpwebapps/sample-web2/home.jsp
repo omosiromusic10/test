@@ -65,8 +65,11 @@
 <div id="MainNaviArea">
 <div class="4Wrap-clearfix">
 
-<div class="colAinCol4" style="width: 224px; margin-right: 28px;">
-<p><a href=""><img class="over" src=""></a></p>
+<div class="colAinCol4" >
+<a href="ProductListAction"><img  src="./images/food.jpg"></a>
+<a href="ProductListAction"><img src="./images/food2.jpg"></a>
+<a href="ProductListAction"><img src="./images/ice.jpg"></a>
+<a href="ProductListAction"><img  src="./images/study.jpg"></a>
 </div>
 
 

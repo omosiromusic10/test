@@ -39,6 +39,16 @@
       clearInterval(timer);
   };
 
+  $(function(){
+	    $(".inquiry a").hover(
+	    function(){
+	    	$(this).css("color","gray");
+	    },
+	    function(){
+	    	$(this).css("color","black");
+	    });
+	    });
+
   </script>
 </head>
 <body>
@@ -49,13 +59,11 @@
 <div id ="MainArea">
 <h1>ホーム画面</h1>
 
-<div style="background-color : #CCC;">
    <div style="display:inline-flex;">
         <input type="button" value="START" onClick="timerStart()">
         <input type="button" value="STOP" onClick="timerStop()">
     </div>
     <img src="./images/images.jpg" id="dat" width="300" height="300">
-</div>
 
 
 
@@ -65,8 +73,11 @@
 <div id="MainNaviArea">
 <div class="4Wrap-clearfix">
 
-<div class="colAinCol4" style="width: 224px; margin-right: 28px;">
-<p><a href=""><img class="over" src=""></a></p>
+<div class="colAinCol4" >
+<a href="ProductListAction"><img  src="./images/food.jpg"></a>
+<a href="ProductListAction"><img src="./images/food2.jpg"></a>
+<a href="ProductListAction"><img src="./images/ice.jpg"></a>
+<a href="ProductListAction"><img  src="./images/study.jpg"></a>
 </div>
 
 
@@ -94,17 +105,13 @@
    </ul>
         ------------------------------------------------------------------
    <h2>お問合せ</h2>
+   <div class="inquiry">
    <ul>
-       <li>商品についてのお問合せ</li>
-       <li>弊社についてのお問合せ</li>
-       <li>その他についてのお問合せ</li>
+      <li><a href="InquiryAction">商品についてのお問合せ</a></li>
+      <li><a href="InquiryAction">弊社についてのお問合せ</a></li>
+      <li><a href="InquiryAction">その他についてのお問合せ</a></li>
    </ul>
-
-
-
-
-
-
+   </div>
 
     </div>
     </div>

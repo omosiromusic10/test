@@ -1,7 +1,7 @@
 set names utf8;
 set foreign_key_checks=0;
 
-drop database if exists samplweb3;
+drop database if exists sampleweb3;
 create database if not exists sampleweb3;
 
 use sampleweb3;
@@ -29,7 +29,7 @@ insert into user_info values
 
 create table product_info(
 id int primary key not null auto_increment comment "ID",
-product_id int not null comment "商品ID",
+product_id int not null unique comment "商品ID",
 product_name varchar(100) not null comment "商品名",
 product_name_kana varchar(100) not null comment "商品名かな",
 product_description varchar(255) not null comment "商品詳細",
@@ -49,7 +49,6 @@ comment="商品情報テーブル"
 ;
 
 create table m_category(
-
 id int primary key not null auto_increment comment "ID",
 category_id int not null unique comment "カテゴリID",
 category_name varchar(20) not null unique comment "カテゴリ名",
@@ -60,13 +59,11 @@ update_date datetime comment "更新日"
 default charset=utf8
 comment="カテゴリマスタテーブル"
 ;
-
-insert into m_category(
+insert into m_category values
 (1,1,"全てのカテゴリー","本、家電・パソコン、おもちゃ・ゲーム全てのカテゴリーが対象となります",now(), null),
 (2,2,"本","本に関するカテゴリーが対象となります",now(),null),
 (3,3,"家電・パソコン","家電・パソコンに関するカテゴリーが対象となります",now(),null),
 (4,4,"おもちゃ・ゲーム","おもちゃ・ゲームに関するカテゴリーが対象となります",now(),null);
-
 
 insert into product_info values
 ( 1, 1,"本１","ほん１","本１の商品詳細",2,100,"./images","sample.jpg",now(),"発売会社",0,now(),now()),
@@ -153,7 +150,7 @@ insert into product_info values
 
 create table cart_info(
 id int primary key not null auto_increment comment "ID",
-user_id varchar(16) not null comment "ユーザーID",
+user_id varchar(16) not null unique comment "ユーザーID",
 temp_user_id varchar(16) comment "仮ユーザーID",
 product_id int not null comment "商品ID",
 product_count int not null comment "個数",
@@ -164,7 +161,6 @@ update_date datetime comment "更新日"
 default charset=utf8
 comment="カート情報テーブル"
 ;
-
 
 create table purchase_history_info(
 id int primary key not null auto_increment comment "ID",

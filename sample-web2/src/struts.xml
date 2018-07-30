@@ -62,7 +62,7 @@
         <result name="error">cart.jsp</result>
     </action>
     <action name="DeletePurchaseHistoryAction" class="com.internousdev.sampleweb2.action.DeletePurchaseHistoryAction" method="execute">
-        <result name="success">createUser.jsp</result>
+        <result name="success">home.jsp</result>
         <result name="error">home.jsp</result>
     </action>
 
@@ -115,6 +115,19 @@
         <result name="success">mypage.jsp</result>
         <result name="error">home.jsp</result>
    </action>
+
+
+
+   <action name="InquiryAction" class="com.internousdev.sampleweb2.action.InquiryAction" method="execute">
+       <result name="success">inquiry.jsp</result>
+       <result name="error">login.jsp</result>
+   </action>
+   <action name="InquiryCompleteAction" class="com.internousdev.sampleweb2.action.InquiryCompleteAction" method="execute">
+       <result name="success">inquiryComplete.jsp</result>
+       <result name="error">inquiry.jsp</result>
+   </action>
+
+
 
    <action name="ResetPasswordAction" class="com.internousdev.sampleweb2.action.ResetPasswordAction" method="execute">
         <result name="success">resetPassword.jsp</result>

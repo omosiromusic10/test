@@ -67,7 +67,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		productNameKanaErrorMessageList = inputChecker.doCheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
 		productDescriptionErrorMessageList = inputChecker.doCheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);
 		priceErrorMessageList  = inputChecker.doCheck("価格", price, 1, 8, false, false, false, true, false, false, false);
-		//imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
+	//	imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
 		imageFileNameErrorMessageList = inputChecker.doCheck("画像ファイル名", imageFileName, 1, 16, true, true, true, true, true, true, true);
 		releaseCompanyErrorMessageList  = inputChecker.doCheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
 		releaseDateErrorMessageList  = inputChecker.doCheck("発売年月", releaseDate, 1, 16, false, true, false, true, true, false, false);
@@ -88,7 +88,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 		&& productNameKanaErrorMessageList.size()==0
 		&& productDescriptionErrorMessageList.size()==0
 		&& priceErrorMessageList.size()==0
-		//&& imageFilePathErrorMessageList.size()==0
+	//	&& imageFilePathErrorMessageList.size()==0
 		&& imageFileNameErrorMessageList.size()==0
 		&& releaseCompanyErrorMessageList.size()==0
 		&& releaseDateErrorMessageList.size()==0 ){
@@ -100,7 +100,7 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 			session.put("productDescriptionErrorMessageList", productDescriptionErrorMessageList);
 			session.put("priceErrorMessageList", priceErrorMessageList);
 			session.put("imageFileNameErrorMessageList", imageFileNameErrorMessageList);
-		//	session.put("imageFilePathErrorMessageList", imageFilePathErrorMessageList);
+	//		session.put("imageFilePathErrorMessageList", imageFilePathErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
 			session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
 			result = ERROR;

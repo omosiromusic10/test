@@ -4,7 +4,8 @@ body, html {
 	padding : 0;
 	width: 100%;
 	height: 100%;
-
+	background-image:url(../images/haikei.jpg);
+	background-size:cover;
 }
 
 #header {
@@ -25,8 +26,7 @@ body, html {
 #header-menu {
 	float : left;
 	width : 80%;
-	margin-left : -30px;
-}
+	}
 
 #header-menu ul{
 	float : left;
@@ -63,7 +63,7 @@ body, html {
 .submit_btn{
 	padding : 0.5em 1em;
 	text-decoration: none;
-	border-ragius: 100px;
+	border-radius: 100px;
 	width: 120px;
 	height : 35px;
 	margin-top : -5px;
@@ -140,13 +140,20 @@ body, html {
 #MainArea{
 height :400px;
 width :100%;
+text-align:center;
 }
 
 #MainNaviArea{
-height :200px;
+text-align:center;
+height :250px;
 width :100%;
-background-color:lightgreen;
-float:center;
+}
+#MainNaviArea img{
+	display:inline-block;
+	width:200px;
+	height:200px;
+	padding:30px 20px 30px 20px;
+	margin-right:50px;
 }
 
 .4Wrap-clearfix{
@@ -160,7 +167,6 @@ float:center;
 #MainContents{
 width :100%;
 height :500px;
-background-color:skyblue;
 }
 
 .col2Wrap-clearfix{
@@ -171,14 +177,14 @@ background-color:skyblue;
 float:left;
 width:70%;
 height:500px;
+background-color:#CCC;
 }
 
 .colBinCol2{
 float:right;
 width:30%;
 background-color:#f4f4f4;
-border-top:solid 30px lightgray;
-height:470px;
+height:500px;
 }
 
 
@@ -222,24 +228,38 @@ height:470px;
 }
 
 h1 {
-	width : 	90%;
-	color: #364e96;/*文字色*/
-	margin-left : 3%;
-	margin-right : 3%;
+	width : 	20%;
+	color: #505050;/*文字色*/
+	margin-left : 15%;
+	margin-right : 65%;
+	display: inline-block;
 	padding: 0.5em 0;/*上下の余白*/
-	border-top: solid 3px #364e96;/*上線*/
-	border-bottom: solid 3px #364e96;/*下線*/
+	background: #dbebf8;
+	vertical-align: middle;
+	border-radius: 25px 0px 0px 25px;
+}
+h1:before {
+content: '●';
+color: white;
+margin-right: 8px;
 }
 
 h2 {
-	width : 	90%;
-	color: #5e5e5e;/*文字色*/
-	margin-left : 3%;
-	margin-right : 3%;
+	width : 	80%;
+	margin-left : 10%;
+	margin-right : 10%;
 	padding: 0.5em 0;/*上下の余白*/
 	text-align:center;
+    color: #494949;/*文字色*/
+    background: #fffaf4;/*背景色*/
+    border: solid 3px #ffaf58;/*左線（実線 太さ 色）*/
+    border-radius : 0.5em;
 }
 
+.inquiry a {
+  text-decoration:none;
+  color:black;
+}
 .pager{
 	padding-top : 50px;
 	text-align : center;
@@ -383,17 +403,22 @@ table.vertical-list-table-mini td {
 	content : "";
 	clear : both;
 	display : block;
+	padding:0;
+	position:relative;
 }
 /* 商品一覧リストの設定 */
+
+
 #product-list ul li {
 	display : block;
 	float : left;
 	width : 85%;
 	height : 100%;
 	list-style-type : none;
-/*	background : #00cccc; */
+	/* background : #00cccc; */
 	text-align : center;
 }
+
 #footer {
 	position : fixed;
 	text-align : center;
