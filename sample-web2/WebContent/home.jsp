@@ -58,6 +58,12 @@
 <!-- メインビジュアル -->
 <div id ="MainArea">
 <h1>ホーム画面</h1>
+<div class="ribbon_box">
+    <span class="ribbon">★</span>
+    <div>
+       <p>サンプルウェブへようこそ！</p>
+    </div>
+</div>
 
    <div style="display:inline-flex;">
         <input type="button" value="START" onClick="timerStart()">

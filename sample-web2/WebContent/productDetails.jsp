@@ -64,7 +64,7 @@
 	<s:hidden name="productDescription" value="%{#session.productDescription}"/>
 </div>
     <div class="submit_btn_box">
-    <s:submit value="カートに追加" class="submit_btn" />
+    <s:submit value="カートに追加" class="btn" />
     </div>
     </s:form>
     <div class="box">
