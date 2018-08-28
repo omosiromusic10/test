@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/admin.css">
 <title>管理者画面</title>
 </head>
 <body>
@@ -33,6 +34,29 @@
         <s:form action="AdminDeleteAction">
             <s:submit value="商品削除" class="submit_btn2"/>
         </s:form>
+    </div>
+</div>
+
+<div class="submit_btn_box2">
+    <div id=".contents-btn-set">
+    <s:form action="AdminProductSelectAction">
+        <s:submit value="商品一覧画面" class="submit_btn2"/>
+    </s:form>
+    </div>
+</div>
+
+<div class="submit_btn_box2">
+    <div id=".contents-btn-set">
+    <s:form action="AdminPurchaseSelectAction">
+        <s:submit value="購入履歴一覧画面" class="submit_btn2"/>
+    </s:form>
+    </div>
+</div>
+<div class="submit_btn_box2">
+    <div id=".contents-btn-set">
+    <s:form action="AdminAllSelectAction">
+        <s:submit value="データ確認画面" class="submit_btn2"/>
+    </s:form>
     </div>
 </div>
 

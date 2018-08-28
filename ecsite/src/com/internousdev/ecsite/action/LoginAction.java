@@ -24,6 +24,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 	public String execute() throws SQLException{
 		String result = ERROR;
+
+		String token = String.valueOf(session.get("token"));
+		if(token =="admin"){
+			return result;
+		}
+
 		loginDTO = loginDAO.getLoginUserInfo(loginUserId,loginPassword);
 		session.put("loginUser", loginDTO);
 		if(((LoginDTO) session.get("loginUser")).getLoginFlg()){
@@ -34,7 +40,20 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			session.put("id",buyItemDTO.getId());
 			session.put("buyItem_name",buyItemDTO.getItemName());
 			session.put("buyItem_price",buyItemDTO.getItemPrice());
-			return result;
+
+			String sta = String.valueOf(session.get("status"));
+			//statusに1が入っていたら、管理者画面へ
+
+			if(sta.equals("1")){
+				result = "admin";
+				token = "admin";
+				session.put("token",token);
+				session.put("logined",1);
+				return result;
+			}
+
+
+
 		}
 		return result;
 	}

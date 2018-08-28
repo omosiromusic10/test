@@ -1,0 +1,16 @@
+127.0.0.1 - - [01/Aug/2018:16:59:59 +0900] "GET / HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:05 +0900] "GET /sample-web2/ HTTP/1.1" 200 835
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:06 +0900] "GET /sample-web2/css/style.css HTTP/1.1" 200 13145
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:06 +0900] "GET /sample-web2/js/smoothscroll.js HTTP/1.1" 200 315
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:07 +0900] "GET /sample-web2/images/haikei.jpg HTTP/1.1" 200 151335
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:07 +0900] "GET /favicon.ico HTTP/1.1" 404 1041
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:08 +0900] "GET /sample-web2/HomeAction HTTP/1.1" 200 9432
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:08 +0900] "GET /favicon.ico HTTP/1.1" 404 1041
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:53 +0900] "GET /sample-web2/admin.jsp HTTP/1.1" 200 4070
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:00:54 +0900] "GET /sample-web2/images/logo.png HTTP/1.1" 200 22597
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:01:18 +0900] "GET /sample-web2/adminRegist.jsp HTTP/1.1" 404 -
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:44:31 +0900] "GET /sample-web2/ HTTP/1.1" 200 835
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:44:32 +0900] "GET /sample-web2/css/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:44:32 +0900] "GET /sample-web2/js/smoothscroll.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:44:33 +0900] "GET /sample-web2/images/haikei.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:17:44:33 +0900] "GET /sample-web2/HomeAction HTTP/1.1" 200 9432

@@ -2,7 +2,10 @@ package com.internousdev.sampleweb2.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +13,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.sampleweb2.dao.MCategoryDAO;
+import com.internousdev.sampleweb2.dao.ProductInfoDAO;
+import com.internousdev.sampleweb2.dto.MCategoryDTO;
 import com.internousdev.sampleweb2.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,98 +28,169 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	private String imageFileName;
 	private String imageFilePath;
 	private String releaseCompany;
-	private String releaseDate;
+	private Date releaseDate;
 
 	private File userImage;
-	private String userImagePathContentType;
+	private String userImageContentType;
 	private String userImageFileName;
 
 	private List<String>productNameErrorMessageList = new ArrayList<String>();
 	private List<String>productNameKanaErrorMessageList = new ArrayList<String>();
 	private List<String>productDescriptionErrorMessageList  = new ArrayList<String>();
 	private List<String>priceErrorMessageList = new ArrayList<String>();
-	private List<String>imageFileNameErrorMessageList = new ArrayList<String>();
-	private List<String>imageFilePathErrorMessageList = new ArrayList<String>();
 	private List<String>releaseCompanyErrorMessageList = new ArrayList<String>();
 	private List<String>releaseDateErrorMessageList = new ArrayList<String>();
+
+	private List<String>userImageFileNameErrorMessageList = new ArrayList<String>();
 
 	private int categoryId;
 	private List<String> categoryIdList = new ArrayList<String>();
 	private Map<String, Object> session;
 
-	public String execute(){
-		String result = ERROR;
+	public String execute() throws SQLException{
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if(token != "admin"){
+			return result;
+		}
+
+		result = ERROR;
 		InputChecker inputChecker = new InputChecker();
+
+		//ここでDate型のreleaseDateをString型に変換している。	session.put("productName", productName);
+		//リリースデータに値が入っていない時
+		if(releaseDate == null){
+		//エラーリストのaddを追加する。
+		releaseDateErrorMessageList.add("発売年月日を入力してください。yyyy-mm-ddで入力します。");
+		}else{
+		//値が入っていればDate型をString型にする。
+		String releaseDate_str = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss").format(releaseDate);
+		session.put("releaseDate", releaseDate_str);
+		}
 
 		session.put("productName", productName);
 		session.put("productNameKana", productNameKana);
 		session.put("productDescription", productDescription);
 		session.put("price", price);
 		session.put("imageFileName", imageFileName);
-		session.put("imageFilePath", "./images/");
+		session.put("imageFilePath", imageFilePath);
 		session.put("releaseCompany", releaseCompany);
-		session.put("releaseDate", releaseDate);
 		session.put("categoryId", categoryId);
+		session.put("userImageFileName", userImageFileName);
 		session.put("Status", 0);
 
+		//ファイルアップロードの処理
+		/*
+		* 画像ファイルの場合で.jpeg、.bmp、.png画像のみで通り、それ以外にはエラー表示で
+		* 「画像ファイルは.jpeg、.bmp、.png画像を入れてください。」と表示させる。
+		* 何も入れてない場合は「画像ファイルを挿入してください。」と表示させる。
+		*/
 
-		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
-		  System.out.println("Image Location:"+filePath);
-		  File fileToCreate = new File(filePath,userImageFileName);
+
+		if(!(userImage == null)){
+		long fileMaxSize = 3145728;// 3MB
+		String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("images");
+		System.out.println("Image Location:" + filePath);
+		File fileToCreate = new File(filePath, userImageFileName);
+		userImageFileNameErrorMessageList = inputChecker.doCheck("画像ファイル", userImageFileName, 1, 32, true, true, true, true, true, true, true);
+
+		// この中にif分を挿入し、画像のみのファイルを	try{
+		if (!(isImageFile(userImageContentType))) {
+		userImageFileNameErrorMessageList.add("画像ファイルが異なります。jpegのみ挿入出来ます。");
+		result = ERROR;
+		}
+		if (userImage.length() > fileMaxSize) {
+		userImageFileNameErrorMessageList.add("3MBより大きい画像ファイルは挿入出来ません。");
+		result = ERROR;
+		}
+	try{
+		  FileUtils.copyFile(userImage , fileToCreate);
+			session.put("image_file_name", userImageFileName);
+			session.put("image_file_path", "./images");
+			session.put("image_flg" , userImageFileName);
+			System.out.println(session.get("image_file_name"));
+			System.out.println(session.get("image_file_path"));
+	  }catch(IOException e){
+		  e.printStackTrace();
+	  }
+	  }else{
+			userImageFileName="";
+			userImageFileNameErrorMessageList.add("画像ファイルを挿入してください。");
+			result = ERROR;
+	  }
+		//以前はここでそれぞれのcategoryIdが選択された時にしていたが、カテゴリーデータが増えた場合に処理をしなければならない。
+	/*try{
+		switch(categoryId){
+		case 1 :
+			session.put("categoryName","全てのカテゴリー");
+			break;
+		case 2 :
+			session.put("categoryName", "本");
+			break;
+		case 3 :
+			session.put("categoryName", "家電・パソコン");
+			break;
+		case 4 :
+			session.put("categoryName", "おもちゃ・ゲーム");
+			break;
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}*/
+
+	//なのでMCategoryを使い、categoryIdを表示された名前で取ってくる
+
+	MCategoryDAO mCategoryDAO = new MCategoryDAO();
+	MCategoryDTO mCategoryDTO = mCategoryDAO.getMCategory(categoryId);
+	//ユーザーID, statusをセッションに格納。
+	//putされたcategoryId をメソッド内でセレクトし、categoryNameをsession内に保存する。
+	session.put("categoryName", mCategoryDTO.getCategoryName());
 
 
-
+//チェック項目
 		productNameErrorMessageList = inputChecker.doCheck("商品名", productName, 1, 32, true, true, true, true, true, true, true);
 		productNameKanaErrorMessageList = inputChecker.doCheck("商品名ふりがな", productNameKana, 1, 32, false, false, true, false, false, false, false);
 		productDescriptionErrorMessageList = inputChecker.doCheck("商品名詳細", productDescription, 1, 320, true, true, true, true, true, true, true);
 		priceErrorMessageList  = inputChecker.doCheck("価格", price, 1, 8, false, false, false, true, false, false, false);
-	//	imageFilePathErrorMessageList = inputChecker.doCheck("画像ファイル", imageFilePath, 1, 64, true, true, true, true, true, true, true);
-		imageFileNameErrorMessageList = inputChecker.doCheck("画像ファイル名", imageFileName, 1, 16, true, true, true, true, true, true, true);
 		releaseCompanyErrorMessageList  = inputChecker.doCheck("発売会社名", releaseCompany, 1, 16, true, true, true, true, false, true, false);
-		releaseDateErrorMessageList  = inputChecker.doCheck("発売年月", releaseDate, 1, 16, false, true, false, true, true, false, false);
 
 
-		//mCategoryListからセレクトした物をproduct_infoのcategoryId から、くっつけて
-		//  選択したmCategoryテーブル内のcategoryId == product_infoのcategoryId    の存在にしてあげれば product_info のcategoryIdはつく。
+		ProductInfoDAO productInfoDao = new ProductInfoDAO();
+
+	    if(productInfoDao.checkProductInfo(productName)){
+	    	productNameErrorMessageList.add("同じ商品名で登録出来ません。");
+	    }
+	    if(productInfoDao.checkProductInfo2(productNameKana)){
+	    	productNameKanaErrorMessageList.add("同じ商品名のふりがなで登録は出来ません。");
+	    }
 
 
-
-
-
-
-
-
-
+		//全てのサイズが0の場合(エラーが無い)サクセスにする。
 		if(productNameErrorMessageList.size()==0
 		&& productNameKanaErrorMessageList.size()==0
 		&& productDescriptionErrorMessageList.size()==0
 		&& priceErrorMessageList.size()==0
-	//	&& imageFilePathErrorMessageList.size()==0
-		&& imageFileNameErrorMessageList.size()==0
 		&& releaseCompanyErrorMessageList.size()==0
+		&& userImageFileNameErrorMessageList.size()==0
 		&& releaseDateErrorMessageList.size()==0 ){
-
 			result = SUCCESS;
 		}else{
+			//違う場合はエラーが入っているメッセージリストをsessionに用いる。
 			session.put("productNameErrorMessageList", productNameErrorMessageList);
 			session.put("productNameKanaErrorMessageList", productNameKanaErrorMessageList);
 			session.put("productDescriptionErrorMessageList", productDescriptionErrorMessageList);
 			session.put("priceErrorMessageList", priceErrorMessageList);
-			session.put("imageFileNameErrorMessageList", imageFileNameErrorMessageList);
-	//		session.put("imageFilePathErrorMessageList", imageFilePathErrorMessageList);
 			session.put("releaseCompanyErrorMessageList", releaseCompanyErrorMessageList);
-			session.put("releaseDateErrorMessageList", releaseDateErrorMessageList);
+			session.put("userImageFileNameErrorMessageList" ,userImageFileNameErrorMessageList);
+			session.put("releaseDateErrorMessageList",releaseDateErrorMessageList);
 			result = ERROR;
 		}
-		try{
-			  FileUtils.copyFile(userImage , fileToCreate);
-				session.put("image_file_name", userImageFileName);
-				session.put("imagefilePath", "images/"+userImageFileName);
-				session.put("image_flg" , userImageFileName);
-		  }catch(IOException e){
-			  e.printStackTrace();
-		  }
+
 		return result;
+	}
+	private boolean isImageFile(String extension) {
+
+		return ( extension.equals("image/jpeg"));
 	}
 	public int getCategoryId(){
 		return categoryId;
@@ -163,13 +240,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	public void setReleaseCompany(String releaseCompany){
 		this.releaseCompany = releaseCompany;
 	}
-	public String getReleaseDate(){
-		return releaseDate;
-	}
-	public void setReleaseDate(String releaseDate){
-		this.releaseDate = releaseDate;
-	}
-
 
 	public List<String> getProductNameErrorMessageList(){
 		return productNameErrorMessageList;
@@ -194,18 +264,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	}
 	public void setPriceErrorMessageList(List<String> priceErrorMessageList){
 		this.priceErrorMessageList = priceErrorMessageList;
-	}
-	public List<String> getImageFilePathErrorMessageList(){
-		return imageFilePathErrorMessageList;
-	}
-	public void setImageFilePathErrorMessageList(List<String> imageFilePathErrorMessageList){
-		this.imageFilePathErrorMessageList = imageFilePathErrorMessageList;
-	}
-	public List<String> getImageFileNameErrorMessageList(){
-		return imageFileNameErrorMessageList;
-	}
-	public void setImageFileNameErrorMessageList(List<String> imageFileNameErrorMessageList){
-		this.imageFileNameErrorMessageList = imageFileNameErrorMessageList;
 	}
 	public List<String> getReleaseCompanyErrorMessageList(){
 		return releaseCompanyErrorMessageList;
@@ -234,12 +292,6 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	public void setUserImage(File userImage){
 		this.userImage = userImage;
 	}
-	public String getUserImagePathContentType(){
-		return userImagePathContentType;
-	}
-	public void setUserImagePathContentType(String userImagePathContentType){
-		this.userImagePathContentType = userImagePathContentType;
-	}
 	public String getUserImageFileName(){
 		return userImageFileName;
 	}
@@ -251,6 +303,24 @@ public class AdminRegistConfirmAction extends ActionSupport implements SessionAw
 	}
 	public void setCategoryIdList(List<String> categoryIdList) {
 		this.categoryIdList = categoryIdList;
+	}
+	public List<String> getUserImageFileNameErrorMessageList() {
+		return userImageFileNameErrorMessageList;
+	}
+	public void setUserImageFileNameErrorMessageList(List<String> userImageFileNameErrorMessageList) {
+		this.userImageFileNameErrorMessageList = userImageFileNameErrorMessageList;
+	}
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+	public String getUserImageContentType() {
+		return userImageContentType;
+	}
+	public void setUserImageContentType(String userImageContentType) {
+		this.userImageContentType = userImageContentType;
 	}
 
 }

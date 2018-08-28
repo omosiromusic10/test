@@ -61,7 +61,7 @@
         <s:property value="%{#pageNo.count}"/>
     </s:if>
     <s:else>
-        <a href="<s:url action='SearchEditAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
+        <a href="<s:url action='AdminEditAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
         <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
     </s:else>
 </s:iterator>
@@ -69,9 +69,7 @@
 
 </div>
 
-<div id="footer">
     <s:include value="footer.jsp"/>
-</div>
 
 </body>
 </html>

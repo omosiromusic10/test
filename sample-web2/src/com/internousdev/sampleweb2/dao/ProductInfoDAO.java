@@ -84,12 +84,12 @@ public class ProductInfoDAO {
 	}
 
 		public int createProduct( int productid  , String productName, String productNameKana, String productDescription,
-				int categoryId, int price, String releaseCompany ,String releaseDate ,String imageFileName , String userImageFileName ,int Status)throws SQLException{
+				int categoryId, int price, String releaseCompany ,String releaseDate ,int Status , String imageFilePath , String imageFileName )throws SQLException{
 			DBConnector dbConnector = new DBConnector();
 			Connection connection = dbConnector.getConnection();
 			int count = 0;
 			String sql = "insert into product_info(product_id,product_name, product_name_kana, product_description,"
-					+ "category_id ,price ,release_company, release_date, image_file_name, image_file_path, status, regist_date, update_date)"
+					+ "category_id ,price ,release_company, release_date, status, image_file_path, image_file_name,  regist_date, update_date)"
 					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			try{
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -101,9 +101,9 @@ public class ProductInfoDAO {
 				preparedStatement.setInt(6, price);
 				preparedStatement.setString(7, releaseCompany);
 				preparedStatement.setString(8, releaseDate);
-				preparedStatement.setString(9, imageFileName);
-				preparedStatement.setString(10, userImageFileName);	//	纏めて9,10項目をuserImageで良いのか
-				preparedStatement.setInt(11, Status);	// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+				preparedStatement.setInt(9, Status);// これは何か。→特に意味はないが、チーム開発時の後々追加仕様時に
+				preparedStatement.setString(10, imageFilePath);
+				preparedStatement.setString(11, imageFileName);	//	纏めて9,10項目をuserImageで良いのか
 				preparedStatement.setString(12, dateUtil.getDate());
 				preparedStatement.setString(13, dateUtil.getDate());
 				count = preparedStatement.executeUpdate();
@@ -285,8 +285,11 @@ public class ProductInfoDAO {
 		return productInfoDtoList;
 	}
 
+
+
+
 	    public int updateProductInfo( int productid  , String productName, String productNameKana, String productDescription,
-			int categoryId, int price, String releaseCompany ,String releaseDate ,String imageFileName , String imageFilePath )throws SQLException{
+			int categoryId, int price, String releaseCompany ,String releaseDate ,String imageFilePath , String imageFileName )throws SQLException{
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
 		int count = 0;
@@ -298,8 +301,8 @@ public class ProductInfoDAO {
 				+ "price = ? ,"
 				+ "release_company = ? , "
 				+ "release_date = ? ,"
-				+ "image_file_name = ? ,"
 				+ "image_file_path = ? ,"
+				+ "image_file_name = ? ,"
 				+ "regist_date = ? ,"
 				+ "update_date = ?"
 				+ "where product_id = ?";
@@ -312,8 +315,8 @@ public class ProductInfoDAO {
 			preparedStatement.setInt(5, price);
 			preparedStatement.setString(6, releaseCompany);
 			preparedStatement.setString(7, releaseDate);
-			preparedStatement.setString(8, imageFileName);
-			preparedStatement.setString(9, imageFilePath);	//	纏めて9,10項目をuserImageで良いのか
+			preparedStatement.setString(8, imageFilePath);
+			preparedStatement.setString(9, imageFileName);
 			preparedStatement.setString(10, dateUtil.getDate());
 			preparedStatement.setString(11, dateUtil.getDate());
 			preparedStatement.setInt(12, productid);
@@ -347,6 +350,86 @@ public class ProductInfoDAO {
 				e.printStackTrace();
 			}
 			return count;
+		}
+
+	    public boolean checkProductInfo( String productName) throws SQLException{
+	    	DBConnector db = new DBConnector();
+	    	Connection con = db.getConnection();
+
+	    	String sql = "select id from product_info where product_name = ?";
+	    	boolean Result = false;
+			try{
+	    		PreparedStatement ps = con.prepareStatement(sql);
+	    		ps.setString(1, productName);
+	    		ResultSet rs = ps.executeQuery();
+	    		Result= rs.next();
+	    	}catch(SQLException e){
+	    		e.printStackTrace();
+	    	}finally{
+	    		con.close();
+	    	}
+	    	return Result;
+
+	    }
+
+	    public boolean checkProductInfo2(String productNameKana) throws SQLException{
+	    	DBConnector db = new DBConnector();
+	    	Connection con = db.getConnection();
+	    	String sql = "select id from product_info where product_name_kana";
+	    	boolean Result = false;
+	    	try{
+	    		PreparedStatement ps = con.prepareStatement(sql);
+	    		ps.setString(1, productNameKana);
+	    		ResultSet rs = ps.executeQuery();
+	    		Result = rs.next();
+	    	}catch(SQLException e){
+	    		e.printStackTrace();
+	    	}finally{
+	    		con.close();
+	    	}
+	    	return Result;
+	    }
+
+
+
+		public boolean checkProductInfo3(int productId, String productName) throws SQLException {
+			DBConnector db = new DBConnector();
+			Connection con = db.getConnection();
+			//こちらはProduct_idが同じ物ではない場合にProductNameで選択する同じ物があればConfirmのif文でエラーを出力する。
+			String sql = "select id from product_info where product_id != ? and product_name = ?";
+			boolean Result = false;
+			try{
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, productId);
+				ps.setString(2, productName);
+				ResultSet rs = ps.executeQuery();
+				Result = rs.next();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				con.close();
+			}
+			return Result;
+		}
+
+		public boolean checkProductInfo4(int productId, String productNameKana) throws SQLException {
+			DBConnector db = new DBConnector();
+			Connection con = db.getConnection();
+			//こちらはProduct_idが同じ物ではない場合にProductNamekanaで選択する同じ物があればConfirmのif文でエラーを出力する。
+			String sql = "select id from product_info where product_id != ? and product_name_kana = ?";
+			boolean Result = false;
+			try{
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, productId);
+				ps.setString(2, productNameKana);
+				ResultSet rs = ps.executeQuery();
+				Result = rs.next();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				con.close();
+			}
+			return Result;
 		}
 
 }

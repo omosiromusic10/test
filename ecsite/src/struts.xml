@@ -18,6 +18,7 @@
 <!-- LoginAction -->
 <action name="LoginAction" class="com.internousdev.ecsite.action.LoginAction" method="execute">
 <result name="success">buyItem.jsp</result>
+<result name="admin">admin.jsp</result>
 <result name="error">home.jsp</result>
 </action>
 <!-- LogoutAction -->

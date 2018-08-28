@@ -64,6 +64,12 @@ public class PaginationDTO {
 	public void setNextPage(boolean hasNextPage) {
 		this.hasNextPage = hasNextPage;
 	}
+	public boolean isHasNextPage() {
+		return hasNextPage;
+	}
+	public void setHasNextPage(boolean hasNextPage) {
+		this.hasNextPage = hasNextPage;
+	}
 	public boolean hasPreviousPage() {
 		return hasPreviousPage;
 	}

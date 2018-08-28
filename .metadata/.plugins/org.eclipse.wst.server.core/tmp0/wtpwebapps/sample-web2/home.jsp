@@ -12,34 +12,22 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+jQuery(document).ready(function($){
+	$(document).ready(function(){
+	 $('.bxslider').bxSlider({
+		auto: true,
+		slideWidth: 500,
+		mode:'fade',
+		speed: 3000
+	});
+});
+});
+</script>
 <title>サンプルウェブホーム！</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
-  <script type="text/javascript">
-  var img = ["./images/images.jpg","./images/image2.jpg","./images/image3.jpg","./images/image4.jpg","./images/image5.jpg"];
-
-  var timer;
-  var count = -1;
-
-  function timerStart() {
-      //画像インデックス
-      count++;
-      //画像数確認
-      if (count == img.length) count = 0;
-      //画像出力
-      document.getElementById("dat").src = img[count];
-      //タイマーを設定
-      timer = setTimeout("timerStart()",2000);
-  }
-
-  function timerStop() {
-      //タイマーをクリア
-      clearInterval(timer);
-  };
-
-  </script>
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -48,17 +36,21 @@
 <!-- メインビジュアル -->
 <div id ="MainArea">
 <h1>ホーム画面</h1>
-
-<div style="background-color : #CCC;">
-   <div style="display:inline-flex;">
-        <input type="button" value="START" onClick="timerStart()">
-        <input type="button" value="STOP" onClick="timerStop()">
+<div class="ribbon_box">
+    <span class="ribbon">★</span>
+    <div>
+       <p>サンプルウェブへようこそ！</p>
     </div>
-    <img src="./images/images.jpg" id="dat" width="300" height="300">
 </div>
 
-
-
+<div class="bxbox">
+<ul class="bxslider">
+<li><img src="./images/images.jpg" alt="" width="500" height="400"></li>
+<li><img src="./images/image2.jpg" alt="" width="500" height="400"></li>
+<li><img src="./images/image3.jpg" alt="" width="500" height="400"></li>
+<li><img src="./images/image4.jpg" alt="" width="500" height="400"></li>
+</ul>
+</div>
 </div>
 
 <!-- メインナビ -->
@@ -97,17 +89,13 @@
    </ul>
         ------------------------------------------------------------------
    <h2>お問合せ</h2>
+   <div class="inquiry">
    <ul>
-       <li>商品についてのお問合せ</li>
-       <li>弊社についてのお問合せ</li>
-       <li>その他についてのお問合せ</li>
+      <li><a href="InquiryAction">商品についてのお問合せ</a></li>
+      <li><a href="InquiryAction">弊社についてのお問合せ</a></li>
+      <li><a href="InquiryAction">その他についてのお問合せ</a></li>
    </ul>
-
-
-
-
-
-
+   </div>
 
     </div>
     </div>

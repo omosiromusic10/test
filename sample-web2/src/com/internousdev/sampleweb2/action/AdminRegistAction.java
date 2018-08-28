@@ -30,11 +30,20 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 	//正直あっているかわからない。　性別を元にして作成している。
 	//private String defaultCategoryIdValue = BOOK;
 	private Map<String, Object> session;
-	private String categoryId;
+	private int categoryId;
 
 	public String execute(){
-		String result = ERROR;
+		// ステータスが１の時だけアクションを動かす。
+		String result = "errorhome";
+		String token = String.valueOf(session.get("token"));
+		if (token != "admin") {
+			return result;
+		}
 
+		result = ERROR;
+
+
+		//ここではもし次画面のRegist.jspでエラーが出た場合、何回も出ないように一度リムーブするようにしている。
 		session.remove("productNameErrorMessageList");
 		session.remove("productNameKanaErrorMessageList");
 		session.remove("productDescriptionErrorMessageList");
@@ -43,6 +52,8 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 		session.remove("imageFileNameErrorMessageList");
 		session.remove("releaseCompanyErrorMessageList");
 		session.remove("releaseDateErrorMessageList");
+		session.remove("userImageFileNameErrorMessageList");
+		session.remove("releaseDate");
 
 		session.put("productName",productName);
 		session.put("productNameKana", productNameKana);
@@ -52,21 +63,21 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 		session.put("imageFileName", imageFileName);
 		session.put("releaseCompany", releaseCompany);
 		session.put("relaseDate", releaseDate);
+		session.put("userImageFileName", userImageFileName);
 
 
 		if(!session.containsKey("mCategoryList")){
 			//ここではsessionの mCategoryListが存在しない場合？に起きる。
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
+			mCategoryDtoList = mCategoryDao.getMCategoryList2();
 			//ここで恐らく、mCategoryDAO内にあるMCategoryListを「DtoList」として代入している
-			session.put("mCategoryDtoList", mCategoryDtoList);
+			session.put("mCategoryDtoList2", mCategoryDtoList);
 			//そして最後にsessionにmCategoryDtoListを記述させている。 ただ、何故DtoListとしてしたのか。　そのままmCategoryListじゃだめなのか。
 			//これはヘッダー部分で検索機能として置いているのでエラーを出さないようにする為の処置
 		}
 
+
 		System.out.println(session.get("mCategoryDtoList").toString());
-
-
 
 		result = SUCCESS;
 		return result;
@@ -125,10 +136,10 @@ public class AdminRegistAction extends ActionSupport implements SessionAware{
 	public void setReleaseDate(String releaseDate){
 		this.releaseDate = releaseDate;
 	}
-	public String getCategoryId(){
+	public int getCategoryId(){
 		return categoryId;
 	}
-	public void setCategoryId(String categoryId){
+	public void setCategoryId(int categoryId){
 		this.categoryId = categoryId;
 	}
 	/*public List<String> getCategoryIdList() {

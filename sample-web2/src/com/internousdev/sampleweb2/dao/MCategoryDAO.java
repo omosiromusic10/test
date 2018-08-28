@@ -55,6 +55,47 @@ public class MCategoryDAO {
 		}
 		return mCategoryDtoList;
 	}
+
+	public List<MCategoryDTO> getMCategoryList2(){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
+		//ここでmCategoryListを作っておく。
+		String sql = "select * from m_category where id > 1";
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				//ここで実行を回していく略を作った
+				MCategoryDTO mCategoryDTO = new MCategoryDTO();
+				mCategoryDTO.setId(resultSet.getInt("id"));
+				mCategoryDTO.setCategoryId(resultSet.getInt("category_id"));
+				mCategoryDTO.setCategoryName(resultSet.getString("category_name"));
+				mCategoryDTO.setCategoryDescription(resultSet.getString("category_description"));
+				mCategoryDTO.setInsertDate(resultSet.getDate("insert_date"));
+				mCategoryDTO.setUpdateDate(resultSet.getDate("update_date"));
+				//ここでmCategoryDTOにresultSetでSQLから其々のデータを獲得し、mCategoryDTOにset=習得させている。
+				mCategoryDtoList.add(mCategoryDTO);
+				//最後にDtoの中に入っている物をList内にも入れた。
+			}
+			Iterator<MCategoryDTO> iterator = mCategoryDtoList.iterator();
+			if(!(iterator.hasNext())){
+				mCategoryDtoList = null; //念の為に入れている用の文
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		try{
+			connection.close();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return mCategoryDtoList;
+	}
+
+
 	public int getMaxCategoryId(){
 		int maxCategoryId = -1;
 
@@ -104,4 +145,37 @@ public class MCategoryDAO {
 		}
 		return count;
 }
+
+	public MCategoryDTO getMCategory(int categoryId){
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		MCategoryDTO MCategoryDTO = new MCategoryDTO();
+
+		/**
+		 * ユーザーIDとパスワードを元にSelect分を用いて
+		 * データを全てDTOに格納する。
+		 */
+
+
+	String sql = "SELECT * FROM m_category WHERE category_id = ?";
+
+	try{
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, categoryId);
+		ResultSet rs = ps.executeQuery();
+
+		while(rs.next()){
+			MCategoryDTO.setCategoryName(rs.getString("category_name"));
+			MCategoryDTO.setCategoryId(rs.getInt("category_id"));
+		}
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+	try{
+		con.close();
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+	return MCategoryDTO;
+	}
 }

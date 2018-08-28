@@ -35,6 +35,7 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 	//情報を受け取る為の変数定義(画像情報)
 	private File userImage;
 	private String userImageFileName;
+	private String userImageContentType;
 
 	public String execute()throws SQLException{
 
@@ -193,6 +194,14 @@ public class AdminEditDetailsAction extends ActionSupport implements SessionAwar
 
 	public void setUserImage(File userImage) {
 		this.userImage = userImage;
+	}
+
+	public String getUserImageContentType() {
+		return userImageContentType;
+	}
+
+	public void setUserImageContentType(String userImageContentType) {
+		this.userImageContentType = userImageContentType;
 	}
 
 }

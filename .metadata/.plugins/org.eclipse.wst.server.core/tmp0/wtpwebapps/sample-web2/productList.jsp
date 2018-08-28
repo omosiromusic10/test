@@ -22,7 +22,7 @@
 <div id="product-list">
 <s:iterator value="#session.productInfoDtoList">
 <div class="product-list-box">
-<ul>
+    <ul>
     <li>
     <a href='<s:url action="ProductDetailsAction">
     <s:param name="productId" value="%{productId}"/>

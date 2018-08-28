@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.internousdev.sampleweb2.dto.UserInfoDTO;
 import com.internousdev.sampleweb2.util.DBConnector;
@@ -211,5 +213,47 @@ public class UserInfoDAO {
 
 		String concealPassword = stringBuilder.replace(beginIndex, endIndex, password.substring(beginIndex,endIndex)).toString();
 		return concealPassword;
+	}
+
+	/* AdminAllSelectActionで使う用
+	 user_infoテーブルから全てのデータを抜き出して、UserInfoDTOListを作成する。*/
+	public List<UserInfoDTO> getUserInfoAllList(){
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+
+		List<UserInfoDTO> userInfoDtoList = new ArrayList<UserInfoDTO>();
+
+		String sql = "SELECT * FROM user_info";
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				UserInfoDTO userInfoDTO = new UserInfoDTO();
+				userInfoDTO.setId(rs.getInt("id"));
+				userInfoDTO.setUserId(rs.getString("user_id"));
+				userInfoDTO.setPassword(rs.getString("password"));
+				userInfoDTO.setFamilyName(rs.getString("family_name"));
+				userInfoDTO.setFirstName(rs.getString("first_name"));
+				userInfoDTO.setFamilyNameKana(rs.getString("family_name_kana"));
+				userInfoDTO.setFirstNameKana(rs.getString("first_name_kana"));
+				userInfoDTO.setSex(rs.getInt("sex"));
+				userInfoDTO.setEmail(rs.getString("email"));
+				userInfoDTO.setLogined(rs.getInt("logined"));
+				userInfoDTO.setStatus(rs.getString("status"));
+				userInfoDTO.setRegistDate(rs.getDate("regist_date"));
+				userInfoDTO.setUpdateDate(rs.getDate("update_date"));
+				userInfoDtoList.add(userInfoDTO);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return userInfoDtoList;
 	}
 }

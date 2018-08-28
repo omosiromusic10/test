@@ -38,9 +38,11 @@ public class AdminRegistCompleteAction extends ActionSupport implements SessionA
 			Integer.parseInt(session.get("price").toString()),
 			session.get("releaseCompany").toString(),
 			session.get("releaseDate").toString(),
-			session.get("imageFileName").toString(),
-			session.get("imageFilePath").toString(),
-			Integer.parseInt(session.get("Status").toString()));
+			Integer.parseInt(session.get("Status").toString()),
+			session.get("image_file_path").toString(),
+		    session.get("image_file_name").toString());
+
+
 		if (count > 0){
 			session.remove("prouctName");
 			session.remove("productNameKana");

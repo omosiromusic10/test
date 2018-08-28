@@ -2,29 +2,29 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Main" key="selection"/>
+		<item value="productId" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="Main"/>
-			<item value="userImageFileName"/>
 			<item value="productId"/>
-			<item value="getProduc"/>
-			<item value="userImageContent"/>
-			<item value="UserImageContent"/>
-			<item value="userImage"/>
-			<item value="contents"/>
+			<item value="size"/>
+			<item value="txt"/>
+			<item value="textfield"/>
+			<item value="text"/>
+			<item value="error"/>
+			<item value="error_c"/>
+			<item value="error c"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="798" key="DIALOG_WIDTH"/>
+		<item value="752" key="DIALOG_WIDTH"/>
 		<item value="1|メイリオ|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|メイリオ" key="DIALOG_FONT_NAME"/>
-		<item value="303" key="DIALOG_HEIGHT"/>
-		<item value="286" key="DIALOG_X_ORIGIN"/>
-		<item value="455" key="DIALOG_Y_ORIGIN"/>
+		<item value="339" key="DIALOG_HEIGHT"/>
+		<item value="668" key="DIALOG_X_ORIGIN"/>
+		<item value="568" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

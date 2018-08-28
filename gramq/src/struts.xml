@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.devMode" value="true"/>
+    <package name="com.internousdev.gram-q.action" extends="struts-default">
+
+    <!--  管理者追加機能画面 -->
+    <action name="AdminRegistAction" class="com.internousdev.gramq.action.AdminRegistAction" method="execute">
+    <result name="success">adminRegist.jsp</result>
+    <result name="error">admin.jsp</result>
+    </action>
+
+    <action name="AdminRegistConfirmAction" class="com.internousdev.gramq.action.AdminRegistConfirmAction" method="execute">
+    <result name="success">adminRegistConfirm.jsp</result>
+    <result name="error">adminRegist.jsp</result>
+    </action>
+
+    <action name="AdminRegistCompleteAction" class="com.internousdev.glanq.action.AdminRegistConfirmAction" method="execute">
+    <result name="success">adminRegistComplete.jsp</result>
+    <result name="error">adminRegistConfirm.jsp</result>
+    </action>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </package>
+
+</struts>

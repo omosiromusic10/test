@@ -53,6 +53,18 @@
         <result name="success">adminEditDetailsComplete.jsp</result>
         <result name="error">adminEditDetailsConfirm.jsp</result>
     </action>
+    <action name="AdminProductSelectAction" class="com.internousdev.sampleweb2.action.AdminProductSelectAction" method="execute">
+        <result name="success">adminProductSelect.jsp</result>
+        <result name="error">admin.jsp</result>
+    </action>
+    <action name="AdminPurchaseSelectAction" class="com.internousdev.sampleweb2.action.AdminPurchaseSelectAction" method="execute">
+        <result name="success">adminPurchaseSelect.jsp</result>
+        <result name="error">admin.jsp</result>
+    </action>
+    <action name="AdminAllSelectAction" class="com.internousdev.sampleweb2.action.AdminAllSelectAction" method="execute">
+        <result name="success">adminAllSelect.jsp</result>
+        <result name="error">admin.jsp</result>
+    </action>
 
 
 
@@ -195,7 +207,15 @@
 	    <result name="error">createDestination.jsp</result>
 	</action>
 
-
+<action name="LocationOptionAction" class="com.internousdev.sampleweb2.action.LocationOptionAction" method="execute">
+           <result name="success">locationOption.jsp</result>
+</action>
+<action name="LocationChoiceAction" class="com.internousdev.sampleweb2.action.LocationChoiceAction" method="execute">
+           <result name="success">locationChoice.jsp</result>
+</action>
+<action name="LocationChoiceCompleteAction" class="com.internousdev.sampleweb2.action.LocationChoiceCompleteAction" method="execute">
+           <result name="success">settlementConfirm.jsp</result>
+</action>
 
 
 

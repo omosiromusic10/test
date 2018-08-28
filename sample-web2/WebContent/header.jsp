@@ -61,7 +61,7 @@ function goAdminAction(){
     <s:if test="#session.logined==1">
         <li><s:submit value="マイページ" class="submit_btn" onclick="goMyPageAction();"/></li>
     </s:if>
-    <s:if test="#session.admin==1">
+    <s:if test="#session.status==1">
         <li><s:submit value="管理ホーム" class="submit_btn" onclick="goAdminAction();"/></li>
     </s:if>
 </s:form>

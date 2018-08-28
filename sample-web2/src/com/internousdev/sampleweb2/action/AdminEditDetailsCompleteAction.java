@@ -27,9 +27,6 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 		String result = ERROR;
 		ProductInfoDAO ProductInfoDao = new ProductInfoDAO();
 
-		String imageFilePath = "./images";
-
-
 		int count = ProductInfoDao.updateProductInfo(Integer.parseInt(session.get("productId").toString()),
 				session.get("productName").toString(),
 				session.get("productNameKana").toString(),
@@ -38,8 +35,8 @@ public class AdminEditDetailsCompleteAction extends ActionSupport implements Ses
 				Integer.parseInt(session.get("price").toString()),
 				session.get("releaseCompany").toString(),
 				session.get("releaseDate").toString().toString(),
-				session.get("imageFileName").toString(),
-				imageFilePath);
+				session.get("image_file_path").toString(),
+				session.get("image_file_name").toString());
 			if(count > 0){
 				session.remove("productName");
 				session.remove("productNameKana");

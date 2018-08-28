@@ -16,7 +16,6 @@
 <h1>商品登録完了画面</h1>
 <div class="success">
 商品情報の登録が完了しました。
-3秒後に管理ホームに戻ります。
 </div>
 </div>
 <s:include value="footer.jsp"/>

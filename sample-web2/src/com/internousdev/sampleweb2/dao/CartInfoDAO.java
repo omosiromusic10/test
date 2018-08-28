@@ -14,6 +14,7 @@ import com.internousdev.sampleweb2.util.DateUtil;
 public class CartInfoDAO {
 	private DateUtil dateUtil = new DateUtil();
 
+	/*  カートの情報を取得するメソッド。*/
 	public List<CartInfoDTO> getCartInfoDtoList(String loginId) {
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -206,5 +207,38 @@ public class CartInfoDAO {
  			e.printStackTrace();
  		}
  		return count;
+	}
+
+
+	public List<CartInfoDTO> getCartInfoAllDtoList(){
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		List<CartInfoDTO> CartInfoDtoList = new ArrayList<CartInfoDTO>();
+
+		String sql = "select * from cart_info";
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				CartInfoDTO ciDTO = new CartInfoDTO();
+				ciDTO.setId(rs.getInt("id"));
+				ciDTO.setUserId(rs.getString("user_id"));
+				ciDTO.setTempUserId(rs.getString("temp_user_id"));
+				ciDTO.setProductId(rs.getInt("product_id"));
+				ciDTO.setProductCount(rs.getInt("product_count"));
+				ciDTO.setPrice(rs.getInt("price"));
+				ciDTO.setRegistDate(rs.getDate("regist_date"));
+				ciDTO.setUpdateDate(rs.getDate("update_date"));
+				CartInfoDtoList.add(ciDTO);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return CartInfoDtoList;
 	}
 }

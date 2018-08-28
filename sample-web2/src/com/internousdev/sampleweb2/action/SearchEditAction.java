@@ -63,7 +63,8 @@ public class SearchEditAction extends ActionSupport implements SessionAware{
 		if(pageNo==null){
 			paginationDTO = pagination.initialize(productInfoDtoList, 9);
 		}else{
-			paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
+			int pageNO=Integer.parseInt(pageNo);
+			paginationDTO = pagination.getPage(productInfoDtoList, 9, (pageNO));
 		}
 
 		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());

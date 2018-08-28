@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <sx:head cache="false" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript" >
 <link rel="stylesheet" href="./css/style.css">
 <title>商品編集画面</title>
 </head>
@@ -42,27 +45,35 @@
     </div>
     </div>
 </s:if>
-<s:if test="!#session.imageFileNameErrorMessageList.isEmpty()">
+<s:if test="!#session.releaseCompanyErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-         <s:iterator value="#session.imageFileNameErrorMessageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.releaseCompanyErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
-<s:if test="!#session.imageFilePathErrorMessageList.isEmpty()">
+<s:if test="!#session.releaseDateErrorMessageList.isEmpty()">
     <div class="error">
     <div class="error-message">
-         <s:iterator value="#session.imageFilePathErrorMessageList"><s:property /><br></s:iterator>
+        <s:iterator value="#session.releaseDateErrorMessageList"><s:property /><br></s:iterator>
     </div>
     </div>
 </s:if>
+<s:if test="!#session.userImageFileNameErrorMessageList.isEmpty()">
+    <div class="error">
+    <div class="error-message">
+         <s:iterator value="#session.userImageFileNameErrorMessageList"><s:property /><br></s:iterator>
+    </div>
+    </div>
+</s:if>
+
 
 <s:form action="AdminEditDetailsConfirmAction" method="post" enctype="multipart/form-data">
 
 <table class="vertical-list-table">
 <tr>
     <th scope="row">商品カテゴリ</th>
-    <td>○既存のカテゴリーから選択 <s:select name="categoryId" list="%{#session.mCategoryDtoList}" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId" /><br></td>
+    <td>○既存のカテゴリーから選択 <s:select name="categoryId" list="%{#session.mCategoryDtoList2}" listValue="categoryName" listKey="categoryId" class="cs-div" id="categoryId" /><br></td>
 </tr>
 <tr>
     <th scope="row">商品名</th>
@@ -85,16 +96,12 @@
     <td><s:textfield name="releaseCompany" value="%{#session.releaseCompany}" label="発売会社名" placeholder="発売会社名" class="txt" /></td>
 </tr>
 <tr>
-    <th scope="row">発売年月</th>
-    <td><s:textfield name="releaseDate" value="%{#session.releaseDate}" label="発売年月" placeholder="発売年月" class="txt" /></td>
-</tr>
-<tr>
-    <th scope="row">画像ファイル名</th>
-    <td><s:textfield name="imageFileName" value="%{#session.imageFileName}" label="画像ファイル名" placeholder="画像ファイル名" class="txt" /></td>
+    <th scope="row">発売年月日</th>
+    <td><sx:datetimepicker name="releaseDate"  label="発売年月" displayFormat="yyyy-MM-dd"  /><span class="Description">【XXXX-XX-XXのフォーマットで入力してください。】</span></td>
 </tr>
 <tr>
     <th scope="row">画像ファイル</th>
-   <td><s:file name="userImage" value="%{imageFilePath}" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
+   <td><s:file name="userImage" label="画像ファイル" placeholder="画像ファイル" class="file"/></td>
 </tr>
 <s:hidden name="productId" value="%{productId}"/>
 

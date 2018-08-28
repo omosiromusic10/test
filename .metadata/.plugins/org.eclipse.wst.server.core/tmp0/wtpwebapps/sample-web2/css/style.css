@@ -4,7 +4,8 @@ body, html {
 	padding : 0;
 	width: 100%;
 	height: 100%;
-
+	background-image:url(../images/haikei.jpg);
+	background-size:cover;
 }
 
 #header {
@@ -12,13 +13,12 @@ body, html {
 	float : left;
 	width : 100%;
 	height: 60px;
-	padding : 10px;
 /*	background-color : #005392; */
-	 osition: relative;
+	position: relative;
   background: -moz-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
   background: -webkit-linear-gradient(to right, rgb(111, 124, 255), #ffc994);
   background: linear-gradient(to right, rgb(200, 124, 255), #ffc994);
-  font-weight: lighter;
+  font-weight: lighter; /* 文字の太さ */
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.56);
 }
 
@@ -36,10 +36,11 @@ body, html {
 
 #header-menu ul li{
 	float : left;
-	list-style : none;
+	list-style : none; /* 点をなくす奴*/
 	padding-left : 1%;
 	color : white;
 	font-size : 12px;
+
 }
 
 #header-title img{
@@ -62,7 +63,7 @@ body, html {
 .submit_btn{
 	padding : 0.5em 1em;
 	text-decoration: none;
-	border-ragius: 100px;
+	border-radius: 100px; /*円等で丸めたい為 */
 	width: 120px;
 	height : 35px;
 	margin-top : -5px;
@@ -82,7 +83,7 @@ body, html {
 	background-color:#49a9d4;
 	box-shadow:2px 2px #1a6ea0;
 	cursor: pointer;
-	opacity: 0.5;
+	opacity: 0.5; /*透明になる為のコマンド */
 	background: #81a8cb;
     background: -webkit-gradient(linear, left top, left bottom, from(#4477a1), to(#81a8cb) );
     background: -moz-linear-gradient(-90deg, #4477a1, #81a8cb);
@@ -93,23 +94,30 @@ body, html {
 }
 
 .submit_btn_box2{
-	width : 45%;
+	width : 500px;
 	display : block; /*何じゃろこれ */
-	margin-top : 5px;
-	margin-bottom : 5px;
-	margin-left : 5px;
-	padding-left : 30%;
-	float : left;
+	margin-top : 10px;
+	margin-left : 200px;
+	float:left;
 }
+.submit_btn_box3{
+	width : 500px;
+	display : block; /*何じゃろこれ */
+	margin-top : 10px;
+	margin-right : 200px;
+	float:right;
+}
+
 
 .submit_btn2{
 	padding : 0.5em 1em;
 	text-decoration: none;
-	border-ragius: 100px;
-	width: 700px;
+	border-radius: 100px;
+	width: 100%;
 	height : 100px;
 	margin-top : -5px;
 	margin-left : 6px;
+	margin-bottom:10px;
 	font-size : 50px;
 	text-align : center;
 	color : #fff;
@@ -136,24 +144,43 @@ body, html {
 }
 
 
+.btn{
+	display:inline-block;
+	text-decoration: none;
+	color: #668ad8;
+	width: 120px;
+	height: 120px;
+	line-height: 120px;
+	border-radius: 50%;
+	border: double 4px #668ad8;
+    text-align :middle;
+    overflow: hidden;
+    transition: .6s;
+}
+.btn:hover{
+	-webkit-transform: rotateY(360deg);
+	-ms-transform : rotateY(360deg);
+	transform: rotateY(360deg);
+}
+
+
 #MainArea{
 height :400px;
 width :100%;
-text-align:center;
 }
 
 #MainNaviArea{
 text-align:center;
-height :250px;
+height :400px;
 width :100%;
-background-color:lightgreen;
 }
 #MainNaviArea img{
 	display:inline-block;
 	width:200px;
 	height:200px;
-	padding:30px 20px 30px 20px;
+	padding:50px 20px 30px 20px;
 	margin-right:50px;
+	margin-top:100px;
 }
 
 .4Wrap-clearfix{
@@ -167,7 +194,6 @@ background-color:lightgreen;
 #MainContents{
 width :100%;
 height :500px;
-background-color:skyblue;
 }
 
 .col2Wrap-clearfix{
@@ -178,14 +204,14 @@ background-color:skyblue;
 float:left;
 width:70%;
 height:500px;
+background-color:#CCC;
 }
 
 .colBinCol2{
 float:right;
 width:30%;
 background-color:#f4f4f4;
-border-top:solid 30px lightgray;
-height:470px;
+height:500px;
 }
 
 
@@ -229,24 +255,38 @@ height:470px;
 }
 
 h1 {
-	width : 	90%;
-	color: #364e96;/*文字色*/
-	margin-left : 3%;
-	margin-right : 3%;
+	width : 	25%;
+	color: #505050;/*文字色*/
+	margin-left : 15%;
+	margin-right : 60%;
+	display: inline-block;
 	padding: 0.5em 0;/*上下の余白*/
-	border-top: solid 3px #364e96;/*上線*/
-	border-bottom: solid 3px #364e96;/*下線*/
+	background: #dbebf8;
+	vertical-align: middle;
+	border-radius: 25px 0px 0px 25px;
+}
+h1:before {
+content: '●';
+color: white;
+margin-right: 8px;
 }
 
 h2 {
-	width : 	90%;
-	color: #5e5e5e;/*文字色*/
-	margin-left : 3%;
-	margin-right : 3%;
+	width : 	80%;
+	margin-left : 10%;
+	margin-right : 10%;
 	padding: 0.5em 0;/*上下の余白*/
 	text-align:center;
+    color: #494949;/*文字色*/
+    background: #fffaf4;/*背景色*/
+    border: solid 3px #ffaf58;/*左線（実線 太さ 色）*/
+    border-radius : 0.5em;
 }
 
+.inquiry a {
+  text-decoration:none;
+  color:black;
+}
 .pager{
 	padding-top : 50px;
 	text-align : center;
@@ -283,6 +323,59 @@ h2 {
 	margin-botton : 40px;
 }
 
+.ribbon_box {
+    display: block;
+    float:right;
+    position: relative;
+    margin: 15px auto;
+    padding: 10px 0;
+    width: 300px;
+    background: #f1f1f1;
+    box-sizing: border-box;
+  }
+
+.ribbon {
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+    right: 10px;
+    margin: 0;
+    padding: 10px 0;
+    z-index: 2;
+    width: 40px;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    background: linear-gradient(#ff785b 0%, #e95738 100%);
+    border-radius: 2px 0 0 0;
+  }
+
+.ribbon:before{
+position: absolute;
+    content: '';
+    top: 0;
+    right: -6px;
+    border: none;
+    border-bottom: solid 6px #cf4a2d;
+    border-right: solid 6px transparent;
+}
+.ribbon:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 0;
+    width: 0;
+    border-left: 20px solid #e95738;
+    border-right: 20px solid #e95738;
+    border-bottom: 10px solid transparent;
+}
+
+.bxbox{
+	padding-left:32%;
+}
+
+
 table.horizontal-list-table, th, td {
 	margin : 3%;
 	width : 90%;
@@ -307,6 +400,7 @@ table.horizontal-list-table td {
 	font-size: 0.8em;
 	text-align: center;
 	vertical-align: top;
+	background-color:white;
 }
 
 table.vertical-list-table {
@@ -339,6 +433,7 @@ table.vertical-list-table td {
 	vertical-align: top;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
+	background: white;
 }
 
 table.vertical-list-table, th, td {
@@ -390,17 +485,24 @@ table.vertical-list-table-mini td {
 	content : "";
 	clear : both;
 	display : block;
+	padding:0;
+	position:relative;
 }
 /* 商品一覧リストの設定 */
+
+
 #product-list ul li {
 	display : block;
 	float : left;
 	width : 85%;
 	height : 100%;
 	list-style-type : none;
-/*	background : #00cccc; */
+	/* background : #00cccc; */
 	text-align : center;
+    margin:0;
+    padding:0;
 }
+
 #footer {
 	position : fixed;
 	text-align : center;
@@ -409,7 +511,6 @@ table.vertical-list-table-mini td {
 	left : 0;
 	z-index : 10;
 	width : 100%;
-	padding : 10px;
 	color : #ffffff;
 	background-color : #005392;
 }
@@ -420,6 +521,12 @@ table.vertical-list-table-mini td {
 	width:33.3%;
 	height: 300px;
 	text-align:center;
+	margin-bottom: 10px;
+	color: #FFF;
+/*	background: #6eb7ff;
+	border-bottom:solid 6px #3f87ce;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+	border-radius:9px;*/
 }
 
 .cart-list-box {
@@ -616,3 +723,7 @@ table.vertical-list-table-mini td {
 .input-file input[type="file"] {
   opacity: 0;
 }
+
+
+
+

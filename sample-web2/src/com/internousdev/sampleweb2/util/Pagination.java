@@ -49,49 +49,64 @@ public class Pagination {
 		return paginationDTO;
 	}
 
-	public PaginationDTO getPage(List<ProductInfoDTO> list, int pageSize, String pageNo) {
+	public PaginationDTO getPage(List<ProductInfoDTO> productList, int pageSize, int pageNo) {
 
 		PaginationDTO paginationDTO = new PaginationDTO();
-		// 全ページ数
-		paginationDTO.setTotalPageSize((int)(Math.ceil(list.size() / pageSize)));
-		// 現在のページ番号
-		paginationDTO.setCurrentPageNo(Integer.parseInt(pageNo));
-		// 全レコード数
-		paginationDTO.setTotalRecordSize(list.size() - 1);
-		// 現在のページ番号に対する開始レコード番号（オフセット）
-		paginationDTO.setStartRecordNo(pageSize * (paginationDTO.getCurrentPageNo() -1));
-		// 現在のページ番号に対する開始レコード番号
-//		paginationDTO.setStartRecordNo((pageSize * paginationDTO.getCurrentPageNo()) + 1);
-		// 現在のページ番号に対する終了レコード番号
-		paginationDTO.setEndRecordNo(paginationDTO.getStartRecordNo() + (pageSize - 1));
 
-		List<Integer> pageNumberList = new ArrayList<Integer>();
-		for(int pageNumber = 1;pageNumber <= paginationDTO.getTotalPageSize(); pageNumber++) {
-			pageNumberList.add(pageNumber);
-		}
+		//例として右に「全20件の内9件をずつ表示する場合の、２ページ目の値」のイメージをそれぞれ追記。
+		int a = productList.size();
+		int b = pageSize;
+		@SuppressWarnings("unused")
+		int c = (int)(Math.ceil(a/b));
+		int d = (a+b-1)/b;
+		paginationDTO.setTotalPageSize(d); //全ページ数　今回は9
+		paginationDTO.setCurrentPageNo(pageNo); //表示するページ番号
+		paginationDTO.setTotalPageSize(productList.size()); //商品情報数81[?]
+		paginationDTO.setStartRecordNo((pageSize * (pageNo - 1)) + 1); //10番目の商品から表示
+		paginationDTO.setEndRecordNo(paginationDTO.getStartRecordNo() + pageSize - 1); //18番目の商品まで表示
 
-		List<ProductInfoDTO> productInfoPages = new ArrayList<ProductInfoDTO>();
-		for(int pageNumberOffset=paginationDTO.getStartRecordNo(); pageNumberOffset <= paginationDTO.getEndRecordNo(); pageNumberOffset++) {
-			productInfoPages.add(list.get(pageNumberOffset));
-		}
-		paginationDTO.setCurrentProductInfoPage(productInfoPages);
+		//ページ株に表示する数字のリストを準備
 
-		if((paginationDTO.getStartRecordNo() - 1) <= 0) {
-			paginationDTO.setPreviousPage(false);
-		}else {
-			paginationDTO.setPreviousPage(true);
-			paginationDTO.setPreviousPageNo(paginationDTO.getCurrentPageNo() - 1);
+		List<Integer> nList  = new ArrayList<Integer>();
+		for(int i = 1; i <= paginationDTO.getTotalPageSize(); i++ ){
+			int pageN = i;
+			nList.add(pageN);
 		}
+		paginationDTO.setPageNumberList(nList);
 
-		if(paginationDTO.getEndRecordNo() + pageSize > paginationDTO.getTotalRecordSize()) {
-			paginationDTO.setNextPage(false);
-		}else {
-			paginationDTO.setNextPage(true);
-			paginationDTO.setNextPageNo(paginationDTO.getCurrentPageNo() + 1);
+		//ページに表示する商品リストを準備。
+		List<ProductInfoDTO> currentProductInfoPage = new ArrayList<ProductInfoDTO>();
+		int startI = paginationDTO.getStartRecordNo() -1;
+		int endI2 = Math.min(paginationDTO.getEndRecordNo(), paginationDTO.getTotalRecordSize());
+		for(int i = startI ; i < endI2; i++){
+			// i番目の要素(商品情報)をaddにしていく。
+			ProductInfoDTO pInfoDTO = productList.get(i);
+			currentProductInfoPage.add(pInfoDTO);
 		}
+		paginationDTO.setCurrentProductInfoPage(currentProductInfoPage);
+
+		//次ページ、前ページが存在するかどうか。
+		boolean hasNextPage;
+		boolean hasPreviousPage;
+		if(pageNo <= 1){
+			hasPreviousPage = false;
+		}else{
+			hasPreviousPage = true;
+		}
+		if(pageNo >= paginationDTO.getTotalPageSize()){
+			hasNextPage = false;
+		}else{
+			hasNextPage = true;
+		}
+		paginationDTO.setHasNextPage(hasNextPage);
+		paginationDTO.setPreviousPage(hasPreviousPage);
+
+		//次ページ、前ページの番号。
+		paginationDTO.setNextPageNo(pageNo + 1);
+		paginationDTO.setPreviousPageNo(pageNo - 1);
 
 		return paginationDTO;
-
 	}
+
 
 }
