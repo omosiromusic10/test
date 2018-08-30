@@ -27,27 +27,37 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 	private Map<String, Object> session;
 
+	//SeachItemAction(ページ情報)の追加
+		private int pageNo;
+
 	public String execute(){
 		String result = ERROR;
 
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
 		productInfoDtoList = productInfoDao.getProductInfoList();
-		Pagination pagination = new Pagination();
-		PaginationDTO paginationDTO = pagination.initialize(productInfoDtoList, 9);
+		if(!(productInfoDtoList==null)){
+			Pagination pagination = new Pagination();
+			PaginationDTO paginationDTO = new PaginationDTO();
+			if(pageNo == 0){
+				paginationDTO = pagination.initialize(productInfoDtoList, 9);
+			}else{
+				paginationDTO = pagination.getPage(productInfoDtoList, 9, pageNo);
+			}
 		session.put("totalPageSize",paginationDTO.getTotalPageSize());
 		session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
 		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
 		session.put("startRecordNo", paginationDTO.getStartRecordNo());
 		session.put("endRecordNo",paginationDTO.getEndRecordNo());
 		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-		session.put("haxNextPage", paginationDTO.hasNextPage());
-		session.put("nextPageNo", paginationDTO.hasPreviousPage());
+		session.put("haxNextPage", paginationDTO.isHasNextPage());
+		session.put("nextPageNo", paginationDTO.isHasPreviousPage());
 		session.put("previusPageNo",paginationDTO.getPreviousPageNo());
 
 		if(!session.containsKey("mCategoryList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
+		}
 		}
 		result = SUCCESS;
 		return result;
@@ -121,6 +131,22 @@ public class AdminDeleteAction extends ActionSupport implements SessionAware {
 	}
 	public void setSession(Map<String, Object> session){
 		this.session = session;
+	}
+
+	public List<ProductInfoDTO> getProductInfoDtoList() {
+		return productInfoDtoList;
+	}
+
+	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
+		this.productInfoDtoList = productInfoDtoList;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 
 }

@@ -8,6 +8,15 @@
 	<link rel="stylesheet" href="./css/product.css">
 
 <title>商品詳細画面</title>
+
+<script type="text/javascript">
+	function confirmAlert() {
+		if(confirm("カートに商品を追加します。よろしいですか？")){
+			document.getElementById("addCart").action="AddCartAction";
+		}
+	}
+</script>
+
 </head>
 <body>
 
@@ -80,7 +89,7 @@
 				<tr>
 					<th><s:select name="productCount" list="%{#session.productCountList}"/>個</th>
 					<s:token/>
-					<td><s:submit value="カートに追加" class="submit_btn"/></td>
+					<td><s:submit type="button" value="カートに追加" class="submit_btn" onclick="confirmAlert()"/></td>
 				</tr>
 			</table>
 
@@ -124,7 +133,7 @@
 	</s:else>
 
 	</div>
-<br>
+<div id="piston"></div>
 </div>
 
 	<s:include value="footer.jsp" />

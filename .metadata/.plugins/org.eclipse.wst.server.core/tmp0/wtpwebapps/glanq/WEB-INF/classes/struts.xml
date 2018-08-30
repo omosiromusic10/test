@@ -85,6 +85,7 @@
 		<action name="HomeAction" class="com.internousdev.glanq.action.HomeAction"
 			method="execute">
 			<result name="success">home.jsp</result>
+			<result name="admin">admin.jsp</result>
 		</action>
 		<action name="SearchItemAction" class="com.internousdev.glanq.action.SearchItemAction"
 			method="execute">
@@ -102,9 +103,6 @@
 		</action>
 		<action name="AddCartAction" class="com.internousdev.glanq.action.AddCartAction"
 			method="execute">
-			<interceptor-ref name="defaultStack" />
-			<interceptor-ref name="token" />
-			<result name="invalid.token">cart.jsp</result>
 			<result name="success">cart.jsp</result>
 			<result name="error">home.jsp</result>
 			<result name="input">cart.jsp</result>

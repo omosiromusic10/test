@@ -69,17 +69,10 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 	session.put("endRecordNo", paginationDTO.getEndRecordNo());
 	session.put("pageNumberList", paginationDTO.getPageNumberList());
 	session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-	session.put("hasNextPage", paginationDTO.hasNextPage());
-	session.put("hasPreviousPage", paginationDTO.hasPreviousPage());
+	session.put("hasNextPage", paginationDTO.isHasNextPage());
+	session.put("hasPreviousPage", paginationDTO.isHasPreviousPage());
 	session.put("nextPageNo", paginationDTO.getNextPageNo());
 	session.put("previousPageNo", paginationDTO.getPreviousPageNo());
-	}
-
-    //キーが存在するか確認。
-	if(!session.containsKey("mCategoryList")){
-		MCategoryDAO mCategoryDao = new MCategoryDAO();
-		mCategoryDtoList = mCategoryDao.getMCategoryList2();
-		session.put("mCategoryDtoList", mCategoryDtoList);
 	}
 
     result = SUCCESS;
@@ -163,6 +156,14 @@ public class AdminEditAction extends ActionSupport implements SessionAware {
 
 	public void setProductInfoDtoList(List<ProductInfoDTO> productInfoDtoList) {
 		this.productInfoDtoList = productInfoDtoList;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
 	}
 
 }

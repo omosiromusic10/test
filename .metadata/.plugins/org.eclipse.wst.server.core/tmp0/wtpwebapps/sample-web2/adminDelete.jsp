@@ -60,8 +60,9 @@
         <s:property value="%{#pageNo.count}"/>
     </s:if>
     <s:else>
-        <a href="<s:url action='SearchDeleteAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
-        <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
+        <a href="<s:url action='AdminDeleteAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
+        <s:param name='categoryId' value='%{categoryId}'/>
+        <s:param name='keywords' value='%{keywords}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
     </s:else>
 </s:iterator>
 </div>

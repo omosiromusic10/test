@@ -384,6 +384,7 @@ GlanQでは3つのBBQ場と提携しており、<br>食材を各BBQ場に送り�
 
 
 </div>
+<div id="piston"></div>
 </div>
 
 	<s:include value="footer.jsp" />

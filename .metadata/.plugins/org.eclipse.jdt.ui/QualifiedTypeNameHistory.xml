@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dto.ProductInfoDTO"/>
 <fullyQualifiedTypeName name="javax.websocket.Session"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.DestinationInfoDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.sampleweb2.dao.PurchaseHistoryInfoDAO"/>
 <fullyQualifiedTypeName name="freemarker.template.utility.DateUtil"/>
@@ -31,4 +30,5 @@
 <fullyQualifiedTypeName name="com.internousdev.glanq.dao.ProductInfoDAO"/>
 <fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 </qualifiedTypeNameHistroy>

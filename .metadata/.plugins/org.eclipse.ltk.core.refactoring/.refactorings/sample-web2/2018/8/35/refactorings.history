@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="フィールド &apos;com.internousdev.sampleweb2.action.ProductListAction.pageNo&apos; を &apos;com.internousdev.sampleweb2.action.ProductListAction&apos;にカプセル化します&#x0D;&#x0A;- 元のプロジェクト: &apos;sample-web2&apos;&#x0D;&#x0A;- オリジナル要素: &apos;com.internousdev.sampleweb2.action.ProductListAction.pageNo&apos;&#x0D;&#x0A;- getter メソッド名: &apos;getPageNo&apos;&#x0D;&#x0A;- setter メソッド名: &apos;setPageNo&apos;&#x0D;&#x0A;- フィールドの可視性: &apos;public&apos;&#x0D;&#x0A;- 宣言型の getter および setter メソッドを使用" comments="false" declaring="true" description="フィールド &apos;pageNo&apos; をカプセル化します" flags="589830" getter="getPageNo" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;com.internousdev.sampleweb2.action{ProductListAction.java[ProductListAction^pageNo" insertion="20" setter="setPageNo" stamp="1535591904019" version="1.0" visibility="1"/>
+</session>

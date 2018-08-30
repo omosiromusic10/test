@@ -23,33 +23,46 @@ public class ProductListAction extends ActionSupport implements SessionAware{
 
 	private String categoryId;
 	private String keywords;
+	private String pageNo = "1"; //年の為
 	private List<MCategoryDTO> mCategoryDtoList = new ArrayList<MCategoryDTO>();
 	private List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
 
 	private Map<String, Object> session;
+	private Pagination pagination = new Pagination();
 	public String execute(){
 		String result = ERROR;
+		String token = String.valueOf(session.get("token"));
+		if (token == "admin") {
+			return result;
+		}
 
+
+		int pageSize = 9;
 		ProductInfoDAO productInfoDao = new ProductInfoDAO();
-		productInfoDtoList = productInfoDao.getProductInfoList();
-		Pagination pagination = new Pagination();
-		PaginationDTO paginationDTO = pagination.initialize(productInfoDtoList, 9);
+		List<ProductInfoDTO> productInfoListAll = productInfoDao.getProductInfoList();
+		session.put("productInfoListAll", productInfoListAll);
+		PaginationDTO paginationDTO = pagination.initialize(productInfoListAll, pageSize);
 		session.put("totalPageSize", paginationDTO.getTotalPageSize());
-		session.put("currentPageNumber", paginationDTO.getCurrentPageNo());
+		session.put("currentPageNo", paginationDTO.getCurrentPageNo());
 		session.put("totalRecordSize", paginationDTO.getTotalRecordSize());
 		session.put("startRecordNo", paginationDTO.getStartRecordNo());
 		session.put("endRecordNo", paginationDTO.getEndRecordNo());
 		session.put("pageNumberList", paginationDTO.getPageNumberList());
 		session.put("productInfoDtoList", paginationDTO.getCurrentProductInfoPage());
-		session.put("hasNextPage", paginationDTO.hasNextPage());
-		session.put("hasPreviousPage", paginationDTO.hasPreviousPage());
+		session.put("hasNextPage", paginationDTO.isHasNextPage());
+		session.put("hasPreviousPage", paginationDTO.isHasPreviousPage());
 		session.put("nextPageNo", paginationDTO.getNextPageNo());
 		session.put("previousPageNo", paginationDTO.getPreviousPageNo());
 
-		if(!session.containsKey("mCategoryList")){
+		if(!session.containsKey("mCategoryDtoList")){
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
+		}
+
+		// セッションlogined はヘッダーにて用いているので、無い場合は非ログイン状態として0を入れる。
+		if (!session.containsKey("logined")) {
+			session.put("logined", 0);
 		}
 
 		result = SUCCESS;
@@ -116,6 +129,12 @@ public class ProductListAction extends ActionSupport implements SessionAware{
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+	public String getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
 	}
 
 }

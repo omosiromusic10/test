@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 /*ヘッダー*/
 #header {
 	position : fixed;
@@ -315,16 +320,16 @@ color:#000000;
 
 
  /* スクロール追従フッター*/
-#footer {
-	position : fixed;
-	text-align : center;
-	bottom : 0;
-	clear : both;
-	left : 0;
+ #footer,#piston {
+  height: 40px;
+}
 
+#footer {
+	clear : both;
+	text-align : center;
+	padding-top:10px;
 	width : 100%;
 	font-weight:800;
-	padding : 10px;
 	color : #2a2a2a;
 	 background-image:linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     font-family: 'Mv Boli',cursive;
@@ -680,8 +685,8 @@ section{
 	width:100%;
 	padding-top:100px;
 	margin:0 auto;
-	height: auto;
-	padding-bottom:110px;
+	min-height: calc(100% - 100px);
+	margin-bottom: -40px;
 }
 
 .txt {

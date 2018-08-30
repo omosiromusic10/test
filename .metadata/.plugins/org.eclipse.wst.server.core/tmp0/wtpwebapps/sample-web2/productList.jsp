@@ -19,7 +19,26 @@
 </div>
 </s:if>
 <s:else>
-<div id="product-list">
+<s:if test="#session.startRecordNo > #session.totalRecordSize">
+<div id="hit">
+<div class="info">[!] このページには商品情報がありません</div>
+</div>
+</s:if>
+<s:else>
+<div id="hit">
+    全<s:property value='#session.totalRecordSize'/>件中 <s:property value='#session.startRecordNo'/> ～
+    <s:if test="#session.endRecordNo > #session.totalRecordSize">
+    <s:property value='#session.totalRecordSize'/>
+    </s:if>
+    <s:else>
+    <s:property value='#session.endRecordNo'/>
+    </s:else>
+    件目を表示
+    </div>
+    </s:else>
+<br>
+<div id="newItemList">
+<!-- 商品一覧の部分 -->
 <s:iterator value="#session.productInfoDtoList">
 <div class="product-list-box">
     <ul>
@@ -42,7 +61,9 @@
     </s:if>
     <s:else>
         <a href="<s:url action='SearchItemAction'><s:param name='pageNo' value='%{#pageNo.count}'/>
-        <s:param name='categoryId' value='%{categoryId}'/></s:url> ">   <s:property value="%{#pageNo.count}"/></a>
+        <s:param name='categoryId' value='%{categoryId}'/>
+        <s:param name='keywords' value='%{keywords}'/></s:url> ">
+        <s:property value="%{#pageNo.count}"/></a>
     </s:else>
 </s:iterator>
 </div>
